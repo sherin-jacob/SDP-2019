@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -57,39 +57,38 @@
     <PackageReference Include="Xamarin.Android.Support.v7.MediaRouter" Version="27.0.2.1" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomAdaptor.cs" />
+    <Compile Include="DbHelper.cs" />
     <Compile Include="MainActivity.cs" />
-    <Compile Include="Resources\Resource.designer.cs" />
+    <Compile Include="Resource\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\AboutResources.txt" />
+    <None Include="Resource\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\Tabbar.axml" />
-    <AndroidResource Include="Resources\layout\Toolbar.axml" />
-    <AndroidResource Include="Resources\values\styles.xml" />
-    <AndroidResource Include="Resources\values\colors.xml" />
-    <AndroidResource Include="Resources\mipmap-anydpi-v26\icon.xml" />
-    <AndroidResource Include="Resources\mipmap-anydpi-v26\icon_round.xml" />
-    <AndroidResource Include="Resources\mipmap-hdpi\icon.png" />
-    <AndroidResource Include="Resources\mipmap-hdpi\launcher_foreground.png" />
-    <AndroidResource Include="Resources\mipmap-mdpi\icon.png" />
-    <AndroidResource Include="Resources\mipmap-mdpi\launcher_foreground.png" />
-    <AndroidResource Include="Resources\mipmap-xhdpi\icon.png" />
-    <AndroidResource Include="Resources\mipmap-xhdpi\launcher_foreground.png" />
-    <AndroidResource Include="Resources\mipmap-xxhdpi\icon.png" />
-    <AndroidResource Include="Resources\mipmap-xxhdpi\launcher_foreground.png" />
-    <AndroidResource Include="Resources\mipmap-xxxhdpi\icon.png" />
-    <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
+    <AndroidResource Include="Resource\values\styles.xml" />
+    <AndroidResource Include="Resource\mipmap-anydpi-v26\icon.xml" />
+    <AndroidResource Include="Resource\mipmap-anydpi-v26\icon_round.xml" />
+    <AndroidResource Include="Resource\mipmap-hdpi\icon.png" />
+    <AndroidResource Include="Resource\mipmap-hdpi\launcher_foreground.png" />
+    <AndroidResource Include="Resource\mipmap-mdpi\icon.png" />
+    <AndroidResource Include="Resource\mipmap-mdpi\launcher_foreground.png" />
+    <AndroidResource Include="Resource\mipmap-xhdpi\icon.png" />
+    <AndroidResource Include="Resource\mipmap-xhdpi\launcher_foreground.png" />
+    <AndroidResource Include="Resource\mipmap-xxhdpi\icon.png" />
+    <AndroidResource Include="Resource\mipmap-xxhdpi\launcher_foreground.png" />
+    <AndroidResource Include="Resource\mipmap-xxxhdpi\icon.png" />
+    <AndroidResource Include="Resource\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\drawable\" />
-    <Folder Include="Resources\drawable-hdpi\" />
-    <Folder Include="Resources\drawable-xhdpi\" />
-    <Folder Include="Resources\drawable-xxhdpi\" />
-    <Folder Include="Resources\drawable-xxxhdpi\" />
+    <Folder Include="Resource\drawable-hdpi\" />
+    <Folder Include="Resource\drawable-xhdpi\" />
+    <Folder Include="Resource\drawable-xxhdpi\" />
+    <Folder Include="Resource\drawable-xxxhdpi\" />
+    <Folder Include="Resource\drawable\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NZTravel2\NZTravel2.csproj">
@@ -97,5 +96,36 @@
       <Name>NZTravel2</Name>
     </ProjectReference>
   </ItemGroup>
- <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <ItemGroup>
+    <AndroidResource Include="Resource\layout\Main.axml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resource\layout\row.axml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resource\menu\menu_item.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resource\mipmap-anydpi-v26\ic_launcher.xml" />
+    <Content Include="Resource\mipmap-anydpi-v26\ic_launcher_round.xml" />
+    <Content Include="Resource\mipmap-hdpi\ic_launcher.png" />
+    <Content Include="Resource\mipmap-hdpi\ic_launcher_foreground.png" />
+    <Content Include="Resource\mipmap-hdpi\ic_launcher_round.png" />
+    <Content Include="Resource\mipmap-mdpi\ic_launcher.png" />
+    <Content Include="Resource\mipmap-mdpi\ic_launcher_foreground.png" />
+    <Content Include="Resource\mipmap-mdpi\ic_launcher_round.png" />
+    <Content Include="Resource\mipmap-xhdpi\ic_launcher.png" />
+    <Content Include="Resource\mipmap-xhdpi\ic_launcher_foreground.png" />
+    <Content Include="Resource\mipmap-xhdpi\ic_launcher_round.png" />
+    <Content Include="Resource\mipmap-xxhdpi\ic_launcher.png" />
+    <Content Include="Resource\mipmap-xxhdpi\ic_launcher_foreground.png" />
+    <Content Include="Resource\mipmap-xxhdpi\ic_launcher_round.png" />
+    <Content Include="Resource\mipmap-xxxhdpi\ic_launcher.png" />
+    <Content Include="Resource\mipmap-xxxhdpi\ic_launcher_foreground.png" />
+    <Content Include="Resource\mipmap-xxxhdpi\ic_launcher_round.png" />
+    <Content Include="Resource\values\colors.xml" />
+    <Content Include="Resource\values\ic_launcher_background.xml" />
+    <Content Include="Resource\values\Strings.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
