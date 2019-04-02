@@ -9,6 +9,7 @@
         <Label Text="Sherin is changing the text! For the second time lol" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
+        <Label Text="Edris Text Setting Test" />
     </StackLayout>
 
 </ContentPage>
