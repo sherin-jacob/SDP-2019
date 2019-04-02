@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Forms.Maps;
 
 namespace NZTravel2.View
 {
@@ -15,6 +16,8 @@ namespace NZTravel2.View
 		public MapPage ()
 		{
 			InitializeComponent ();
-		}
+
+            map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(entry.Latitude, entry.Longitude), Distance.FromMiles(.5)));
+        }
 	}
 }
