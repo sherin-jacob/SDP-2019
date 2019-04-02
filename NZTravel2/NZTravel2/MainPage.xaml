@@ -9,6 +9,7 @@
         <Label Text="Maitreyee making a random change :)" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
+        <Label Text="Edris Text Setting Test" />
     </StackLayout>
 
 </ContentPage>
