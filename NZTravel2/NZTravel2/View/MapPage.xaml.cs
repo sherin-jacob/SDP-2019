@@ -130,8 +130,8 @@ namespace NZTravel2.View
                 lblLong.Text = "Longitude: " + position.Longitude.ToString();
 
                 map.MoveToRegion(
-                    MapSpan.FromCenterAndRadius(new Xamarin.Forms.Maps.Position(position.Latitude, position.Longitude),
-                    Distance.FromMiles(1)));
+                    MapSpan.FromCenterAndRadius(new Position(position.Latitude, position.Longitude),
+                    Distance.FromMiles(0.5)));
             }
         }
 
