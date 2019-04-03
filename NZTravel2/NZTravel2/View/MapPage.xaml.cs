@@ -124,11 +124,14 @@ namespace NZTravel2.View
             {
                 var locator = CrossGeolocator.Current;
                 locator.DesiredAccuracy = 20;
-                var position = await locator.GetPositionAsync();
+                var position = await locator.GetPositionAsync(); 
 
                 lblLat.Text = "Latitude: " + position.Latitude.ToString();
                 lblLong.Text = "Longitude: " + position.Longitude.ToString();
 
+                map.MoveToRegion(
+                    MapSpan.FromCenterAndRadius(new Xamarin.Forms.Maps.Position(position.Latitude, position.Longitude),
+                    Distance.FromMiles(1)));
             }
         }
 
