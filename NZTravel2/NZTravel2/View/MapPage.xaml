@@ -5,7 +5,8 @@
              x:Class="NZTravel2.View.MapPage">
     <ContentPage.Content>
         <StackLayout>
-                <maps:Map x:Name="map" MapType="Street" IsShowingUser="True"/>
+            <SearchBar Placeholder="Destination" />
+            <maps:Map x:Name="map" MapType="Street" IsShowingUser="True"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

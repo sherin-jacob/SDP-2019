@@ -19,6 +19,7 @@ namespace NZTravel2.View
         public MapPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
             Display();
             //MapPageLayout();
         }
