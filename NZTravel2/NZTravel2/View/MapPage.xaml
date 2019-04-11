@@ -5,7 +5,7 @@
              x:Class="NZTravel2.View.MapPage">
     <ContentPage.Content>
         <StackLayout>
-            <maps:Map x:Name="map" MapType="Street" Grid.RowSpan="3"/>
+                <maps:Map x:Name="map" MapType="Street" IsShowingUser="True"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
