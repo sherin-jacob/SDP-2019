@@ -43,12 +43,12 @@ namespace NZTravel2.View
                 MapSpan.FromCenterAndRadius(new Position(position.Latitude, position.Longitude),
                 Distance.FromMiles(0.5)));
 
-            //map.Pins.Add(new Pin
-            //{
-            //    Type = PinType.Place,
-            //    Label = "Current Position",
-            //    Position = new Position(position.Latitude, position.Longitude)
-            //});
+            map.Pins.Add(new Pin
+            {
+                Type = PinType.Place,
+                Label = "Current Position",
+                Position = new Position(position.Latitude, position.Longitude)
+            });
 
         }
 
