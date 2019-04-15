@@ -21,5 +21,10 @@ namespace NZTravel2.View
         {
             Navigation.PushAsync(new MapPage());
         }
-	}
+
+        private void FuelButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new FuelPage());
+        }
+    }
 }

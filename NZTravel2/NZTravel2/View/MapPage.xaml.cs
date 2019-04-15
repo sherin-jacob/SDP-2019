@@ -16,6 +16,7 @@ namespace NZTravel2.View
     public partial class MapPage : ContentPage
     {
         public static double longitude;
+        public static double latitude;
 
         public MapPage()
         {
@@ -37,6 +38,7 @@ namespace NZTravel2.View
 
             longitude = position.Longitude;
             Longitude();
+            latitude = position.Latitude;
 
 
             map.MoveToRegion(
@@ -70,6 +72,7 @@ namespace NZTravel2.View
 
         public async Task ShowPlace(string text)
         {
+            map.Pins.Clear();
             Geocoder gc = new Geocoder();
             IEnumerable<Position> result = await gc.GetPositionsForAddressAsync(text);
             foreach (Position pos in result)
@@ -85,6 +88,25 @@ namespace NZTravel2.View
                     Distance.FromMiles(0.5)));
             }
         }
+
+        //public async Task<IEnumerable<string>> GetPlacesAutocompleteAsync(string search)
+        //{
+        //    // from: https://developers.google.com/places/documentation/autocomplete
+        //    // e.g. https://maps.googleapis.com/maps/api/place/autocomplete/xml?input=Kirk&key=AddYourOwnKeyHere
+        //    string request = string.Format("https://maps.googleapis.com/maps/api/place/autocomplete/xml?input={0}&key={1}", search, GetGoogleApiKey());
+        //    var xml = await (new HttpClient()).GetStringAsync(request);
+        //    var results = XDocument.Parse(xml).Element("AutocompletionResponse").Elements("prediction");
+
+        //    var suggestions = new List<string>();
+        //    foreach (var result in results)
+        //    {
+        //        var suggestion = result.Element("description").Value;
+        //        suggestions.Add(suggestion);
+        //    }
+
+        //    return suggestions;
+        //}
+
 
     }
 }
