@@ -12,7 +12,7 @@ namespace NZTravel2
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MapPage());
+            MainPage = new NavigationPage(new HomePage());
         }
 
         protected override void OnStart()
