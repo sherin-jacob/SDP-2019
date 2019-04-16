@@ -9,6 +9,9 @@ using Xamarin.Forms.Xaml;
 using Xamarin.Forms.Maps;
 using Plugin.Geolocator;
 using System.Net.Http;
+using NZTravel2.Model;
+using System.Globalization;
+using Newtonsoft.Json;
 
 namespace NZTravel2.View
 {
@@ -89,23 +92,40 @@ namespace NZTravel2.View
             }
         }
 
-        //public async Task<IEnumerable<string>> GetPlacesAutocompleteAsync(string search)
+        //public async Task ShowPlace(string text)
         //{
-        //    // from: https://developers.google.com/places/documentation/autocomplete
-        //    // e.g. https://maps.googleapis.com/maps/api/place/autocomplete/xml?input=Kirk&key=AddYourOwnKeyHere
-        //    string request = string.Format("https://maps.googleapis.com/maps/api/place/autocomplete/xml?input={0}&key={1}", search, GetGoogleApiKey());
-        //    var xml = await (new HttpClient()).GetStringAsync(request);
-        //    var results = XDocument.Parse(xml).Element("AutocompletionResponse").Elements("prediction");
-
-        //    var suggestions = new List<string>();
-        //    foreach (var result in results)
+        //    RootObject rootObject = null;
+        //    var client = new HttpClient();
+        //    CultureInfo In = new CultureInfo("en-IN");
+        //    string restUrl = $"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + latitude + "," + longitude + "&radius=1000&keyword=" + text + "&key=AIzaSyDsihFkzPZuiJEVZd8tzrodeVe84ttZkRk";
+        //    var uri = new Uri(restUrl);
+        //    var response = await client.GetAsync(uri);
+        //    if (response.IsSuccessStatusCode)
         //    {
-        //        var suggestion = result.Element("description").Value;
-        //        suggestions.Add(suggestion);
+        //        var content = await response.Content.ReadAsStringAsync();
+        //        rootObject = JsonConvert.DeserializeObject<RootObject>(content);
+        //        double latitude = 0, longitude = 0;
+        //        foreach (Place place in rootObject.results)
+        //        {
+        //            map.Pins.Add(new Pin
+        //            {
+        //                Type = PinType.Place,
+        //                Label = place.Name,
+        //                Position = new Position(place.Latitude, place.Longitude)
+        //            });
+        //            latitude = place.Latitude;
+        //            longitude = place.Longitude;
+        //        }
+        //        map.MoveToRegion(
+        //            MapSpan.FromCenterAndRadius(new Position(latitude, longitude),
+        //            Distance.FromMiles(0.5)));
         //    }
-
-        //    return suggestions;
+        //    else
+        //    {
+        //        await Application.Current.MainPage.DisplayAlert("No web response", "Unable to retrieve information, please try again", "OK");
+        //    }
         //}
+
 
 
     }
