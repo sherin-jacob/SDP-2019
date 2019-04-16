@@ -1,33 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Globalization;
-using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml.Linq;
 using Newtonsoft.Json;
 using NZTravel2.Model;
-using NZTravel2.ViewModel;
 using Plugin.Geolocator;
 using Xamarin.Forms;
-using Xamarin.Forms.Maps;
-using Xamarin.Forms.Xaml;
 
-namespace NZTravel2.View
+namespace NZTravel2.ViewModel
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class FuelPage : ContentPage
-	{
+    class FuelPageViewModel
+    {
         private double lat, longi;
-        ObservableCollection<Place> placeList = new ObservableCollection<Place>();
+        List<Place> placeList;
 
-        public FuelPage ()
-		{
-            InitializeComponent ();
+        public FuelPageViewModel()
+        {
             GetNearbyPlacesAsync();
-            BindingContext = new FuelPageViewModel();
         }
 
         async void GetNearbyPlacesAsync()
@@ -49,11 +39,7 @@ namespace NZTravel2.View
             {
                 await Application.Current.MainPage.DisplayAlert("No web response", "Unable to retrieve information, please try again", "OK");
             }
-            foreach (var item in rootObject.results)
-            {
-                placeList.Add(item);
-            }
-            FuelStations.ItemsSource = placeList;
+            placeList = rootObject.results;
         }
 
         async Task RetrieveLocation()
