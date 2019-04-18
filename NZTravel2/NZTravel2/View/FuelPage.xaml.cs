@@ -51,7 +51,7 @@ namespace NZTravel2.View
             }
             foreach (var item in rootObject.results)
             {
-                placeList.Add(item);
+                placeList.Add(item); 
             }
             FuelStations.ItemsSource = placeList;
         }
