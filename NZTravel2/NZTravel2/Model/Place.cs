@@ -10,6 +10,6 @@ namespace NZTravel2.Model
         public string place_id { get; set; }
         public double lat { get; set; }
         public double lng { get; set; }
-        public string formatted_address { get; set; }
+        public string vicinity { get; set; }
     }
 }
