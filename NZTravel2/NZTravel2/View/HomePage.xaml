@@ -6,6 +6,7 @@
         <StackLayout>
             <Button x:Name="MapButton" Text="MAP" Clicked="MapButtonClicked"/>
             <Button x:Name="FuelButton" Text="FUEL" Clicked="FuelButton_Clicked"/>
+            <Button x:Name="ItineraryButton" Text="Itinerary" Clicked="ItineraryButton_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
