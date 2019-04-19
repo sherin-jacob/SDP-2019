@@ -18,10 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="AddItinerary.xaml">
+    <EmbeddedResource Update="View\AddItinerary.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="ItineraryView.xaml">
+    <EmbeddedResource Update="View\ItineraryView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\FuelPage.xaml">
