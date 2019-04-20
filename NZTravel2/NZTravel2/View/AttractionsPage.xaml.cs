@@ -1,32 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 using Newtonsoft.Json;
 using NZTravel2.Model;
-using NZTravel2.ViewModel;
 using Plugin.Geolocator;
 using Xamarin.Forms;
-using Xamarin.Forms.Maps;
 using Xamarin.Forms.Xaml;
 
 namespace NZTravel2.View
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class FuelPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class AttractionsPage : ContentPage
+    {
         private double lat, longi;
         ObservableCollection<Place> placeList = new ObservableCollection<Place>();
 
-        public FuelPage ()
-		{
-            InitializeComponent ();
+        public AttractionsPage()
+        {
+            InitializeComponent();
             GetNearbyPlacesAsync();
-            BindingContext = new FuelPageViewModel();
         }
 
         async void GetNearbyPlacesAsync()
@@ -34,9 +32,7 @@ namespace NZTravel2.View
             RootObject rootObject = null;
             var client = new HttpClient();
             await RetrieveLocation();
-            string latitude = lat.ToString();
-            string longitude = longi.ToString();
-            string restUrl = $"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + latitude + "," + longitude + "&radius=1000&type=gas_station&key=AIzaSyDsihFkzPZuiJEVZd8tzrodeVe84ttZkRk";
+            string restUrl = $"https://maps.googleapis.com/maps/api/place/textsearch/json?query=attractions+in+Auckland&key=AIzaSyDsihFkzPZuiJEVZd8tzrodeVe84ttZkRk";
             var uri = new Uri(restUrl);
             var response = await client.GetAsync(uri);
             if (response.IsSuccessStatusCode)
@@ -50,12 +46,10 @@ namespace NZTravel2.View
             }
             foreach (var item in rootObject.results)
             {
-                placeList.Add(item); 
+                placeList.Add(item);
             }
-            FuelStations.ItemsSource = placeList;
+            Attractions.ItemsSource = placeList;
         }
-
-      
 
         async Task RetrieveLocation()
         {
