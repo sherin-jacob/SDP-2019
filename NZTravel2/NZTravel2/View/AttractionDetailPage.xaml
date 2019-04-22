@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NZTravel2.View.AttractionDetailPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="Name"/>
+            <Label x:Name="Address"/>
+            <Label x:Name="OpeningHours"/>
+            <Label x:Name="Rating"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -24,5 +24,12 @@ namespace NZTravel2.View
             InitializeComponent();
             BindingContext = new AttractionsPageViewModel();
         }
+
+        async void Attractions_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var attraction = (Place)e.Item;
+            await Navigation.PushAsync(new AttractionDetailPage(attraction));
+            Attractions.SelectedItem = null;
+        }
     }
 }

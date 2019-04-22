@@ -5,7 +5,7 @@
     <ContentPage.Content>
         <StackLayout>
             <Label Text="AUCKLAND"></Label>
-            <ListView x:Name="Attractions" ItemsSource="{Binding placeList}">
+            <ListView x:Name="Attractions" ItemsSource="{Binding placeList}" ItemTapped="Attractions_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextCell Text="{Binding Name}" Detail="{Binding formatted_address}"/>

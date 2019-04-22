@@ -4,7 +4,7 @@ using System.Text;
 
 namespace NZTravel2.Model
 {
-    class Place
+    public class Place
     {
         public string Name { get; set; }
         public string place_id { get; set; }
@@ -12,5 +12,7 @@ namespace NZTravel2.Model
         public double lng { get; set; }
         public string vicinity { get; set; }
         public string formatted_address { get; set; }
+        public string open_now { get; set; }
+        public double rating { get; set; }
     }
 }
