@@ -6,13 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using NZTravel2.Model;
-using NZTravel2.View;
 using Plugin.Geolocator;
 using Xamarin.Forms;
 
 namespace NZTravel2.ViewModel
 {
-    class FuelPageViewModel
+    class AttractionsPageViewModel
     {
         private double lat, longi;
         private ObservableCollection<Place> PlaceList;
@@ -22,7 +21,7 @@ namespace NZTravel2.ViewModel
             set => PlaceList = value;
         }
 
-        public FuelPageViewModel()
+        public AttractionsPageViewModel()
         {
             GetNearbyPlacesAsync();
         }
@@ -33,9 +32,7 @@ namespace NZTravel2.ViewModel
             RootObject rootObject = null;
             var client = new HttpClient();
             await RetrieveLocation();
-            string latitude = lat.ToString();
-            string longitude = longi.ToString();
-            string restUrl = $"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + latitude + "," + longitude + "&radius=1000&type=gas_station&key=AIzaSyDsihFkzPZuiJEVZd8tzrodeVe84ttZkRk";
+            string restUrl = $"https://maps.googleapis.com/maps/api/place/textsearch/json?query=attractions+in+Auckland&key=AIzaSyDsihFkzPZuiJEVZd8tzrodeVe84ttZkRk";
             var uri = new Uri(restUrl);
             var response = await client.GetAsync(uri);
             if (response.IsSuccessStatusCode)
@@ -57,7 +54,7 @@ namespace NZTravel2.ViewModel
         {
             var locator = CrossGeolocator.Current;
             locator.DesiredAccuracy = 20;
-            var position = await locator.GetPositionAsync();
+            var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(120));
 
             longi = position.Longitude;
             lat = position.Latitude;
