@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using NZTravel2.Model;
+using NZTravel2.View;
 using Plugin.Geolocator;
 using Xamarin.Forms;
 
@@ -13,7 +15,12 @@ namespace NZTravel2.ViewModel
     class FuelPageViewModel
     {
         private double lat, longi;
-        List<Place> placeList;
+        private ObservableCollection<Place> PlaceList = new ObservableCollection<Place>();
+        public ObservableCollection<Place> placeList
+        {
+            get { return PlaceList; }
+            set => PlaceList = value;
+        }
 
         public FuelPageViewModel()
         {
@@ -22,12 +29,13 @@ namespace NZTravel2.ViewModel
 
         async void GetNearbyPlacesAsync()
         {
+            placeList = new ObservableCollection<Place>();
             RootObject rootObject = null;
             var client = new HttpClient();
             await RetrieveLocation();
             string latitude = lat.ToString();
             string longitude = longi.ToString();
-            string restUrl = $"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + latitude + "," + longitude + "&radius=1000&type=restaurant&key=AIzaSyDsihFkzPZuiJEVZd8tzrodeVe84ttZkRk";
+            string restUrl = $"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + latitude + "," + longitude + "&radius=1000&type=gas_station&key=AIzaSyDsihFkzPZuiJEVZd8tzrodeVe84ttZkRk";
             var uri = new Uri(restUrl);
             var response = await client.GetAsync(uri);
             if (response.IsSuccessStatusCode)
@@ -39,14 +47,17 @@ namespace NZTravel2.ViewModel
             {
                 await Application.Current.MainPage.DisplayAlert("No web response", "Unable to retrieve information, please try again", "OK");
             }
-            placeList = rootObject.results;
+            foreach (var item in rootObject.results)
+            {
+                placeList.Add(item);
+            }
         }
 
         async Task RetrieveLocation()
         {
             var locator = CrossGeolocator.Current;
             locator.DesiredAccuracy = 20;
-            var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(120));
+            var position = await locator.GetPositionAsync();
 
             longi = position.Longitude;
             lat = position.Latitude;
