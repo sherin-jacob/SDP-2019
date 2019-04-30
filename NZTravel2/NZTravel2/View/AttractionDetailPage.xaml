@@ -8,6 +8,8 @@
             <Label x:Name="Address"/>
             <Label x:Name="OpeningHours"/>
             <Label x:Name="Rating"/>
+            <Button Text="View in Maps" />
+            <Button Text="Get Directions" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
