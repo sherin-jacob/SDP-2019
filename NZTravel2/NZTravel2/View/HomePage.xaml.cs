@@ -31,5 +31,10 @@ namespace NZTravel2.View
         {
             Navigation.PushAsync(new AttractionsPage());
         }
+
+        private void ItineraryButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new ItineraryView());
+        }
     }
 }

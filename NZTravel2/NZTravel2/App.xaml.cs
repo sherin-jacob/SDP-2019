@@ -1,4 +1,5 @@
 ﻿using System;
+using NZTravel2.Persistence;
 using NZTravel2.View;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -8,6 +9,8 @@ namespace NZTravel2
 {
     public partial class App : Application
     {
+        public static ItineraryRepository ItineraryRepository = new ItineraryRepository();
+
         public App()
         {
             InitializeComponent();
