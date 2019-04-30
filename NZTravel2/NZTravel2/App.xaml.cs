@@ -1,6 +1,5 @@
 ﻿using System;
 using NZTravel2.Persistence;
-using NZTravel2.View;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,7 +13,7 @@ namespace NZTravel2
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new HomePage());
+            MainPage = new NavigationPage(new ItineraryView());
         }
         protected override void OnStart()
         {
