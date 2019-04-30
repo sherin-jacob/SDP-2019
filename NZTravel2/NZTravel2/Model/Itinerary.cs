@@ -1,4 +1,8 @@
-﻿using SQLite;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using SQLite;
+
 namespace NZTravel2
 {
     public class Itinerary : BaseFodyObservable

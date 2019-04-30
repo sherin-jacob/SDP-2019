@@ -9,4 +9,3 @@ namespace NZTravel2.Persistence
         string GetLocalFilePath(string filename);
     }
 }
-
