@@ -4,7 +4,7 @@
              x:Class="NZTravel2.AddItinerary">
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" VerticalOptions="Center">
-            <Entry Placeholder="Todo Title" Text="{Binding TodoTitle}" />
+            <Entry x:Name="Entry" Text="{Binding TodoTitle}" />
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
                 <Button Text="Cancel" Command="{Binding Cancel}" />
                 <Button Text="Save" Command="{Binding Save}" />

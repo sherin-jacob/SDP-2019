@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
-using Newtonsoft.Json;
-using NZTravel2.Model;
+﻿using NZTravel2.Model;
 using NZTravel2.ViewModel;
-using Plugin.Geolocator;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -19,16 +8,25 @@ namespace NZTravel2.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AttractionsPage : ContentPage
     {
-        public AttractionsPage()
+        public AttractionsPage(string region)
         {
             InitializeComponent();
-            BindingContext = new AttractionsPageViewModel();
+            if (region == "current")
+            {
+                CurrentRegion.Text = "Attractions in your Current Region";
+            }
+            else
+            {
+                CurrentRegion.Text = "Attractions in " + region;
+            }
+            
+            BindingContext = new AttractionsPageViewModel(region);
         }
 
         async void Attractions_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var attraction = (Place)e.Item;
-            await Navigation.PushAsync(new AttractionDetailPage(attraction));
+            await Navigation.PushModalAsync(new AttractionDetailPage(attraction));
             Attractions.SelectedItem = null;
         }
     }

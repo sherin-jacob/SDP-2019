@@ -6,10 +6,11 @@ namespace NZTravel2
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddItinerary : ContentPage
     {
-        public AddItinerary()
+        public AddItinerary(string name)
         {
             InitializeComponent();
-            BindingContext = new AddItineraryViewModel(Navigation);
+            Entry.Placeholder = name;
+            BindingContext = new AddItineraryViewModel(Navigation, name);
         }
     }
 }

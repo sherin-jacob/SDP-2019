@@ -29,7 +29,7 @@ namespace NZTravel2.View
 
         private void AttractionButton_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new AttractionsPage());
+            Navigation.PushAsync(new AttractionRegionPage());
         }
 
         private void ItineraryButton_Clicked(object sender, EventArgs e)

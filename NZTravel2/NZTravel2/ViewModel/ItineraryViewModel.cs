@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using NZTravel2.View;
 using Xamarin.Forms;
 
 namespace NZTravel2
@@ -35,7 +36,8 @@ namespace NZTravel2
         public Command AddItem { get; set; }
         public async void HandleAddItem()
         {
-            await _navigation.PushModalAsync(new AddItinerary());
+            //await _navigation.PushModalAsync(new AddItinerary());
+            await _navigation.PushModalAsync(new AttractionRegionPage());
         }
 
         public async Task RefreshTaskList()

@@ -10,12 +10,14 @@ namespace NZTravel2
     public partial class App : Application
     {
         public static ItineraryRepository ItineraryRepository = new ItineraryRepository();
+     
 
         public App()
         {
             InitializeComponent();
 
             MainPage = new NavigationPage(new HomePage());
+            
         }
 
         protected override void OnStart()
@@ -32,5 +34,6 @@ namespace NZTravel2
         {
             // Handle when your app resumes
         }
+
     }
 }
