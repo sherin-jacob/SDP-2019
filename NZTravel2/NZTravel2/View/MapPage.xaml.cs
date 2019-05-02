@@ -55,6 +55,11 @@ namespace NZTravel2.View
             return longitude;
         }
 
+        public double Latitude()
+        {
+            return latitude;
+        }
+
         public void OnSearchButtonPress(object sender, System.EventArgs e)
         {
             var text = SearchBar.Text;
