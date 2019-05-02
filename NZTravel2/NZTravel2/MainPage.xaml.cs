@@ -12,6 +12,8 @@ namespace NZTravel2
         public MainPage()
         {
             InitializeComponent();
+
+            
         }
     }
 }
