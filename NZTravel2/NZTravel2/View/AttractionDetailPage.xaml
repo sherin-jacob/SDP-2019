@@ -6,10 +6,9 @@
         <StackLayout>
             <Label x:Name="Name"/>
             <Label x:Name="Address"/>
-            <Label x:Name="OpeningHours"/>
+            <!--<Label x:Name="OpeningHours"/>-->
             <Label x:Name="Rating"/>
-            <Button Text="View in Maps" />
-            <Button Text="Get Directions" />
+            <Button x:Name="MapViewButton" Text="View in Maps" Clicked="MapViewButton_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

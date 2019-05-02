@@ -22,9 +22,10 @@ namespace NZTravel2.ViewModel
             set => PlaceList = value;
         }
 
-        public AttractionsPageViewModel()
+        public AttractionsPageViewModel(string region)
         {
-            Display();
+            this.region = region;
+            Display();    
         }
 
         async void Display()
@@ -66,8 +67,12 @@ namespace NZTravel2.ViewModel
         {
             placeList = new ObservableCollection<Place>();
             RootObject rootObject = null;
+            //RootObject rootObject2 = null; //added
             var client = new HttpClient();
-            await GetRegion();
+            if (region == "current")
+            {
+                await GetRegion();
+            }
             string restUrl = $"https://maps.googleapis.com/maps/api/place/textsearch/json?query=attractions+in+" + region + "&key=AIzaSyDsihFkzPZuiJEVZd8tzrodeVe84ttZkRk";
             var uri = new Uri(restUrl);
             var response = await client.GetAsync(uri);
@@ -83,6 +88,10 @@ namespace NZTravel2.ViewModel
             foreach (var item in rootObject.results)
             {
                 placeList.Add(item);
+                if (item.opening_hours != null)
+                {
+                    //somehow have to get the nested open now value here
+                }
             }
         }
 

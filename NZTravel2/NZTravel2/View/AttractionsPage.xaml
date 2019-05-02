@@ -4,8 +4,7 @@
              x:Class="NZTravel2.View.AttractionsPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Attractions near you:" ></Label>
-            <Label x:Name="CurrentRegion" Text="{Binding region}"/>
+            <Label x:Name="CurrentRegion"/>
             <ListView x:Name="Attractions" ItemsSource="{Binding placeList}" ItemTapped="Attractions_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>

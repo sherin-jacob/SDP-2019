@@ -8,6 +8,5 @@ namespace NZTravel2.Model
     {
         public string long_name { get; set; }
         public List<Address> address_components { get; set; }
-
     }
 }
