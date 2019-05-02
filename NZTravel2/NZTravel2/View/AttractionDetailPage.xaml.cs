@@ -71,7 +71,7 @@ namespace NZTravel2.View
 
         private void AddtoItineraryButton_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new AddItinerary());
+            Navigation.PushModalAsync(new AddItinerary(this.place.Name));
         }
     }
 }

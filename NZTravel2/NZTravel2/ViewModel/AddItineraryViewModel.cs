@@ -6,21 +6,21 @@ namespace NZTravel2
 {
     class AddItineraryViewModel : BaseFodyObservable
     {
+        string placeName { get; set; }
+        private INavigation _navigation;
 
-        public AddItineraryViewModel(INavigation navigation)
+        public AddItineraryViewModel(INavigation navigation, string PlaceName)
         {
             _navigation = navigation;
+            placeName = PlaceName;
             Save = new Command(HandleSave);
             Cancel = new Command(HandleCancel);
         }
 
-        private INavigation _navigation;
-        public string TodoTitle { get; set; }
-
         public Command Save { get; set; }
         public async void HandleSave()
         {
-            await App.ItineraryRepository.AddItem(new Itinerary { Title = TodoTitle });
+            await App.ItineraryRepository.AddItem(new Itinerary { Title = placeName });
             await _navigation.PopModalAsync();
         }
 
