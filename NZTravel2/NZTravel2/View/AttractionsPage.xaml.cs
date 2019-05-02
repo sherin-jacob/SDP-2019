@@ -26,7 +26,7 @@ namespace NZTravel2.View
         async void Attractions_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var attraction = (Place)e.Item;
-            await Navigation.PushAsync(new AttractionDetailPage(attraction));
+            await Navigation.PushModalAsync(new AttractionDetailPage(attraction));
             Attractions.SelectedItem = null;
         }
     }

@@ -20,13 +20,13 @@ namespace NZTravel2.View
         private void CurrentRegionButton_Clicked(object sender, EventArgs e)
         {
             string region = "current";
-            Navigation.PushAsync(new AttractionsPage(region));
+            Navigation.PushModalAsync(new AttractionsPage(region));
         }
 
         private void WaikatoRegionButton_Clicked(object sender, EventArgs e)
         {
             string region = "Waikato";
-            Navigation.PushAsync(new AttractionsPage(region));
+            Navigation.PushModalAsync(new AttractionsPage(region));
         }
     }
 }

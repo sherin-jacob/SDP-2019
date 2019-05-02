@@ -9,6 +9,7 @@
             <!--<Label x:Name="OpeningHours"/>-->
             <Label x:Name="Rating"/>
             <Button x:Name="MapViewButton" Text="View in Maps" Clicked="MapViewButton_Clicked"/>
+            <Button x:Name="AddtoItineraryButton" Text="Add to Itinerary" Clicked="AddtoItineraryButton_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
