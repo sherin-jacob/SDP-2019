@@ -14,6 +14,7 @@ namespace NZTravel2.ViewModel
     class AttractionsPageViewModel
     {
         private double lat, longi;
+        private string region;
         private ObservableCollection<Place> PlaceList;
         public ObservableCollection<Place> placeList
         {
@@ -23,16 +24,51 @@ namespace NZTravel2.ViewModel
 
         public AttractionsPageViewModel()
         {
-            GetNearbyPlacesAsync();
+            Display();
         }
 
-        async void GetNearbyPlacesAsync()
+        async void Display()
+        {
+            await GetNearbyPlacesAsync();
+        }
+
+        async Task GetRegion()
+        {
+            RootObjectCity rootObject = null;
+            var client = new HttpClient();
+            await RetrieveLocation();
+            string restUrl = $"https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + longi +"&key=AIzaSyDsihFkzPZuiJEVZd8tzrodeVe84ttZkRk";
+            var uri = new Uri(restUrl);
+            var response = await client.GetAsync(uri);
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                rootObject = JsonConvert.DeserializeObject<RootObjectCity>(content);
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("No web response", "Unable to retrieve information, please try again", "OK");
+            }
+            var regioninfo = rootObject.results.ToArray()[0];
+            int index = 0;
+            foreach (var item in regioninfo.address_components)
+            {
+                if (item.long_name == "New Zealand")
+                {
+                    break;
+                }
+                index++;
+            }
+            region = regioninfo.address_components[index-1].long_name;
+        }
+
+        async Task GetNearbyPlacesAsync()
         {
             placeList = new ObservableCollection<Place>();
             RootObject rootObject = null;
             var client = new HttpClient();
-            await RetrieveLocation();
-            string restUrl = $"https://maps.googleapis.com/maps/api/place/textsearch/json?query=attractions+in+Auckland&key=AIzaSyDsihFkzPZuiJEVZd8tzrodeVe84ttZkRk";
+            await GetRegion();
+            string restUrl = $"https://maps.googleapis.com/maps/api/place/textsearch/json?query=attractions+in+" + region + "&key=AIzaSyDsihFkzPZuiJEVZd8tzrodeVe84ttZkRk";
             var uri = new Uri(restUrl);
             var response = await client.GetAsync(uri);
             if (response.IsSuccessStatusCode)
