@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using NZTravel2.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-//using Xamarin.Essentials; //import plugin!
+using Xamarin.Essentials; 
 
 namespace NZTravel2.View
 {
@@ -18,6 +13,7 @@ namespace NZTravel2.View
 	{
         private double longitude;
         private double latitude;
+        private Place place;
 
 		public AttractionDetailPage(Place place)
 		{
@@ -40,6 +36,7 @@ namespace NZTravel2.View
 
             this.longitude = place.lng;
             this.latitude = place.lat;
+            this.place = place;
         }
 
         async void GetDetails(Place place)
@@ -64,12 +61,12 @@ namespace NZTravel2.View
         private void MapViewButton_Clicked(object sender, EventArgs e)
         {
             //open google maps using xamarin.essentials
-            //var location = new Location(this.latitude, this,longitude);
-            //var options = new MapLaunchOptions
-            //{
-            //    Name = entName.Text
-            //};
-            //Map.OpenAsync(location, options);
+            var location = new Location(this.latitude, this.longitude);
+            var options = new MapLaunchOptions
+            {
+                Name = this.place.Name
+            };
+            Map.OpenAsync(location, options);
         }
     }
 }
