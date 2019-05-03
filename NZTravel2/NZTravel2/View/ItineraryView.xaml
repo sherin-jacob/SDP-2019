@@ -14,7 +14,10 @@
                     <DataTemplate>
                         <TextCell Text="{Binding Title}" >
                             <TextCell.ContextActions>
-                                <MenuItem Command="{Binding Source={x:Reference TodoDisplayList}, Path=BindingContext.Delete }" 
+                                <ToolbarItem Text="Start Journey"/>
+                                <ToolbarItem Text="Edit" Order="Secondary" Command="{Binding Source={x:Reference TodoDisplayList}, Path=BindingContext.EditItem}" 
+                                             CommandParameter="{Binding .}"/>
+                                <ToolbarItem Order="Secondary" Command="{Binding Source={x:Reference TodoDisplayList}, Path=BindingContext.Delete }" 
                                 CommandParameter="{Binding .}" Text="Delete" IsDestructive="True" />
                             </TextCell.ContextActions>
                         </TextCell>

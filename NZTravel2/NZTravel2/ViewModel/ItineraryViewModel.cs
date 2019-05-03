@@ -17,6 +17,7 @@ namespace NZTravel2
             });
             Delete = new Command<Itinerary>(HandleDelete);
             AddItem = new Command(HandleAddItem);
+            EditItem = new Command<Itinerary>(HandleEditItem);
         }
         private INavigation _navigation;
         private async Task<ILookup<string, Itinerary>> GetGroupedItinerary()
@@ -38,6 +39,14 @@ namespace NZTravel2
         {
             //await _navigation.PushModalAsync(new AddItinerary());
             await _navigation.PushModalAsync(new AttractionRegionPage());
+        }
+
+        public Command<Itinerary> EditItem { get; set; }
+        public async void HandleEditItem(Itinerary itemToEdit)
+        {
+            HandleDelete(itemToEdit);
+            await _navigation.PushModalAsync(new AddItinerary(itemToEdit.Title));
+            GroupedItinerary = await GetGroupedItinerary();
         }
 
         public async Task RefreshTaskList()
