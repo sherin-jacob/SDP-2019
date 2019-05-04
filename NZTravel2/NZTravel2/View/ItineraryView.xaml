@@ -21,7 +21,11 @@
                         <TextCell Text="{Binding Title}"
                                   TextColor="Red">
                             <TextCell.ContextActions>
-                                <MenuItem Command="{Binding Source={x:Reference TodoDisplayList}, Path=BindingContext.Delete }" 
+                                <ToolbarItem x:Name="Journey" Text="Start Journey" Command="{Binding Source={x:Reference TodoDisplayList}, Path=BindingContext.StartItem}" Clicked="Journey_Clicked" />
+                                <ToolbarItem Text="Edit" Order="Secondary" Command="{Binding Source={x:Reference TodoDisplayList}, Path=BindingContext.EditItem}" 
+                                             CommandParameter="{Binding .}"/>
+                                <ToolbarItem x:Name="ViewDetails" Text="View Details" Clicked="ViewDetails_Clicked"/>
+                                <ToolbarItem Order="Secondary" Command="{Binding Source={x:Reference TodoDisplayList}, Path=BindingContext.Delete }" 
                                 CommandParameter="{Binding .}" Text="Delete" IsDestructive="True" />
                             </TextCell.ContextActions>
                         </TextCell>

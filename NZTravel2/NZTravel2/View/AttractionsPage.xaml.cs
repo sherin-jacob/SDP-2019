@@ -29,5 +29,6 @@ namespace NZTravel2.View
             await Navigation.PushModalAsync(new AttractionDetailPage(attraction));
             Attractions.SelectedItem = null;
         }
+
     }
 }

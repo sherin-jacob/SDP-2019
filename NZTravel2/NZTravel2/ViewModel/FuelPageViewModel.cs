@@ -22,6 +22,13 @@ namespace NZTravel2.ViewModel
             set => PlaceList = value;
         }
 
+        public FuelPageViewModel(double latitude, double longitude)
+        {
+            lat = latitude;
+            longi = longitude;
+            GetNearbyPlacesAsync();
+        }
+
         public FuelPageViewModel()
         {
             GetNearbyPlacesAsync();
@@ -62,5 +69,6 @@ namespace NZTravel2.ViewModel
             longi = position.Longitude;
             lat = position.Latitude;
         }
+
     }
 }

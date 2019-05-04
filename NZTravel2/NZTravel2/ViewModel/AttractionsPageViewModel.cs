@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using NZTravel2.Model;
+using NZTravel2.View;
 using Plugin.Geolocator;
 using Xamarin.Forms;
 
@@ -22,11 +23,13 @@ namespace NZTravel2.ViewModel
             set => PlaceList = value;
         }
 
+
         public AttractionsPageViewModel(string region)
         {
             this.region = region;
             Display();    
         }
+
 
         async void Display()
         {
