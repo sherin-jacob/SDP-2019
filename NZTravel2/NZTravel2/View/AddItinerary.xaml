@@ -12,8 +12,7 @@
             <Label Text="Start Date:" />
             <DatePicker x:Name="datePicker"
                     Format="D"
-                    Margin="30, 0, 0, 30"
-                    Date="{Binding SelectedDate}" />
+                    Date="{Binding Date}" />
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
                 <Button Text="Cancel" Command="{Binding Cancel}" />
                 <Button Text="Save" Command="{Binding Save}" />

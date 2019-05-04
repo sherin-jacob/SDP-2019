@@ -17,7 +17,7 @@ namespace NZTravel2.View
 			InitializeComponent ();
             Name.Text = itinerary.Title;
             Time.Text = itinerary.time.ToString();
-            Date.Text = itinerary.date.ToString();
+            Date.Text = itinerary.date.ToShortDateString();
 		}
 	}
 }

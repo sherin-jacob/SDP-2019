@@ -10,7 +10,7 @@ namespace NZTravel2
         string placeName { get; set; }
         private INavigation _navigation;
         public TimeSpan SelectedTime { get; set; }
-        DateTime SelectedDate { get; set; }
+        public DateTime Date { get; set; }
 
 
         public AddItineraryViewModel(INavigation navigation, string PlaceName, TimeSpan time, DateTime date)
@@ -18,7 +18,8 @@ namespace NZTravel2
             _navigation = navigation;
             placeName = PlaceName;
             SelectedTime = time;
-            SelectedDate = date;
+            Date = date;
+            Console.WriteLine("Date is " + date);
             Save = new Command(HandleSave);
             Cancel = new Command(HandleCancel);
         }
@@ -26,7 +27,7 @@ namespace NZTravel2
         public Command Save { get; set; }
         public async void HandleSave()
         {
-            await App.ItineraryRepository.AddItem(new Itinerary { Title = placeName, time=SelectedTime, date = SelectedDate});
+            await App.ItineraryRepository.AddItem(new Itinerary { Title = placeName, time=SelectedTime, date = Date});
             await _navigation.PopModalAsync();
         }
 
