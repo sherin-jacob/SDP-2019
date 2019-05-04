@@ -6,11 +6,10 @@ using NZTravel2.View;
 namespace NZTravelTest
 {
     [TestClass]
-    public class UnitTest1
+    class MapPageTests
     {
-        
         [TestMethod]
-        public void Test_GetLongitude()
+        public void GetLongitudeValuesTest()
         {
             MapPage nzt2 = new MapPage();
             var longtest = nzt2.Longitude();
@@ -18,11 +17,11 @@ namespace NZTravelTest
         }
 
         [TestMethod]
-        public void Test_GetLatitude()
+        public void GetLatitudeValuesTest()
         {
             MapPage nzt2 = new MapPage();
             var lattest = nzt2.Latitude();
             Assert.AreEqual(lattest, -36.7625); //testing the location values that are in the emulator
         }
-    }
+   }
 }

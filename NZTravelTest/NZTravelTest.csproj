@@ -65,8 +65,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="MapPageTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AttractionPageTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NZTravel2\NZTravel2\NZTravel2.csproj">
