@@ -16,5 +16,6 @@ namespace NZTravel2
             base.OnAppearing();
             await (BindingContext as ItineraryViewModel).RefreshTaskList();
         }
+
     }
 }

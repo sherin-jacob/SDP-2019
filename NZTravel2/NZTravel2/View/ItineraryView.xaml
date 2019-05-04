@@ -17,6 +17,7 @@
                                 <ToolbarItem Text="Start Journey"/>
                                 <ToolbarItem Text="Edit" Order="Secondary" Command="{Binding Source={x:Reference TodoDisplayList}, Path=BindingContext.EditItem}" 
                                              CommandParameter="{Binding .}"/>
+                                <ToolbarItem x:Name="ViewDetails" Text="View Details" />
                                 <ToolbarItem Order="Secondary" Command="{Binding Source={x:Reference TodoDisplayList}, Path=BindingContext.Delete }" 
                                 CommandParameter="{Binding .}" Text="Delete" IsDestructive="True" />
                             </TextCell.ContextActions>

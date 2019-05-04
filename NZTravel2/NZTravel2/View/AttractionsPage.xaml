@@ -8,7 +8,8 @@
             <ListView x:Name="Attractions" ItemsSource="{Binding placeList}" ItemTapped="Attractions_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding Name}" Detail="{Binding formatted_address}"/>
+                        <TextCell x:Name="CellText" Text="{Binding Name}" Detail="{Binding formatted_address}">
+                        </TextCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
