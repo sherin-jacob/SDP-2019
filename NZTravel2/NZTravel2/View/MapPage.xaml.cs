@@ -51,7 +51,7 @@ namespace NZTravel2.View
         }
 
         public double Longitude()
-        {          
+        {
             return longitude;
         }
 
@@ -63,7 +63,7 @@ namespace NZTravel2.View
         public void OnSearchButtonPress(object sender, System.EventArgs e)
         {
             var text = SearchBar.Text;
-            GetPlace(text);  
+            GetPlace(text);
         }
 
         public async void GetPlace(string text)
@@ -89,41 +89,8 @@ namespace NZTravel2.View
                     Distance.FromMiles(0.5)));
             }
         }
-
-        //public async Task ShowPlace(string text)
-        //{
-        //    RootObject rootObject = null;
-        //    var client = new HttpClient();
-        //    CultureInfo In = new CultureInfo("en-IN");
-        //    string restUrl = $"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + latitude + "," + longitude + "&radius=1000&keyword=" + text + "&key=AIzaSyDsihFkzPZuiJEVZd8tzrodeVe84ttZkRk";
-        //    var uri = new Uri(restUrl);
-        //    var response = await client.GetAsync(uri);
-        //    if (response.IsSuccessStatusCode)
-        //    {
-        //        var content = await response.Content.ReadAsStringAsync();
-        //        rootObject = JsonConvert.DeserializeObject<RootObject>(content);
-        //        double latitude = 0, longitude = 0;
-        //        foreach (Place place in rootObject.results)
-        //        {
-        //            map.Pins.Add(new Pin
-        //            {
-        //                Type = PinType.Place,
-        //                Label = place.Name,
-        //                Position = new Position(place.Latitude, place.Longitude)
-        //            });
-        //            latitude = place.Latitude;
-        //            longitude = place.Longitude;
-        //        }
-        //        map.MoveToRegion(
-        //            MapSpan.FromCenterAndRadius(new Position(latitude, longitude),
-        //            Distance.FromMiles(0.5)));
-        //    }
-        //    else
-        //    {
-        //        await Application.Current.MainPage.DisplayAlert("No web response", "Unable to retrieve information, please try again", "OK");
-        //    }
-        //}
-
+    }
+}
 
 
     }

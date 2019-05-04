@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using NZTravel2.View;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace NZTravel2
@@ -15,6 +16,11 @@ namespace NZTravel2
         {
             base.OnAppearing();
             await (BindingContext as ItineraryViewModel).RefreshTaskList();
+        }
+        async void Itinerary_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var i = (Itinerary)e.Item;
+            await Navigation.PushModalAsync(new ItineraryDetailPage(i));
         }
     }
 }

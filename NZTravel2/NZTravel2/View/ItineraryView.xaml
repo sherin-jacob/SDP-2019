@@ -3,25 +3,36 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NZTravel2.ItineraryView"
              xmlns:local="clr-namespace:NZTravel2"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="False"
              Title="{Binding Title}">
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical">
+        <StackLayout Orientation="Vertical"
+                    BackgroundColor="White" >
             <ListView ItemsSource="{Binding GroupedItinerary}"
             IsGroupingEnabled="True"
             GroupDisplayBinding="{Binding Key}"
-            x:Name="TodoDisplayList">
+                                 x:Name="TodoDisplayList"
+                 BackgroundColor="White"
+                      ItemTapped="Itinerary_ItemTapped">
+                
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding Title}" >
+                        <TextCell Text="{Binding Title}"
+                                  TextColor="Red">
                             <TextCell.ContextActions>
-                                <MenuItem Command="{Binding Source={x:Reference TodoDisplayList}, Path=BindingContext.Delete }" 
+                                <ToolbarItem x:Name="Journey" Text="Start Journey" Command="{Binding Source={x:Reference TodoDisplayList}, Path=BindingContext.StartItem}" Clicked="Journey_Clicked" />
+                                <ToolbarItem Text="Edit" Order="Secondary" Command="{Binding Source={x:Reference TodoDisplayList}, Path=BindingContext.EditItem}" 
+                                             CommandParameter="{Binding .}"/>
+                                <ToolbarItem x:Name="ViewDetails" Text="View Details" Clicked="ViewDetails_Clicked"/>
+                                <ToolbarItem Order="Secondary" Command="{Binding Source={x:Reference TodoDisplayList}, Path=BindingContext.Delete }" 
                                 CommandParameter="{Binding .}" Text="Delete" IsDestructive="True" />
                             </TextCell.ContextActions>
                         </TextCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button Command="{Binding AddItem}" Text="Add Attraction" />
+            <Button Command="{Binding AddItem}" Text="Add Attraction Item" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

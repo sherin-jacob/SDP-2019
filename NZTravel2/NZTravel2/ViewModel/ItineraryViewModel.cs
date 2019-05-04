@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using NZTravel2.View;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace NZTravel2
@@ -17,6 +18,8 @@ namespace NZTravel2
             });
             Delete = new Command<Itinerary>(HandleDelete);
             AddItem = new Command(HandleAddItem);
+            EditItem = new Command<Itinerary>(HandleEditItem);
+            //StartItem = new Command(HandleStartItem);
         }
         private INavigation _navigation;
         private async Task<ILookup<string, Itinerary>> GetGroupedItinerary()
@@ -24,6 +27,17 @@ namespace NZTravel2
             return (await App.ItineraryRepository.GetList())
                                 .OrderBy(t => t.IsCompleted)
                                 .ToLookup(t => t.IsCompleted ? "Completed" : "Active");
+        }
+
+        public Command StartItem { get; set; }
+        public async void HandleStartItem(Itinerary item)
+        {
+        //    var location = new Location(this.lat, this.longi);
+        //    var options = new MapLaunchOptions
+        //    {
+        //        Name = item.Title
+        //    };
+        //    await Map.OpenAsync(location, options);
         }
 
         public Command<Itinerary> Delete { get; set; }
@@ -38,6 +52,14 @@ namespace NZTravel2
         {
             //await _navigation.PushModalAsync(new AddItinerary());
             await _navigation.PushModalAsync(new AttractionRegionPage());
+        }
+
+        public Command<Itinerary> EditItem { get; set; }
+        public async void HandleEditItem(Itinerary itemToEdit)
+        {
+            HandleDelete(itemToEdit);
+            await _navigation.PushModalAsync(new AddItinerary(itemToEdit.Title));
+            GroupedItinerary = await GetGroupedItinerary();
         }
 
         public async Task RefreshTaskList()
