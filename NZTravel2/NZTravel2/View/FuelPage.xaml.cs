@@ -45,7 +45,6 @@ namespace NZTravel2.View
 
         async void FuelStations_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            //await RetrieveLocation();
             var FuelStation = (Place)e.Item;
             var location = new Location(this.lat, this.longi);
             var options = new MapLaunchOptions
