@@ -13,7 +13,9 @@
             IsGroupingEnabled="True"
             GroupDisplayBinding="{Binding Key}"
                                  x:Name="TodoDisplayList"
-                 BackgroundColor="White">
+                 BackgroundColor="White"
+                      ItemTapped="Itinerary_ItemTapped">
+                
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextCell Text="{Binding Title}"
@@ -26,7 +28,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button Command="{Binding AddItem}" Text="Add Todo Item" />
+            <Button Command="{Binding AddItem}" Text="Add Attraction Item" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

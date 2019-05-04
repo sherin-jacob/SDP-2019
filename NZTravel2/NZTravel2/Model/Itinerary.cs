@@ -11,5 +11,7 @@ namespace NZTravel2
         public int Id { get; set; }
         public string Title { get; set; }
         public bool IsCompleted { get; set; }
+        public TimeSpan time { get; set; }
+        public DateTime date { get; set; }
     }
 }

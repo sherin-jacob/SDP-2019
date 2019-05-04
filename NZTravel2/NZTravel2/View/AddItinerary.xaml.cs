@@ -1,4 +1,6 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using System.ComponentModel;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace NZTravel2
@@ -10,7 +12,8 @@ namespace NZTravel2
         {
             InitializeComponent();
             Entry.Placeholder = name;
-            BindingContext = new AddItineraryViewModel(Navigation, name);
+            BindingContext = new AddItineraryViewModel(Navigation, name, _timePicker.Time, datePicker.Date);
         }
+
     }
 }

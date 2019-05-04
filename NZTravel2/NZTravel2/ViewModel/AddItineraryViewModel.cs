@@ -1,5 +1,6 @@
 ﻿using Xamarin.Forms;
 using NZTravel2.Persistence;
+using System;
 
 namespace NZTravel2
 
@@ -8,11 +9,16 @@ namespace NZTravel2
     {
         string placeName { get; set; }
         private INavigation _navigation;
+        public TimeSpan SelectedTime { get; set; }
+        DateTime SelectedDate { get; set; }
 
-        public AddItineraryViewModel(INavigation navigation, string PlaceName)
+
+        public AddItineraryViewModel(INavigation navigation, string PlaceName, TimeSpan time, DateTime date)
         {
             _navigation = navigation;
             placeName = PlaceName;
+            SelectedTime = time;
+            SelectedDate = date;
             Save = new Command(HandleSave);
             Cancel = new Command(HandleCancel);
         }
@@ -20,7 +26,7 @@ namespace NZTravel2
         public Command Save { get; set; }
         public async void HandleSave()
         {
-            await App.ItineraryRepository.AddItem(new Itinerary { Title = placeName });
+            await App.ItineraryRepository.AddItem(new Itinerary { Title = placeName, time=SelectedTime, date = SelectedDate});
             await _navigation.PopModalAsync();
         }
 
