@@ -51,7 +51,7 @@ namespace NZTravel2.View
         }
 
         public double Longitude()
-        {          
+        {
             return longitude;
         }
 
@@ -63,7 +63,7 @@ namespace NZTravel2.View
         public void OnSearchButtonPress(object sender, System.EventArgs e)
         {
             var text = SearchBar.Text;
-            GetPlace(text);  
+            GetPlace(text);
         }
 
         public async void GetPlace(string text)
@@ -89,6 +89,8 @@ namespace NZTravel2.View
                     Distance.FromMiles(0.5)));
             }
         }
+    }
+}
 
         //public async Task ShowPlace(string text)
         //{
@@ -123,8 +125,3 @@ namespace NZTravel2.View
         //        await Application.Current.MainPage.DisplayAlert("No web response", "Unable to retrieve information, please try again", "OK");
         //    }
         //}
-
-
-
-    }
-}
