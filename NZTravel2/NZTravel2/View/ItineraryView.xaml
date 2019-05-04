@@ -26,7 +26,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button Command="{Binding AddItem}" Text="Add Attraction" />
+            <Button Command="{Binding AddItem}" Text="Add Todo Item" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
