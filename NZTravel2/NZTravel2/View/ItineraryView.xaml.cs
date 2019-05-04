@@ -17,16 +17,10 @@ namespace NZTravel2
             base.OnAppearing();
             await (BindingContext as ItineraryViewModel).RefreshTaskList();
         }
-
-        private void ViewDetails_Clicked(object sender, System.EventArgs e)
+        async void Itinerary_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-
-            //Navigation.PushModalAsync(new AttractionDetailPage());
-        }
-
-        private void Journey_Clicked(object sender, System.EventArgs e)
-        {
-
+            var i = (Itinerary)e.Item;
+            await Navigation.PushModalAsync(new ItineraryDetailPage(i));
         }
     }
 }
