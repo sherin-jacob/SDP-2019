@@ -19,6 +19,7 @@ namespace NZTravel2.View
 
         void MapButtonClicked(object sender, EventArgs e)
         {
+            DisplayAlert("Location Services", "Location Services must be turned on to view your current location", "OK");
             Navigation.PushAsync(new MapPage());
         }
 

@@ -5,6 +5,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Forms.Maps;
 using Plugin.Geolocator;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
 
 namespace NZTravel2.View
 {
@@ -19,7 +21,22 @@ namespace NZTravel2.View
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             Display();
+            Popup();
         }
+
+        void Popup()
+        {
+            if (latitude == 0 && longitude == 0)
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    DisplayAlert("Hey ", "Welcome", "OK");
+                });
+            }
+        }
+
+
+        //-----------------------------
 
         async void Display()
         {
@@ -33,7 +50,6 @@ namespace NZTravel2.View
             var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(120));
 
             longitude = position.Longitude;
-            Longitude();
             latitude = position.Latitude;
 
 
@@ -89,9 +105,5 @@ namespace NZTravel2.View
                     Distance.FromMiles(0.5)));
             }
         }
-    }
-}
-
-
     }
 }
