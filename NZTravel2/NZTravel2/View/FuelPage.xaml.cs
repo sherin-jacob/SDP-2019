@@ -21,6 +21,7 @@ namespace NZTravel2.View
     {
         public double longi { get; set; }
         public double lat { get; set; }
+        public static object Location { get; set; }
 
         public FuelPage()
         {

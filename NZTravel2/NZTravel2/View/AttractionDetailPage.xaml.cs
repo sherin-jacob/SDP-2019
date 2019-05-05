@@ -39,6 +39,11 @@ namespace NZTravel2.View
             this.place = place;
         }
 
+        public AttractionDetailPage()
+        {
+            return;
+        }
+
         async void GetDetails(Place place)
         {
             RootObjectDetails rootObject = null;
@@ -66,6 +71,7 @@ namespace NZTravel2.View
             {
                 Name = this.place.Name
             };
+
             Map.OpenAsync(location, options);
         }
 

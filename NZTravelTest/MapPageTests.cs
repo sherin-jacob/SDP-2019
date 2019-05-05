@@ -6,7 +6,7 @@ using NZTravel2.View;
 namespace NZTravelTest
 {
     [TestClass]
-    class MapPageTests
+    public class MapPageTests
     {
         [TestMethod]
         public void GetLongitudeValuesTest()
