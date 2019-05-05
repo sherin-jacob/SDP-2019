@@ -24,8 +24,9 @@ namespace NZTravel2.View
 
         public FuelPage()
         {
-            InitializeComponent();
+            
             BindingContext = new FuelPageViewModel();
+            InitializeComponent();
         }
 
         async void Display()
