@@ -7,7 +7,7 @@ namespace NZTravel2
 {
     public class Itinerary : BaseFodyObservable
     {
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey, AutoIncrement] // sets the primary key as the ID of the item
         public int Id { get; set; }
         public string Title { get; set; }
         public bool IsCompleted { get; set; }

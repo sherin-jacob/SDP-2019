@@ -35,7 +35,6 @@ namespace NZTravel2
         public async void HandleCancel()
         {
             await _navigation.PopModalAsync();
-            //need soemthing for if edit button pushed and then they press cancel
         }
     }
 }

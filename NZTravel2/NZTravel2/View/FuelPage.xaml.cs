@@ -53,5 +53,9 @@ namespace NZTravel2.View
             };
             await Map.OpenAsync(location, options);
         }
+        private void HomeButtonClicked(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new HomePage());
+        }
     }
 }

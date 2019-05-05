@@ -28,5 +28,9 @@ namespace NZTravel2.View
             string region = "Waikato";
             Navigation.PushModalAsync(new AttractionsPage(region));
         }
+        private void HomeButtonClicked(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new HomePage());
+        }
     }
 }

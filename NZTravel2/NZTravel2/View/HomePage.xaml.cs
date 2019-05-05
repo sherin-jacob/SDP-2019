@@ -19,22 +19,22 @@ namespace NZTravel2.View
 
         void MapButtonClicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new MapPage());
+            Navigation.PushModalAsync(new MapPage());
         }
 
         private void FuelButton_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new FuelPage());
+            Navigation.PushModalAsync(new FuelPage());
         }
 
         private void AttractionButton_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new AttractionRegionPage());
+            Navigation.PushModalAsync(new AttractionRegionPage());
         }
 
         private void ItineraryButton_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new ItineraryView());
+            Navigation.PushModalAsync(new ItineraryView());
         }
     }
 }

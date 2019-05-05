@@ -9,6 +9,7 @@
             <BoxView Color="Transparent" HeightRequest="10"></BoxView>
             <Label Text="All NZ Regions"></Label>
             <Button x:Name="WaikatoRegionButton" Text="WAIKATO" Clicked="WaikatoRegionButton_Clicked"/>
+            <Button x:Name="Home Button" Clicked="HomeButtonClicked" Text="Home" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

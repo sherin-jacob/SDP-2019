@@ -70,7 +70,10 @@ namespace NZTravel2.View
         {
             await ShowPlace(text);
         }
-
+        private void HomeButtonClicked(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new HomePage());
+        }
         public async Task ShowPlace(string text)
         {
             map.Pins.Clear();
@@ -89,9 +92,5 @@ namespace NZTravel2.View
                     Distance.FromMiles(0.5)));
             }
         }
-    }
-}
-
-
     }
 }
