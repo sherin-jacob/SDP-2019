@@ -8,7 +8,7 @@ namespace NZTravelTest
     [TestClass]
     public class UnitTest1
     {
-        
+
         [TestMethod]
         public void Test_GetLongitude()
         {
@@ -17,12 +17,20 @@ namespace NZTravelTest
             Assert.AreEqual(longtest, 174.532); //testing the location values that are in the emulator
         }
 
+        //[TestMethod]
+        //public void Test_GetLatitude()
+        //{
+        //    MapPage nzt2 = new MapPage();
+        //    var lattest = nzt2.Latitude();
+        //    Assert.AreEqual(lattest, -36.7625); //testing the location values that are in the emulator
+        //}
+
         [TestMethod]
-        public void Test_GetLatitude()
+        public void Test_ReturnedPlaces()
         {
-            MapPage nzt2 = new MapPage();
-            var lattest = nzt2.Latitude();
-            Assert.AreEqual(lattest, -36.7625); //testing the location values that are in the emulator
+            MapPage nzt3 = new MapPage();
+            //await nzt3.ShowPlace("Auckland museum");
+            Assert.AreEqual(1, nzt3.Math(1));
         }
     }
 }

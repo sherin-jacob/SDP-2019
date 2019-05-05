@@ -15,6 +15,7 @@ namespace NZTravel2.View
     {
         public static double longitude;
         public static double latitude;
+        public static int x = 0;
 
         public MapPage()
         {
@@ -65,6 +66,11 @@ namespace NZTravel2.View
             return latitude;
         }
 
+        public int GetX()
+        {
+            return x;
+        }
+
         //function that runs when the enter or search button is pressed
         public void OnSearchButtonPress(object sender, System.EventArgs e)
         {
@@ -97,7 +103,17 @@ namespace NZTravel2.View
                 map.MoveToRegion(
                     MapSpan.FromCenterAndRadius(new Position(pos.Latitude, pos.Longitude),
                     Distance.FromMiles(0.5)));
+                x++;
             }
+        }
+
+        public int Math(int x)
+        {
+            if (x > 0)
+            {
+                return x;
+            }
+            return 5;
         }
     }
 }
