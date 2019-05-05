@@ -60,16 +60,6 @@ namespace NZTravel2.ViewModel
             }
         }
 
-        //string CheckFuelCount(ObservableCollection<Place> placeList)
-        //{
-        //    string output = "Fuel Page";
-        //    if (placeList.Count == 0)
-        //    {
-        //        output = "Nothing";
-        //    }
-        //    return output;
-        //}
-
         async Task RetrieveLocation()
         {
             var locator = CrossGeolocator.Current;
