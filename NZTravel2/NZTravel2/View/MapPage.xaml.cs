@@ -5,6 +5,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Forms.Maps;
 using Plugin.Geolocator;
+using NZTravel2;
 
 namespace NZTravel2.View
 {
@@ -13,7 +14,6 @@ namespace NZTravel2.View
     {
         public static double longitude;
         public static double latitude;
-
         public MapPage()
         {
             InitializeComponent();

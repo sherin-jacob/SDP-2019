@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace NZTravel2
 {
-    class ItineraryViewModel : BaseFodyObservable
+    public class ItineraryViewModel : BaseFodyObservable
     {
         public ItineraryViewModel(INavigation navigation)
         {
@@ -76,7 +76,5 @@ namespace NZTravel2
 
         public ILookup<string, Itinerary> GroupedItinerary { get; set; }
         public string Title => "Itinerary";
-
-        private List<Itinerary> _todoList = new List<Itinerary>{};
     }
 }
