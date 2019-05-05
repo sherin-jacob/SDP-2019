@@ -19,6 +19,7 @@ namespace NZTravel2.View
 
         void MapButtonClicked(object sender, EventArgs e)
         {
+
             Navigation.PushModalAsync(new MapPage());
         }
 
