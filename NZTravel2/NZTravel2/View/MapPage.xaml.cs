@@ -21,42 +21,31 @@ namespace NZTravel2.View
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             Display();
-            Popup();
         }
 
-        void Popup()
-        {
-            if (latitude == 0 && longitude == 0)
-            {
-                Device.BeginInvokeOnMainThread(() =>
-                {
-                    DisplayAlert("Hey ", "Welcome", "OK");
-                });
-            }
-        }
-
-
-        //-----------------------------
-
+        //this async function calls the RetrieveLocation function because it can't be called directly from the constructor
         async void Display()
         {
             await RetrieveLocation();
         }
 
+        //this function retrieves the devices current location
         async Task RetrieveLocation()
         {
             var locator = CrossGeolocator.Current;
             locator.DesiredAccuracy = 20;
             var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(120));
 
+            //assigns values to global variables latitude and longitude
             longitude = position.Longitude;
             latitude = position.Latitude;
 
-
+            //moves the map to the specified position
             map.MoveToRegion(
                 MapSpan.FromCenterAndRadius(new Position(position.Latitude, position.Longitude),
                 Distance.FromMiles(0.5)));
 
+            //adds a pin to the map with the Label 'Current Position'
             map.Pins.Add(new Pin
             {
                 Type = PinType.Place,
@@ -76,22 +65,27 @@ namespace NZTravel2.View
             return latitude;
         }
 
+        //function that runs when the enter or search button is pressed
         public void OnSearchButtonPress(object sender, System.EventArgs e)
         {
-            var text = SearchBar.Text;
-            GetPlace(text);
+            var text = SearchBar.Text; //gets text in the search bar
+            GetPlace(text); //passes the text to the async function GetPlace
         }
 
+        //async function used to call the ShowPlace function because can't be called directly from OnSearchButtonPress
         public async void GetPlace(string text)
         {
             await ShowPlace(text);
         }
 
+        //shows results of what was searched in the map page
         public async Task ShowPlace(string text)
         {
-            map.Pins.Clear();
+            map.Pins.Clear(); //clears all pins on the map
             Geocoder gc = new Geocoder();
-            IEnumerable<Position> result = await gc.GetPositionsForAddressAsync(text);
+            IEnumerable<Position> result = await gc.GetPositionsForAddressAsync(text); //get all possible results for that text
+            //go through each result returned and put a pin on that position
+            //the map will be moved to the last position in the list
             foreach (Position pos in result)
             {
                 map.Pins.Add(new Pin
