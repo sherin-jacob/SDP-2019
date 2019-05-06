@@ -14,6 +14,5 @@ namespace NZTravel2
             Entry.Placeholder = name;
             BindingContext = new AddItineraryViewModel(Navigation, name, _timePicker.Time, datePicker.Date);
         }
-
     }
 }

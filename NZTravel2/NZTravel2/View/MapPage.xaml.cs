@@ -111,6 +111,7 @@ namespace NZTravel2.View
             }
         }
 
+        //for unit testing
         public int Math(int x)
         {
             if (x > 0)
