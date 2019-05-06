@@ -5,6 +5,14 @@
              BackgroundColor="Black">
     <ContentPage.Content >
         <StackLayout>
+            <Label x:Name="CurrentRegion">
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Attractions}, Path=ItemsSource.Count}" 
+                             Value="0">
+                        <Setter Property="Text" Value="No attractions in the region selected" />
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
             <Label x:Name="CurrentRegion" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" TextColor="White" FontSize="Medium"/>
             <ListView x:Name="Attractions" ItemsSource="{Binding placeList}" ItemTapped="Attractions_ItemTapped">
                 <ListView.ItemTemplate>
@@ -14,6 +22,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+ 
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

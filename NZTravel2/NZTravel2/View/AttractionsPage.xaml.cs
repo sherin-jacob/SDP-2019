@@ -1,5 +1,6 @@
 ﻿using NZTravel2.Model;
 using NZTravel2.ViewModel;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -29,6 +30,5 @@ namespace NZTravel2.View
             await Navigation.PushModalAsync(new AttractionDetailPage(attraction));
             Attractions.SelectedItem = null;
         }
-
     }
 }

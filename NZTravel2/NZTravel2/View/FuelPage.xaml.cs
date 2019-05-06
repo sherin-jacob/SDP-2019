@@ -24,8 +24,9 @@ namespace NZTravel2.View
 
         public FuelPage()
         {
-            InitializeComponent();
+            
             BindingContext = new FuelPageViewModel();
+            InitializeComponent();
         }
 
         async void Display()
@@ -52,6 +53,10 @@ namespace NZTravel2.View
                 Name = FuelStation.Name
             };
             await Map.OpenAsync(location, options);
+        }
+        private void HomeButtonClicked(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new HomePage());
         }
     }
 }

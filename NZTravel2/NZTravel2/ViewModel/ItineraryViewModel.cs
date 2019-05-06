@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace NZTravel2
 {
-    class ItineraryViewModel : BaseFodyObservable
+    public class ItineraryViewModel : BaseFodyObservable
     {
         public ItineraryViewModel(INavigation navigation)
         {
@@ -26,7 +26,7 @@ namespace NZTravel2
         {
             return (await App.ItineraryRepository.GetList())
                                 .OrderBy(t => t.IsCompleted)
-                                .ToLookup(t => t.IsCompleted ? "Completed" : "Active");
+                                .ToLookup(t => t.IsCompleted ? "Completed" : "Your Itinerary");
         }
 
         public Command StartItem { get; set; }
@@ -57,24 +57,24 @@ namespace NZTravel2
         public Command<Itinerary> EditItem { get; set; }
         public async void HandleEditItem(Itinerary itemToEdit)
         {
+            Itinerary bedit= itemToEdit;
+            int count = await App.ItineraryRepository.countAsync();
             HandleDelete(itemToEdit);
             await _navigation.PushModalAsync(new AddItinerary(itemToEdit.Title));
+            int acount = await App.ItineraryRepository.countAsync();
+            if(count != acount)
+            {
+                await App.ItineraryRepository.AddItem(bedit);
+            }
             GroupedItinerary = await GetGroupedItinerary();
         }
 
         public async Task RefreshTaskList()
         {
-            GroupedItinerary = await GetGroupedItinerary();
+            GroupedItinerary = await GetGroupedItinerary(); // Refreshes the itinerary
         }
 
         public ILookup<string, Itinerary> GroupedItinerary { get; set; }
         public string Title => "Itinerary";
-
-        private List<Itinerary> _todoList = new List<Itinerary>
-        {
-            new Itinerary { Id = 0, Title = "This a trial run lmao"},
-            new Itinerary { Id = 1, Title = "Run a Marathon"},
-            new Itinerary { Id = 2, Title = "Get good"},
-        };
     }
 }
