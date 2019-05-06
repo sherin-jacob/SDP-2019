@@ -15,8 +15,11 @@ namespace NZTravel2.View
         private double longitude;
         private double latitude;
         private Place place;
+       
+        public static object options { get; set; }
+        public static object location { get; set; }
 
-		public AttractionDetailPage(Place place)
+        public AttractionDetailPage(Place place)
 		{
 			InitializeComponent ();
 
@@ -38,6 +41,11 @@ namespace NZTravel2.View
             this.longitude = place.lng;
             this.latitude = place.lat;
             this.place = place;
+        }
+
+        public AttractionDetailPage()
+        {
+            return;
         }
 
         //get details of a place based on the place id
