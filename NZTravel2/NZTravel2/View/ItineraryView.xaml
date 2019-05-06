@@ -9,6 +9,16 @@
     <ContentPage.Content>
         <StackLayout Orientation="Vertical"
                     BackgroundColor="White" >
+
+            <Label Text="There are no items in your itinerary!" IsVisible="False">
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference TodoDisplayList}, Path=ItemsSource.Count}" 
+                             Value="0">
+                        <Setter Property="IsVisible" Value="True" />
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
+            
             <ListView ItemsSource="{Binding GroupedItinerary}"
             IsGroupingEnabled="True"
             GroupDisplayBinding="{Binding Key}"
