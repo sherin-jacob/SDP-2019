@@ -4,7 +4,8 @@ using Newtonsoft.Json;
 using NZTravel2.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Xamarin.Essentials; 
+using Xamarin.Essentials;
+using System.Linq;
 
 namespace NZTravel2.View
 {
@@ -47,6 +48,7 @@ namespace NZTravel2.View
             return;
         }
 
+        //get details of a place based on the place id
         async void GetDetails(Place place)
         {
             RootObjectDetails rootObject = null;
@@ -66,18 +68,22 @@ namespace NZTravel2.View
             }
         }
 
-        private void MapViewButton_Clicked(object sender, EventArgs e)
+        //opens the place in the device's map application
+        async void MapViewButton_Clicked(object sender, EventArgs e)
         {
             //open google maps using xamarin.essentials
-            var location = new Location(this.latitude, this.longitude);
+            var address = this.place.formatted_address;
+            var locations = await Geocoding.GetLocationsAsync(address);
+            var location = locations?.FirstOrDefault();
             var options = new MapLaunchOptions
             {
                 Name = this.place.Name
             };
-
-            Map.OpenAsync(location, options);
+            Location location1 = new Location(location.Latitude, location.Longitude);
+            await Map.OpenAsync(location1, options);
         }
 
+        //adds the place to the app's itinerary/database
         private void AddtoItineraryButton_Clicked(object sender, EventArgs e)
         {
             Navigation.PushModalAsync(new AddItinerary(this.place.Name));

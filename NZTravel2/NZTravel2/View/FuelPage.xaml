@@ -4,7 +4,15 @@
              x:Class="NZTravel2.View.FuelPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Your Nearest Fuel Stations:"></Label>
+            <Label x:Name="FuelTitle" Text="Your Nearest Fuel Stations:">
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference FuelStations}, Path=ItemsSource.Count}" 
+                             Value="0">
+                        <Setter Property="Text" Value="No Fuel Stations near your current location" />
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
+            
             <ListView x:Name="FuelStations" ItemsSource="{Binding placeList}" ItemTapped="FuelStations_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -12,6 +20,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <Button x:Name="HomeButton" Clicked="HomeButtonClicked" Text="Home" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

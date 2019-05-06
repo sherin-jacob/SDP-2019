@@ -1,5 +1,6 @@
 ﻿using NZTravel2.Model;
 using NZTravel2.ViewModel;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,6 +12,7 @@ namespace NZTravel2.View
         public AttractionsPage(string region)
         {
             InitializeComponent();
+            //used to display the text of the label depending on the region selected
             if (region == "current")
             {
                 CurrentRegion.Text = "Attractions in your Current Region";
@@ -23,12 +25,12 @@ namespace NZTravel2.View
             BindingContext = new AttractionsPageViewModel(region);
         }
 
+        //links to the detail page of the attraction selected
         async void Attractions_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var attraction = (Place)e.Item;
             await Navigation.PushModalAsync(new AttractionDetailPage(attraction));
             Attractions.SelectedItem = null;
         }
-
     }
 }

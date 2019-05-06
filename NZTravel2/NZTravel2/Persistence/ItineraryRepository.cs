@@ -8,40 +8,32 @@ namespace NZTravel2.Persistence
 {
     public class ItineraryRepository
     {
-        private readonly SQLiteAsyncConnection _database;
+        private readonly SQLiteAsyncConnection _database; //used to make a connection to the database
 
         public ItineraryRepository()
         {
             _database = new SQLiteAsyncConnection(DependencyService.Get<IFileHelper>().GetLocalFilePath("TodoSQLite.db3"));
-            _database.CreateTableAsync<Itinerary>().Wait();
+            _database.CreateTableAsync<Itinerary>().Wait(); //Creates a table in the itinerarys
         }
-
-        private List<Itinerary> _seedTodoList = new List<Itinerary>
-        {
-            new Itinerary { Title = "Create First Todo"},
-            new Itinerary { Title = "Run a Marathon"},
-            new Itinerary { Title = "Create TodoXamarinForms blog post"},
-        };
+        private List<Itinerary> _seedTodoList = new List<Itinerary>{}; // sets the default list
 
         public async Task<List<Itinerary>> GetList()
         {
-            return await _database.Table<Itinerary>().ToListAsync();
+            return await _database.Table<Itinerary>().ToListAsync(); //gets list of items from database
         }
 
         public Task DeleteItem(Itinerary itemToDelete)
         {
-            return _database.DeleteAsync(itemToDelete);
-        }
-
-        public Task ChangeItemIsCompleted(Itinerary itemToChange)
-        {
-            itemToChange.IsCompleted = !itemToChange.IsCompleted;
-            return _database.UpdateAsync(itemToChange);
+            return _database.DeleteAsync(itemToDelete); //Deletes item from database
         }
 
         public Task AddItem(Itinerary itemToAdd)
         {
-            return _database.InsertAsync(itemToAdd);
+            return _database.InsertAsync(itemToAdd); //Adds item to database
+        }
+        public async Task<int> countAsync()
+        {
+            return await _database.Table<Itinerary>().CountAsync();// Returns number of rows in the database
         }
     }
 }

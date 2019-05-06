@@ -34,6 +34,7 @@ namespace NZTravel2.ViewModel
             GetNearbyPlacesAsync();
         }
 
+        //this function uses the current location to find places of type gas station nearby
         async void GetNearbyPlacesAsync()
         {
             placeList = new ObservableCollection<Place>();
@@ -54,12 +55,14 @@ namespace NZTravel2.ViewModel
             {
                 await Application.Current.MainPage.DisplayAlert("No web response", "Unable to retrieve information, please try again", "OK");
             }
+            //adds each result to the placeList for display purposes
             foreach (var item in rootObject.results)
             {
                 placeList.Add(item);
             }
         }
 
+        //gets the current location of the device
         async Task RetrieveLocation()
         {
             var locator = CrossGeolocator.Current;

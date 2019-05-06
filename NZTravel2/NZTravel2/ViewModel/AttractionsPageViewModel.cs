@@ -36,6 +36,7 @@ namespace NZTravel2.ViewModel
             await GetNearbyPlacesAsync();
         }
 
+        //this function uses the current location of the device to find out what region of NZ the location falls under
         async Task GetRegion()
         {
             RootObjectCity rootObject = null;
@@ -55,6 +56,7 @@ namespace NZTravel2.ViewModel
             }
             var regioninfo = rootObject.results.ToArray()[0];
             int index = 0;
+            //get the region name from the address components returned - it is the component before the country name
             foreach (var item in regioninfo.address_components)
             {
                 if (item.long_name == "New Zealand")
@@ -66,11 +68,11 @@ namespace NZTravel2.ViewModel
             region = regioninfo.address_components[index-1].long_name;
         }
 
+        //this function uses the region name to find out attractions in that region
         async Task GetNearbyPlacesAsync()
         {
             placeList = new ObservableCollection<Place>();
             RootObject rootObject = null;
-            //RootObject rootObject2 = null; //added
             var client = new HttpClient();
             if (region == "current")
             {
@@ -88,16 +90,18 @@ namespace NZTravel2.ViewModel
             {
                 await Application.Current.MainPage.DisplayAlert("No web response", "Unable to retrieve information, please try again", "OK");
             }
+            //adds each result to the placelist variable - used for display purposes
             foreach (var item in rootObject.results)
             {
                 placeList.Add(item);
                 if (item.opening_hours != null)
                 {
-                    //somehow have to get the nested open now value here
+                    //somehow have to get the nested open now value here - sprint 2
                 }
             }
         }
 
+        //gets the current location of the device
         async Task RetrieveLocation()
         {
             var locator = CrossGeolocator.Current;
