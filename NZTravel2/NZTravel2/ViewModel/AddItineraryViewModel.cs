@@ -12,13 +12,13 @@ namespace NZTravel2
         public TimeSpan SelectedTime { get; set; }
         public DateTime Date { get; set; }
 
-
         public AddItineraryViewModel(INavigation navigation, string PlaceName, TimeSpan time, DateTime date)
         {
             _navigation = navigation;
             placeName = PlaceName;
             SelectedTime = time;
             Date = date;
+
             Console.WriteLine("Date is " + date);
             Save = new Command(HandleSave);
             Cancel = new Command(HandleCancel);

@@ -4,11 +4,17 @@ using System.Threading.Tasks;
 using NZTravel2.View;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+using Xamarin.Forms.Maps;
+using Plugin.Geolocator;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
 
 namespace NZTravel2
 {
     public class ItineraryViewModel : BaseFodyObservable
     {
+         //Creates grouped itinerary; TODO in Sprint 2: Needs to be changed for future user stories
         public ItineraryViewModel(INavigation navigation)
         {
             _navigation = navigation;
@@ -22,24 +28,30 @@ namespace NZTravel2
             //StartItem = new Command(HandleStartItem);
         }
         private INavigation _navigation;
+
+        //Adds items to grouped itinerary
         private async Task<ILookup<string, Itinerary>> GetGroupedItinerary()
         {
             return (await App.ItineraryRepository.GetList())
                                 .OrderBy(t => t.IsCompleted)
-                                .ToLookup(t => t.IsCompleted ? "Completed" : "Your Itinerary");
+                                .ToLookup(t => t.IsCompleted ? "" : "Your Itinerary");
         }
 
+
+        //TODO in sprint 2
         public Command StartItem { get; set; }
-        public async void HandleStartItem(Itinerary item)
+        public async Task HandleStartItem(Itinerary item)
         {
-        //    var location = new Location(this.lat, this.longi);
-        //    var options = new MapLaunchOptions
-        //    {
-        //        Name = item.Title
-        //    };
-        //    await Map.OpenAsync(location, options);
+         //   var address = item.fa;
+          //  var locations = await Geocoding.GetLocationsAsync(address);
+           // var location = locations?.FirstOrDefault();
+           //var l = new Location(location.Longitude, location.Latitude);
+           // var options = new MapLaunchOptions { Name = item.Title };
+           // await Xamarin.Essentials.Map.OpenAsync(l, options);
         }
 
+
+        //Deletes Item from Itinerary
         public Command<Itinerary> Delete { get; set; }
         public async void HandleDelete(Itinerary itemToDelete)
         {
@@ -47,13 +59,16 @@ namespace NZTravel2
             // Update displayed list
             GroupedItinerary = await GetGroupedItinerary();
         }
+
+        //Adds item to Itinerary
         public Command AddItem { get; set; }
         public async void HandleAddItem()
         {
-            //await _navigation.PushModalAsync(new AddItinerary());
             await _navigation.PushModalAsync(new AttractionRegionPage());
         }
 
+
+        //Edits item in itinerary
         public Command<Itinerary> EditItem { get; set; }
         public async void HandleEditItem(Itinerary itemToEdit)
         {
@@ -69,9 +84,10 @@ namespace NZTravel2
             GroupedItinerary = await GetGroupedItinerary();
         }
 
+        // Refreshes the itinerary
         public async Task RefreshTaskList()
         {
-            GroupedItinerary = await GetGroupedItinerary(); // Refreshes the itinerary
+            GroupedItinerary = await GetGroupedItinerary(); 
         }
 
         public ILookup<string, Itinerary> GroupedItinerary { get; set; }

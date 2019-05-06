@@ -12,6 +12,7 @@ namespace NZTravel2.View
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ItineraryDetailPage : ContentPage
 	{
+        //displays the name,time and date; TODO in Sprint 2: display in itinerary tab
 		public ItineraryDetailPage (Itinerary itinerary)
 		{
 			InitializeComponent ();
