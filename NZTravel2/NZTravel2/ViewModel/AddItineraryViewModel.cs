@@ -5,7 +5,7 @@ using System;
 namespace NZTravel2
 
 {
-    class AddItineraryViewModel : BaseFodyObservable
+    public class AddItineraryViewModel : BaseFodyObservable
     {
         string placeName { get; set; }
         private INavigation _navigation;

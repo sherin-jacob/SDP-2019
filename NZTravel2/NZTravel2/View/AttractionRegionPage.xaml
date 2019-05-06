@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NZTravel2.View.AttractionRegionPage">
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout>
             <BoxView Color="Transparent" HeightRequest="5"></BoxView>
             <Button x:Name="CurrentRegionButton" Text="CURRENT REGION" Clicked="CurrentRegionButton_Clicked"/>
@@ -17,7 +18,8 @@
             <Button x:Name="TaranakiRegionButton" Text="Taranaki" Clicked="TaranakiRegionButton_Clicked"/>
             <Button x:Name="ManawatuRegionButton" Text="Manawatu-Wanganui" Clicked="ManawatuRegionButton_Clicked"/>
             <Button x:Name="WellingtonRegionButton" Text="Wellington" Clicked="WellingtonRegionButton_Clicked"/>
-            <Button x:Name="Home Button" Clicked="HomeButtonClicked" Text="Home" />
+            <Button x:Name="HomeButton" Clicked="HomeButtonClicked" Text="Home" />
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
