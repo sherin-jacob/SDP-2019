@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NZTravel2.View.AttractionRegionPage">
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout>
+            <BoxView Color="Transparent" HeightRequest="5"></BoxView>
+            <Button x:Name="CurrentRegionButton" Text="CURRENT REGION" Clicked="CurrentRegionButton_Clicked"/>
+            <BoxView Color="Transparent" HeightRequest="10"></BoxView>
+            <Label Text="All NZ Regions"></Label>
+            <Button x:Name="NorthlandRegionButton" Text="Northland" Clicked="NorthlandRegionButton_Clicked"/>
+            <Button x:Name="AucklandRegionButton" Text="Auckland" Clicked="AucklandRegionButton_Clicked"/>
+            <Button x:Name="WaikatoRegionButton" Text="Waikato" Clicked="WaikatoRegionButton_Clicked"/>
+            <Button x:Name="BayOfPlentyRegionButton" Text="Bay Of Plenty" Clicked="BayOfPlentyRegionButton_Clicked"/>
+            <Button x:Name="GisbourneRegionButton" Text="Gisbourne" Clicked="GisbourneRegionButton_Clicked"/>
+            <Button x:Name="HawkesBayRegionButton" Text="Hawke's Bay" Clicked="HawkesBayRegionButton_Clicked"/>
+            <Button x:Name="TaranakiRegionButton" Text="Taranaki" Clicked="TaranakiRegionButton_Clicked"/>
+            <Button x:Name="ManawatuRegionButton" Text="Manawatu-Wanganui" Clicked="ManawatuRegionButton_Clicked"/>
+            <Button x:Name="WellingtonRegionButton" Text="Wellington" Clicked="WellingtonRegionButton_Clicked"/>
+            <Button x:Name="HomeButton" Clicked="HomeButtonClicked" Text="Home" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
