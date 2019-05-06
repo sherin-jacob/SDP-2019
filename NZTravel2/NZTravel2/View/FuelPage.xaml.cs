@@ -47,13 +47,16 @@ namespace NZTravel2.View
         async void FuelStations_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var FuelStation = (Place)e.Item;
-            var location = new Location(this.lat, this.longi);
+            var address = FuelStation.vicinity;
+            var locations = await Geocoding.GetLocationsAsync(address);
+            var location = locations?.FirstOrDefault();
             var options = new MapLaunchOptions
             {
                 Name = FuelStation.Name
             };
             await Map.OpenAsync(location, options);
         }
+
         private void HomeButtonClicked(object sender, EventArgs e)
         {
             Navigation.PushModalAsync(new HomePage());
