@@ -1,14 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="NZTravel2.View.FuelPage">
-    <ContentPage.Content>
+             x:Class="NZTravel2.View.FuelPage"
+             BackgroundColor="Black"
+             >
+    
+        <ContentPage.Content>
         <StackLayout>
-            <Label Text="Your Nearest Fuel Stations:"></Label>
+            <Label 
+                Text="Your Nearest Fuel Stations:"
+                HorizontalTextAlignment="Center"
+                
+                TextColor="Azure"
+                
+                ></Label>
             <ListView x:Name="FuelStations" ItemsSource="{Binding placeList}" ItemTapped="FuelStations_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding Name}" Detail="{Binding vicinity}" />
+                        <TextCell Text="{Binding Name}" Detail="{Binding vicinity}" TextColor="Azure"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

@@ -1,14 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="NZTravel2.View.AttractionRegionPage">
+             x:Class="NZTravel2.View.AttractionRegionPage"
+             BackgroundColor="Black">
     <ContentPage.Content>
-        <StackLayout>
-            <BoxView Color="Transparent" HeightRequest="5"></BoxView>
-            <Button x:Name="CurrentRegionButton" Text="CURRENT REGION" Clicked="CurrentRegionButton_Clicked"/>
-            <BoxView Color="Transparent" HeightRequest="10"></BoxView>
-            <Label Text="All NZ Regions"></Label>
-            <Button x:Name="WaikatoRegionButton" Text="WAIKATO" Clicked="WaikatoRegionButton_Clicked"/>
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="10">
+            <BoxView Color="Transparent" HeightRequest="5">
+                
+            </BoxView>
+            
+            <Button x:Name="CurrentRegionButton"
+                    BorderColor="DarkSlateGray"
+                    Text="CURRENT REGION"
+                    TextColor="White"
+                    Clicked="CurrentRegionButton_Clicked"
+                    BorderRadius="6"
+                    BackgroundColor="Black"
+                    BorderWidth="6"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="200"
+                    HeightRequest="75"
+                    Image="current_location.png"/>
+            
+            <BoxView Color="Transparent" HeightRequest="30">
+                
+            </BoxView>
+            
+            <Label Text="Regions Available:" TextColor="White" FontSize="Medium" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" >
+                
+            </Label>
+            
+            <BoxView Color="Transparent" HeightRequest="30">
+
+            </BoxView>
+            
+            <Button x:Name="WaikatoRegionButton" 
+                    Text="Waikato" 
+                    Clicked="WaikatoRegionButton_Clicked"
+                    BorderColor="DarkSlateGray"
+                    TextColor="White"
+                    BorderRadius="6"
+                    BackgroundColor="Black"
+                    BorderWidth="6"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="200" 
+                    HeightRequest="75"
+                    Image="Waikato.png" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
