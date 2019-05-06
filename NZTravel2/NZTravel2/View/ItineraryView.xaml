@@ -33,7 +33,7 @@
                 </ListView.ItemTemplate>
             </ListView>
             <Button Command="{Binding AddItem}" Text="Add Attraction Item" />
-            <Button x:Name="Home Button" Clicked="HomeButtonClicked" Text="Home" />
+            <Button x:Name="HomeButton" Clicked="HomeButtonClicked" Text="Home" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

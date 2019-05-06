@@ -19,7 +19,7 @@
             <Button x:Name="ManawatuRegionButton" Text="Manawatu-Wanganui" Clicked="ManawatuRegionButton_Clicked"/>
             <Button x:Name="WellingtonRegionButton" Text="Wellington" Clicked="WellingtonRegionButton_Clicked"/>
             <Button x:Name="HomeButton" Clicked="HomeButtonClicked" Text="Home" />
-        </StackLayout>
+            </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>
