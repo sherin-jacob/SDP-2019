@@ -4,10 +4,9 @@
              x:Class="NZTravel2.View.AttractionRegionPage"
              BackgroundColor="Black">
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="10">
-            <BoxView Color="Transparent" HeightRequest="5">
-                
-            </BoxView>
+            <BoxView Color="Transparent" HeightRequest="5"></BoxView>
             
             <Button x:Name="CurrentRegionButton"
                     BorderColor="DarkSlateGray"
@@ -22,19 +21,17 @@
                     WidthRequest="200"
                     HeightRequest="75"
                     Image="current_location.png"/>
-            
-            <BoxView Color="Transparent" HeightRequest="30">
-                
-            </BoxView>
-            
-            <Label Text="Regions Available:" TextColor="White" FontSize="Medium" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" >
-                
-            </Label>
-            
-            <BoxView Color="Transparent" HeightRequest="30">
 
-            </BoxView>
+            <BoxView Color="Transparent" HeightRequest="30"></BoxView>
             
+            <Label Text="Regions Available:" 
+                   TextColor="White" 
+                   FontSize="Medium" 
+                   HorizontalOptions="CenterAndExpand" 
+                   VerticalOptions="Center" ></Label>
+
+            <BoxView Color="Transparent" HeightRequest="30"></BoxView>
+
             <Button x:Name="WaikatoRegionButton" 
                     Text="Waikato" 
                     Clicked="WaikatoRegionButton_Clicked"
@@ -48,21 +45,136 @@
                     WidthRequest="200" 
                     HeightRequest="75"
                     Image="Waikato.png" />
-        <StackLayout>
-            <BoxView Color="Transparent" HeightRequest="5"></BoxView>
-            <Button x:Name="CurrentRegionButton" Text="CURRENT REGION" Clicked="CurrentRegionButton_Clicked"/>
-            <BoxView Color="Transparent" HeightRequest="10"></BoxView>
-            <Label Text="All NZ Regions"></Label>
-            <Button x:Name="NorthlandRegionButton" Text="Northland" Clicked="NorthlandRegionButton_Clicked"/>
-            <Button x:Name="AucklandRegionButton" Text="Auckland" Clicked="AucklandRegionButton_Clicked"/>
-            <Button x:Name="WaikatoRegionButton" Text="Waikato" Clicked="WaikatoRegionButton_Clicked"/>
-            <Button x:Name="BayOfPlentyRegionButton" Text="Bay Of Plenty" Clicked="BayOfPlentyRegionButton_Clicked"/>
-            <Button x:Name="GisbourneRegionButton" Text="Gisbourne" Clicked="GisbourneRegionButton_Clicked"/>
-            <Button x:Name="HawkesBayRegionButton" Text="Hawke's Bay" Clicked="HawkesBayRegionButton_Clicked"/>
-            <Button x:Name="TaranakiRegionButton" Text="Taranaki" Clicked="TaranakiRegionButton_Clicked"/>
-            <Button x:Name="ManawatuRegionButton" Text="Manawatu-Wanganui" Clicked="ManawatuRegionButton_Clicked"/>
-            <Button x:Name="WellingtonRegionButton" Text="Wellington" Clicked="WellingtonRegionButton_Clicked"/>
-            <Button x:Name="Home Button" Clicked="HomeButtonClicked" Text="Home" />
+            
+            <Button x:Name="NorthlandRegionButton" 
+                    Text="Northland" 
+                    Clicked="NorthlandRegionButton_Clicked"
+                    BorderColor="DarkSlateGray"
+                    TextColor="White"
+                    BorderRadius="6"
+                    BackgroundColor="Black"
+                    BorderWidth="6"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="200" 
+                    HeightRequest="75"
+                    Image="northland.png"/>
+                
+            <Button x:Name="AucklandRegionButton" 
+                    Text="Auckland" 
+                    Clicked="AucklandRegionButton_Clicked"
+                    BorderColor="DarkSlateGray"
+                    TextColor="White"
+                    BorderRadius="6"
+                    BackgroundColor="Black"
+                    BorderWidth="6"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="200" 
+                    HeightRequest="75"
+                    Image="Auckland.png"/>
+            
+            <Button x:Name="BayOfPlentyRegionButton" 
+                    Text="Bay Of Plenty" 
+                    Clicked="BayOfPlentyRegionButton_Clicked"
+                    BorderColor="DarkSlateGray"
+                    TextColor="White"
+                    BorderRadius="6"
+                    BackgroundColor="Black"
+                    BorderWidth="6"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="200" 
+                    HeightRequest="75"
+                    Image="bayofplenty.png"/>
+            
+            <Button x:Name="GisbourneRegionButton" 
+                    Text="Gisbourne" 
+                    Clicked="GisbourneRegionButton_Clicked"
+                    BorderColor="DarkSlateGray"
+                    TextColor="White"
+                    BorderRadius="6"
+                    BackgroundColor="Black"
+                    BorderWidth="6"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="200" 
+                    HeightRequest="75"
+                    Image="gisborne.png"/>
+            
+            <Button x:Name="HawkesBayRegionButton" 
+                    Text="Hawke's Bay" 
+                    Clicked="HawkesBayRegionButton_Clicked"
+                    BorderColor="DarkSlateGray"
+                    TextColor="White"
+                    BorderRadius="6"
+                    BackgroundColor="Black"
+                    BorderWidth="6"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="200" 
+                    HeightRequest="75"
+                    Image="hawkesbay.png"/>
+            
+            <Button x:Name="TaranakiRegionButton" 
+                    Text="Taranaki" 
+                    Clicked="TaranakiRegionButton_Clicked"
+                    BorderColor="DarkSlateGray"
+                    TextColor="White"
+                    BorderRadius="6"
+                    BackgroundColor="Black"
+                    BorderWidth="6"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="200" 
+                    HeightRequest="75"
+                    Image="taranaki.png"/>
+            
+            <Button x:Name="ManawatuRegionButton" 
+                    Text="Manawatu-Wanganui" 
+                    Clicked="ManawatuRegionButton_Clicked"
+                    BorderColor="DarkSlateGray"
+                    TextColor="White"
+                    BorderRadius="6"
+                    BackgroundColor="Black"
+                    BorderWidth="6"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="200" 
+                    HeightRequest="75"
+                    Image="Manawatu.png"/>
+            
+            <Button x:Name="WellingtonRegionButton" 
+                    Text="Wellington" 
+                    Clicked="WellingtonRegionButton_Clicked"
+                    BorderColor="DarkSlateGray"
+                    TextColor="White"
+                    BorderRadius="6"
+                    BackgroundColor="Black"
+                    BorderWidth="6"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="200" 
+                    HeightRequest="75"
+                    Image="wellington.png"/>
+            
+            <Button x:Name="HomeButton" 
+                    Clicked="HomeButtonClicked" 
+                    Text="Home" 
+                    BorderColor="DarkSlateGray"
+                    TextColor="White"
+                    BorderRadius="6"
+                    BackgroundColor="Black"
+                    BorderWidth="6"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="200" 
+                    HeightRequest="75"
+                    Image="home.png"/>
+        
         </StackLayout>
+        </ScrollView>
+
     </ContentPage.Content>
+
 </ContentPage>
