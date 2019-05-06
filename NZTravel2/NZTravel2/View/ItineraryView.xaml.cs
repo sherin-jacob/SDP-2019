@@ -25,7 +25,7 @@ namespace NZTravel2
         }
         private void HomeButtonClicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new HomePage());
+            Navigation.PushModalAsync(new HomePage()); // When home is clicked, takes user back to home page
         }
     }
 }

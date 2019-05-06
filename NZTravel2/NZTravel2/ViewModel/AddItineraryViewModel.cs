@@ -24,13 +24,15 @@ namespace NZTravel2
             Cancel = new Command(HandleCancel);
         }
 
+        //Saves the new item in the database
         public Command Save { get; set; }
         public async void HandleSave()
         {
-            await App.ItineraryRepository.AddItem(new Itinerary { Title = placeName, time=SelectedTime, date = Date});
-            await _navigation.PopModalAsync();
+            await App.ItineraryRepository.AddItem(new Itinerary { Title = placeName, time=SelectedTime, date = Date}); //this adds item to the database
+            await _navigation.PopModalAsync(); // this pops the most recent page created
         }
 
+        //This function handles what happens when cancel is pressed when adding a new item
         public Command Cancel { get; set; }
         public async void HandleCancel()
         {

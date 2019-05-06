@@ -40,6 +40,7 @@ namespace NZTravel2.View
             this.place = place;
         }
 
+        //get details of a place based on the place id
         async void GetDetails(Place place)
         {
             RootObjectDetails rootObject = null;
@@ -59,6 +60,7 @@ namespace NZTravel2.View
             }
         }
 
+        //opens the place in the device's map application
         async void MapViewButton_Clicked(object sender, EventArgs e)
         {
             //open google maps using xamarin.essentials
@@ -73,6 +75,7 @@ namespace NZTravel2.View
             await Map.OpenAsync(location1, options);
         }
 
+        //adds the place to the app's itinerary/database
         private void AddtoItineraryButton_Clicked(object sender, EventArgs e)
         {
             Navigation.PushModalAsync(new AddItinerary(this.place.Name));

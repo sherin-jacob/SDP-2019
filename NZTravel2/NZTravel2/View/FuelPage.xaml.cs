@@ -34,6 +34,7 @@ namespace NZTravel2.View
             await RetrieveLocation();
         }
 
+        //gets the current location of the device
         async Task RetrieveLocation()
         {
             var locator = CrossGeolocator.Current;
@@ -44,6 +45,7 @@ namespace NZTravel2.View
             lat = position.Latitude;
         }
 
+        //opens up the seleceted fuel station in the device's default Google Maps application
         async void FuelStations_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var FuelStation = (Place)e.Item;
@@ -57,6 +59,7 @@ namespace NZTravel2.View
             await Map.OpenAsync(location, options);
         }
 
+        //button links to the Home page
         private void HomeButtonClicked(object sender, EventArgs e)
         {
             Navigation.PushModalAsync(new HomePage());

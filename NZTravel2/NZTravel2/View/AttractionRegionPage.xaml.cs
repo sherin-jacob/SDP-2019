@@ -17,6 +17,8 @@ namespace NZTravel2.View
             InitializeComponent();
         }
 
+        //for each region in the North Island there is a button which when clicked opens page showing attractions in the selected region
+
         private void CurrentRegionButton_Clicked(object sender, EventArgs e)
         {
             string region = "current";
