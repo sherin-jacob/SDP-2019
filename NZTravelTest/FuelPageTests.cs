@@ -18,6 +18,14 @@ namespace NZTravelTest
             _fuelButtonClicked = FuelPage.Location;
             Assert.IsNull(_fuelButtonClicked, null);
         }
-    }
-}
 
+       /* [TestMethod]
+        // When the home screen is displayed then the fuel station button should display
+        public void HomeScreenDisplayedFuelStationsButtonVisible()
+        {
+            var homeScreenDisplayed = new FuelPage();
+            var fuelButtonAppears = new FuelPage();
+            Assert.AreEqual(homeScreenDisplayed, fuelButtonAppears);
+        }
+    }*/
+}

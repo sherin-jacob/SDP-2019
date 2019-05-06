@@ -14,8 +14,11 @@ namespace NZTravel2.View
         private double longitude;
         private double latitude;
         private Place place;
+       
+        public static object options { get; set; }
+        public static object location { get; set; }
 
-		public AttractionDetailPage(Place place)
+        public AttractionDetailPage(Place place)
 		{
 			InitializeComponent ();
 
