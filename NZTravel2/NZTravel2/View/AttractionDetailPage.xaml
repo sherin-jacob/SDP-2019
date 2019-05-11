@@ -8,6 +8,8 @@
             <Label x:Name="Name" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="White"/>
             <Label x:Name="Address" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="White"/>
             <!--<Label x:Name="OpeningHours"/>-->
+            <Label x:Name="Website" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="White"/>
+            <Label x:Name="Phone" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="White"/>
             <Label x:Name="Rating" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="White" />
            
             <Button x:Name="MapViewButton" 

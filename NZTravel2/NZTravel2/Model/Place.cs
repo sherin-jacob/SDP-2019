@@ -13,6 +13,7 @@ namespace NZTravel2.Model
         public string vicinity { get; set; }
         public string formatted_address { get; set; }
         public Object opening_hours { get; set; }
+        public Boolean open_now { get; set; }
         public double rating { get; set; }
         public string region { get; set; }
     }

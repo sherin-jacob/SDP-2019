@@ -60,7 +60,8 @@ namespace NZTravel2.View
             {
                 var content = await response.Content.ReadAsStringAsync();
                 rootObject = JsonConvert.DeserializeObject<RootObjectDetails>(content);
-                Console.WriteLine("Done");
+                Website.Text = rootObject.result.website;
+                Phone.Text = rootObject.result.formatted_phone_number;
             }
             else
             {

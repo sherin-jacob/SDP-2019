@@ -6,6 +6,6 @@ namespace NZTravel2.Model
 {
     class RootObjectDetails
     {
-        public List<PlaceDetails> results { get; set; }
+        public PlaceDetails result { get; set; }
     }
 }
