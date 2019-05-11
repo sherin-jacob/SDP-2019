@@ -20,7 +20,7 @@ namespace NZTravel2.View
 		{
 			InitializeComponent ();
 
-            //GetDetails(place);
+            GetDetails(place);
 
             Name.Text = place.Name;
             Address.Text = "Address: \n" + place.formatted_address;
