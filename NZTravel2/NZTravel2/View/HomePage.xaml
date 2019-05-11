@@ -1,13 +1,78 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="NZTravel2.View.HomePage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Button x:Name="MapButton" Text="MAP" Clicked="MapButtonClicked"/>
-            <Button x:Name="ItineraryButton" Text="ITINERARY" Clicked="ItineraryButton_Clicked"/>
-            <Button x:Name="AttractionButton" Text="ATTRACTIONS" Clicked="AttractionButton_Clicked"/>
-            <Button x:Name="FuelButton" Text="FUEL" Clicked="FuelButton_Clicked"/>
+             x:Class="NZTravel2.View.HomePage"
+             BackgroundColor="Black">
+    <ContentPage.Content BackgroundColor="Black">
+
+
+
+
+
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="50" >
+            
+            
+
+
+            <Button x:Name="MapButton" 
+                    Text="MAP"
+                    TextColor="White"
+                    BorderRadius="6"
+                    BackgroundColor="Black"
+                    BorderColor="DarkSlateGray"
+                    BorderWidth="6"
+                    VerticalOptions="Center"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="200" 
+                    HeightRequest="75"
+                    Image="MapIcon.png"
+                    Clicked="MapButtonClicked"
+                    />
+
+            <Button x:Name="FuelButton" 
+                    Text="FUEL" 
+                    TextColor="White"
+                    BackgroundColor="Black"
+                    BorderColor="DarkSlateGray"
+                    BorderWidth="6"
+                    BorderRadius="6"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Image="FuelIcon.png"
+                    Clicked="FuelButton_Clicked"
+                    WidthRequest="200" 
+                    HeightRequest="75"/>
+
+
+            <Button x:Name="AttractionButton" 
+                    Text="ATTRACTIONS" 
+                    TextColor="White"
+                    BackgroundColor="Black"
+                    BorderColor="DarkSlateGray"
+                    BorderWidth="6"
+                    BorderRadius="6"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Image="AttractionsIcon.png"
+                    Clicked="AttractionButton_Clicked"
+                    WidthRequest="200" 
+                    HeightRequest="75"
+                    />
+
+            <Button x:Name="ItineraryButton" 
+                    Text="ITINERARY" 
+                    TextColor="White"
+                    BackgroundColor="Black"
+                    BorderColor="DarkSlateGray"
+                    BorderWidth="6"
+                    BorderRadius="6"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="Center"
+                    Image="ItineraryIcon.png"
+                    Clicked="ItineraryButton_Clicked"
+                    WidthRequest="200" 
+                    HeightRequest="75"/>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

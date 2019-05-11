@@ -15,11 +15,11 @@ using System.Linq;
 namespace NZTravelTest
 {
     [TestClass]
-    public class UnitTest1
+    public class MapPageTests
     {
 
         [TestMethod]
-        public void Test_GetLongitude()
+        public void GetLongitudeValuesTest()
         {
             MapPage nzt2 = new MapPage();
             var longtest = nzt2.Longitude();
@@ -27,7 +27,7 @@ namespace NZTravelTest
         }
 
         [TestMethod]
-        public void Test_GetLatitude()
+        public void GetLatitudeValuesTest()
         {
             MapPage nzt2 = new MapPage();
             var lattest = nzt2.Latitude();
