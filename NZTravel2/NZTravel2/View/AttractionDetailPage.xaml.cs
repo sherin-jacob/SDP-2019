@@ -27,15 +27,15 @@ namespace NZTravel2.View
 
             Name.Text = place.Name;
             Address.Text = "Address: \n" + place.formatted_address;
-            
-            //if (place.open_now) //this is not displaying correctly defaults to false
-            //{
-            //    OpeningHours.Text = "Currently open!";
-            //}
-            //else
-            //{
-            //    OpeningHours.Text = "Currently closed.";
-            //}
+
+            if (place.opening_hours.open_now) 
+            {
+                OpenNow.Text = "Currently open!";
+            }
+            else
+            {
+                OpenNow.Text = "Currently closed.";
+            }
             Rating.Text = "Rating: " + place.rating.ToString() + "/5";
 
             this.longitude = place.lng;
