@@ -6,6 +6,7 @@
     <ContentPage.Content>
         <StackLayout>
             <Label x:Name="Name" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="White"/>
+            <Image x:Name="AttractionImage"/>
             <Label x:Name="Address" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="White"/>
             <Label x:Name="OpenNow" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="White"/>
             <Label x:Name="Website" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="White"/>

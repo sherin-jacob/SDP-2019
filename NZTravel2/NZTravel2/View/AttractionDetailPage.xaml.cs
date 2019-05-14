@@ -6,6 +6,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 using System.Linq;
+using System.Threading.Tasks;
+using System.IO;
 
 namespace NZTravel2.View
 {
@@ -14,7 +16,6 @@ namespace NZTravel2.View
 	{
         private double longitude;
         private double latitude;
-        private Place place;
        
         public static object options { get; set; }
         public static object location { get; set; }
@@ -23,7 +24,7 @@ namespace NZTravel2.View
 		{
 			InitializeComponent ();
 
-            GetDetails(place);
+            Display(place);
 
             Name.Text = place.Name;
             Address.Text = "Address: \n" + place.formatted_address;
@@ -40,7 +41,6 @@ namespace NZTravel2.View
 
             this.longitude = place.lng;
             this.latitude = place.lat;
-            this.place = place;
         }
 
         public AttractionDetailPage()
@@ -48,12 +48,17 @@ namespace NZTravel2.View
             return;
         }
 
+        public async void Display(Place place)
+        {
+            await GetDetails(place);
+        }
+
         //get details of a place based on the place id
-        async void GetDetails(Place place)
+        async Task GetDetails(Place place)
         {
             RootObjectDetails rootObject = null;
             var client = new HttpClient();
-            string restUrl = $"https://maps.googleapis.com/maps/api/place/details/json?placeid=" + place.place_id + "&fields=formatted_phone_number,website&key=AIzaSyDsihFkzPZuiJEVZd8tzrodeVe84ttZkRk";
+            string restUrl = $"https://maps.googleapis.com/maps/api/place/details/json?placeid=" + place.place_id + "&fields=formatted_phone_number,website,photos&key=AIzaSyDsihFkzPZuiJEVZd8tzrodeVe84ttZkRk";
             var uri = new Uri(restUrl);
             var response = await client.GetAsync(uri);
             if (response.IsSuccessStatusCode)
@@ -62,6 +67,26 @@ namespace NZTravel2.View
                 rootObject = JsonConvert.DeserializeObject<RootObjectDetails>(content);
                 Website.Text = rootObject.result.website;
                 Phone.Text = rootObject.result.formatted_phone_number;
+                string photoID = rootObject.result.photos[0].photo_reference;
+                await GetPhoto(photoID);
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("No web response", "Unable to retrieve information, please try again", "OK");
+            }
+        }
+
+        //get photo of place
+        async Task GetPhoto(string id)
+        {
+            var client = new HttpClient();
+            string restUrl = $"https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + id + "&key=AIzaSyDsihFkzPZuiJEVZd8tzrodeVe84ttZkRk";
+            var uri = new Uri(restUrl);
+            var response = await client.GetAsync(uri);
+            if (response.IsSuccessStatusCode)
+            {
+                Stream stream = await client.GetStreamAsync(uri);
+                AttractionImage.Source = ImageSource.FromStream(() => stream);
             }
             else
             {
