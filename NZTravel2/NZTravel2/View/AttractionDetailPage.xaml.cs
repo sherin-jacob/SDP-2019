@@ -16,6 +16,7 @@ namespace NZTravel2.View
 	{
         private double longitude;
         private double latitude;
+        private Place place;
        
         public static object options { get; set; }
         public static object location { get; set; }
@@ -41,6 +42,7 @@ namespace NZTravel2.View
 
             this.longitude = place.lng;
             this.latitude = place.lat;
+            this.place = place;
         }
 
         public AttractionDetailPage()
