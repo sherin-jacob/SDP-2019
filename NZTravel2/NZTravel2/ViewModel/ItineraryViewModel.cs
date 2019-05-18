@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using NZTravel2.View;
@@ -18,7 +19,7 @@ namespace NZTravel2
             });
             Delete = new Command<Itinerary>(HandleDelete);
             AddItem = new Command(HandleAddItem);
-            EditItem = new Task<Itinerary>(HandleEditItem);
+            EditItem = new Command<Itinerary>(HandleEditItem);
             //StartItem = new Command(HandleStartItem);
         }
         private INavigation _navigation;
@@ -27,8 +28,7 @@ namespace NZTravel2
             return (await App.ItineraryRepository.GetList())
                                 //.OrderBy(t => t.IsCompleted)
                                 .ToLookup(t => t.IsCompleted ? "Completed" : "Your Itinerary");
-                                .OrderBy(t => t.IsCompleted)
-                                .ToLookup(t => t.IsCompleted ? "" : "Your Itinerary");
+                              
         }
 
         //TODO in sprint 2
@@ -44,8 +44,8 @@ namespace NZTravel2
         }
 
         // This function handles what happens when an item is deleted from the database
-        public Command<Itinerary> Delete { get; set; }
-        public async Task HandleDelete(Itinerary itemToDelete)
+        public Command Delete { get; set; }
+        public async void HandleDelete(Itinerary itemToDelete)
         {
             await App.ItineraryRepository.DeleteItem(itemToDelete);//calls the delete function in the repository class
 

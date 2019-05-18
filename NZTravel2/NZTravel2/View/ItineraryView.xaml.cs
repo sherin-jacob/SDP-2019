@@ -24,18 +24,12 @@ namespace NZTravel2
         }
 
         // When an item is click, takes the user to another page which contains details of the itinerary
-        async Task Itinerary_ItemTapped(object sender, ItemTappedEventArgs e)
+        async void Itinerary_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var i = (Itinerary)e.Item;
             await Navigation.PushModalAsync(new ItineraryDetailPage(i));  
         }
 
-        private void EditButtonClicked(object sender, EventArgs e)
-        {
-            var i = (Itinerary)e;
-
-            Navigation.PushModalAsync(new EditItinerary(i.Title));
-       }
 
         // Send user back to home page
 
