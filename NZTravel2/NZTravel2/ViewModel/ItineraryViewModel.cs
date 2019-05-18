@@ -27,6 +27,8 @@ namespace NZTravel2
             return (await App.ItineraryRepository.GetList())
                                 //.OrderBy(t => t.IsCompleted)
                                 .ToLookup(t => t.IsCompleted ? "Completed" : "Your Itinerary");
+                                .OrderBy(t => t.IsCompleted)
+                                .ToLookup(t => t.IsCompleted ? "" : "Your Itinerary");
         }
 
         //TODO in sprint 2
@@ -41,23 +43,27 @@ namespace NZTravel2
             //    await Map.OpenAsync(location, options);
         }
 
-        //Method to delete from the grouped list
+        // This function handles what happens when an item is deleted from the database
         public Command<Itinerary> Delete { get; set; }
         public async Task HandleDelete(Itinerary itemToDelete)
         {
-            await App.ItineraryRepository.DeleteItem(itemToDelete);
+            await App.ItineraryRepository.DeleteItem(itemToDelete);//calls the delete function in the repository class
+
             // Update displayed list
             GroupedItinerary = await GetGroupedItinerary();
         }
+
+        //This function handles what happens when an item is added to the database.
         public Command AddItem { get; set; }
         public async void HandleAddItem()
         {
-            //await _navigation.PushModalAsync(new AddItinerary());
-            await _navigation.PushModalAsync(new AttractionRegionPage());
+            await _navigation.PushModalAsync(new AttractionRegionPage()); // Takes the user to the attractionregion page to choose a new item to add
         }
 
-        public Task<Itinerary> EditItem { get; set; }
-        public async Task<Itinerary> HandleEditItem(Itinerary itemToEdit)
+        //This function handles what happens when the edit button is clicked
+        //TODO there's a bug in this function where it adds an extra item. This is because we weren't sure how to make the command a Task.
+        public Command<Itinerary> EditItem { get; set; }
+        public async void HandleEditItem(Itinerary itemToEdit)
         {
             //Itinerary bedit = itemToEdit;
             int count = await App.ItineraryRepository.countAsync();

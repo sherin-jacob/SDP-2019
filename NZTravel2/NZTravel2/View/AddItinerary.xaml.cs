@@ -15,6 +15,5 @@ namespace NZTravel2
             //send name, time and date to add to database
             BindingContext = new AddItineraryViewModel(Navigation, name, _timePicker.Time, datePicker.Date);
         }
-
     }
 }
