@@ -18,7 +18,7 @@ namespace NZTravel2
             });
             Delete = new Command<Itinerary>(HandleDelete);
             AddItem = new Command(HandleAddItem);
-            EditItem = new Command<Itinerary>(HandleEditItem);
+            EditItem = new Task<Itinerary>(HandleEditItem);
             //StartItem = new Command(HandleStartItem);
         }
         private INavigation _navigation;
@@ -43,7 +43,7 @@ namespace NZTravel2
 
         //Method to delete from the grouped list
         public Command<Itinerary> Delete { get; set; }
-        public async void HandleDelete(Itinerary itemToDelete)
+        public async Task HandleDelete(Itinerary itemToDelete)
         {
             await App.ItineraryRepository.DeleteItem(itemToDelete);
             // Update displayed list
@@ -56,8 +56,8 @@ namespace NZTravel2
             await _navigation.PushModalAsync(new AttractionRegionPage());
         }
 
-        public Command<Itinerary> EditItem { get; set; }
-        public async void HandleEditItem(Itinerary itemToEdit)
+        public Task<Itinerary> EditItem { get; set; }
+        public async Task<Itinerary> HandleEditItem(Itinerary itemToEdit)
         {
             //Itinerary bedit = itemToEdit;
             int count = await App.ItineraryRepository.countAsync();
@@ -65,9 +65,10 @@ namespace NZTravel2
             HandleDelete(itemToEdit);
                 await _navigation.PushModalAsync(new AddItinerary(itemToEdit.Title));
                 acount = await App.ItineraryRepository.countAsync();
+            Console.WriteLine(count+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+acount);
             if (count != acount)
             {
-                await App.ItineraryRepository.AddItem(itemToEdit);
+                //await App.ItineraryRepository.AddItem(itemToEdit);
                 //HandleDelete(itemToEdit);
                 //count = await App.ItineraryRepository.countAsync();
             }

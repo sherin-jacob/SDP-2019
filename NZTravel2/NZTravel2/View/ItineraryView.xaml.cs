@@ -33,7 +33,8 @@ namespace NZTravel2
         private void EditButtonClicked(object sender, EventArgs e)
         {
             var i = (Itinerary)e;
-            Navigation.PushModalAsync(new EditItinerary(i.Title,i));
+
+            Navigation.PushModalAsync(new EditItinerary(i.Title));
        }
 
         // Send user back to home page
