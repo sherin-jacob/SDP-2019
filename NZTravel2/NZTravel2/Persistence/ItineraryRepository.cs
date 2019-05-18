@@ -29,12 +29,12 @@ namespace NZTravel2.Persistence
             return _database.DeleteAsync(itemToDelete);
         }
 
+
         //adds item to database
         public Task AddItem(Itinerary itemToAdd)
         {
             return _database.InsertAsync(itemToAdd);
         }
-
         //counts number of items in database
         public async Task<int> countAsync()
         {

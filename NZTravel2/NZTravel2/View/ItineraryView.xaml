@@ -9,29 +9,27 @@
     <ContentPage.Content>
         <StackLayout Orientation="Vertical"
                     BackgroundColor="White" >
-            <ListView ItemsSource="{Binding GroupedItinerary}"
-            IsGroupingEnabled="True"
-            GroupDisplayBinding="{Binding Key}"
-                                 x:Name="TodoDisplayList"
-                 BackgroundColor="White"
-                      ItemTapped="Itinerary_ItemTapped">
-                
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextCell Text="{Binding Title}"
-                                  TextColor="Red">
-                            <TextCell.ContextActions>
-                                <ToolbarItem x:Name="Journey" Text="Start Journey" Command="{Binding Source={x:Reference TodoDisplayList}, Path=BindingContext.StartItem}"/>
-                                <ToolbarItem Text="Edit" Order="Secondary" Command="{Binding Source={x:Reference TodoDisplayList}, Path=BindingContext.EditItem}" 
-                                             CommandParameter="{Binding .}"/>
-                                <ToolbarItem x:Name="ViewDetails" Text="View Details"/>
-                                <ToolbarItem Order="Secondary" Command="{Binding Source={x:Reference TodoDisplayList}, Path=BindingContext.Delete }" 
-                                CommandParameter="{Binding .}" Text="Delete" IsDestructive="True" />
-                            </TextCell.ContextActions>
-                        </TextCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+          <ListView ItemsSource="{Binding GroupedItinerary}"
+          IsGroupingEnabled="True"
+          GroupDisplayBinding="{Binding Key}"
+                               x:Name="TodoDisplayList"
+               BackgroundColor="White"
+                    ItemTapped="Itinerary_ItemTapped"
+           <ListView.Template>
+              <DataTemplate>
+                <TextCell Text="{Binding Title}"
+                          TextColor="Red">
+                  <TextCell.ContextActions>
+                    <ToolbarItem x:Name="Journey" Text="Start Journey" Command="{Binding Source={x:Reference TodoDisplayList}, Path=BindingContext.StartItem}"/>
+                    <ToolbarItem Text="Edit" Order="Secondary" Clicked="EditButtonClicked" />
+                    <ToolbarItem x:Name="ViewDetails" Text="View Details"/>
+                    <ToolbarItem Order="Secondary" Command="{Binding Source={x:Reference TodoDisplayList}, Path=BindingContext.Delete }"
+                    CommandParameter="{Binding .}" Text="Delete" IsDestructive="True" />
+                  </TextCell.ContextActions>
+                </TextCell>
+              </DataTemplate>
+            </ListView.Template>
+          </ListView>
             <Button Command="{Binding AddItem}" Text="Add Attraction Item" />
             <Button x:Name="Home Button" Clicked="HomeButtonClicked" Text="Home" />
         </StackLayout>

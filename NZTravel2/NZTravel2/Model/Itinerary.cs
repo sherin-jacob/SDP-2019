@@ -13,5 +13,10 @@ namespace NZTravel2
         public bool IsCompleted { get; set; }
         public TimeSpan time { get; set; }
         public DateTime date { get; set; }
+
+        public static explicit operator Itinerary(EventArgs v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

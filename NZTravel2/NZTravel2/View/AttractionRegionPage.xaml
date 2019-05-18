@@ -17,7 +17,7 @@
             <Button x:Name="TaranakiRegionButton" Text="Taranaki" Clicked="TaranakiRegionButton_Clicked"/>
             <Button x:Name="ManawatuRegionButton" Text="Manawatu-Wanganui" Clicked="ManawatuRegionButton_Clicked"/>
             <Button x:Name="WellingtonRegionButton" Text="Wellington" Clicked="WellingtonRegionButton_Clicked"/>
-            <Button x:Name="Home Button" Clicked="HomeButtonClicked" Text="Home" />
+            <Button x:Name="HomeButton" Clicked="HomeButtonClicked" Text="Home" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
