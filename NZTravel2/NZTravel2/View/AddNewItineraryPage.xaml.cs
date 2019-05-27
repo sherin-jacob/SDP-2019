@@ -16,7 +16,7 @@ namespace NZTravel2.View
 		{
 			InitializeComponent ();
             Entry.Placeholder = "Name your itinerary";
-            BindingContext = new AddNewItineraryViewModel(Navigation, Entry.Placeholder);
+            BindingContext = new AddNewItineraryViewModel(Navigation, Entry); 
 		}
 	}
 }

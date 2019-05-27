@@ -9,11 +9,12 @@ namespace NZTravel2.ViewModel
     {
         string ItineraryName { get; set; }
         private INavigation _navigation;
+        Entry Itinerary { get; set; }
 
-        public AddNewItineraryViewModel(INavigation navigation, string name)
+        public AddNewItineraryViewModel(INavigation navigation, Entry itinerary)
         {
             _navigation = navigation;
-            ItineraryName = name;
+            Itinerary = itinerary;
             Save = new Command(HandleSave);
             Cancel = new Command(HandleCancel);
         }
@@ -22,7 +23,7 @@ namespace NZTravel2.ViewModel
         public Command Save { get; set; }
         public async void HandleSave()
         {
-            await App.ItineraryRepository.AddItinerary(new ItineraryHome { Name = ItineraryName }); //this adds item to the database
+            await App.ItineraryRepository.AddItinerary(new ItineraryHome { Name = Itinerary.Text }); //this adds item to the database
             await _navigation.PopModalAsync(); // this pops the most recent page created
         }
 
