@@ -26,6 +26,10 @@
                     <DataTemplate>
                         <TextCell Text="{Binding Name}"
                                   TextColor="Black">
+                            <TextCell.ContextActions>
+                                <ToolbarItem Command="{Binding Source={x:Reference TodoDisplayList}, Path=BindingContext.Delete }" 
+                                CommandParameter="{Binding .}" Text="Delete" IsDestructive="True" />
+                            </TextCell.ContextActions>
                         </TextCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

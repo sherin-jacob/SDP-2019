@@ -7,7 +7,6 @@ namespace NZTravel2.ViewModel
 {
     class AddNewItineraryViewModel
     {
-        string ItineraryName { get; set; }
         private INavigation _navigation;
         Entry Itinerary { get; set; }
 

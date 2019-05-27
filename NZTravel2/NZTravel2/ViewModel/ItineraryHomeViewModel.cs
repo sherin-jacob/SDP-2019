@@ -18,6 +18,7 @@ namespace NZTravel2.ViewModel
                 GroupedItinerary = t.Result;
             });
             AddItem = new Command(HandleAddItem);
+            Delete = new Command<ItineraryHome>(HandleDelete);
         }
         private INavigation _navigation;
           
@@ -35,6 +36,16 @@ namespace NZTravel2.ViewModel
         public async void HandleAddItem()
         {
            await _navigation.PushModalAsync(new AddNewItineraryPage()); //needs to make create itinerary popup/page
+        }
+
+        // This function handles what happens when an item is deleted from the database
+        public Command<ItineraryHome> Delete { get; set; }
+        public async void HandleDelete(ItineraryHome itemToDelete)
+        {
+            await App.ItineraryRepository.DeleteItinerary(itemToDelete);//calls the delete function in the repository class
+
+            // Update displayed list
+            GroupedItinerary = await GetGroupedItinerary();
         }
 
         public async Task RefreshTaskList()
