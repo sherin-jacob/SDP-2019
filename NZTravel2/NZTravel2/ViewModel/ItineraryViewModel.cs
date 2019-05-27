@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using NZTravel2.View;
+using SQLite;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -10,7 +11,7 @@ namespace NZTravel2
 {
     public class ItineraryViewModel : BaseFodyObservable
     {
-        public ItineraryViewModel(INavigation navigation)
+        public ItineraryViewModel(INavigation navigation,int j)
         {
             _navigation = navigation;
             GetGroupedItinerary().ContinueWith(t =>
@@ -25,8 +26,8 @@ namespace NZTravel2
         private INavigation _navigation;
         private async Task<ILookup<string, Itinerary>> GetGroupedItinerary()
         {
+            l =await  App.ItineraryRepository.GetList();
             return (await App.ItineraryRepository.GetList())
-                                //.OrderBy(t => t.IsCompleted)
                                 .ToLookup(t => t.IsCompleted ? "Completed" : "Your Itinerary");
                               
         }
@@ -66,20 +67,25 @@ namespace NZTravel2
         public async void HandleEditItem(Itinerary itemToEdit)
         {
             //Itinerary bedit = itemToEdit;
-            int count = await App.ItineraryRepository.countAsync();
-            int acount;
-            HandleDelete(itemToEdit);
-                await _navigation.PushModalAsync(new AddItinerary(itemToEdit.Title));
-                acount = await App.ItineraryRepository.countAsync();
-            Console.WriteLine(count+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+acount);
-            if (count != acount)
+            //int count = await App.ItineraryRepository.countAsync();
+            //int acount;
+            //HandleDelete(itemToEdit);
+            //    await _navigation.PushModalAsync(new AddItinerary(itemToEdit.Title));
+            //    acount = await App.ItineraryRepository.countAsync();
+            //Console.WriteLine(count+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+acount);
+            //if (count != acount)
+            //{
+            //await App.ItineraryRepository.AddItem(itemToEdit);
+            //HandleDelete(itemToEdit);
+            //count = await App.ItineraryRepository.countAsync();
+            //}
+            //GroupedItinerary = await GetGroupedItinerary();
+        for(int i=0;i<l.Count;i++)
             {
-                //await App.ItineraryRepository.AddItem(itemToEdit);
-                //HandleDelete(itemToEdit);
-                //count = await App.ItineraryRepository.countAsync();
+                Console.WriteLine(l[i]);
             }
-            GroupedItinerary = await GetGroupedItinerary();
-        }
+        
+    }
 
 
         public async Task RefreshTaskList()
@@ -89,6 +95,6 @@ namespace NZTravel2
 
         public ILookup<string, Itinerary> GroupedItinerary { get; set; }
         public string Title => "Itinerary";
-        private List<Itinerary> _todoList = new List<Itinerary> { };
+        private List<Itinerary> l = new List<Itinerary> { };
     }
 }

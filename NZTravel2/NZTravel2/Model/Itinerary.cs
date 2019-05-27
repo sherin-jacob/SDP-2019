@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using SQLite;
+using SQLiteNetExtensions.Attributes;
 
 namespace NZTravel2
 {
@@ -13,6 +14,8 @@ namespace NZTravel2
         public bool IsCompleted { get; set; }
         public TimeSpan time { get; set; }
         public DateTime date { get; set; }
+
+        [ForeignKey(typeof(ItineraryHome))]
         public int ItineraryId { get; set; } //foreign key to the ItineraryHome table
 
         public static explicit operator Itinerary(EventArgs v)

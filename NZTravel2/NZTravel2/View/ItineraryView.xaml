@@ -21,7 +21,7 @@
             </Label>
             
             <ListView ItemsSource="{Binding GroupedItinerary}"
-            IsGroupingEnabled="True"
+            IsGroupingEnabled="False"
             GroupDisplayBinding="{Binding Key}"
                                  x:Name="TodoDisplayList"
                  BackgroundColor="Black"

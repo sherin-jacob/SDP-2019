@@ -10,10 +10,12 @@ namespace NZTravel2
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ItineraryView : ContentPage
     {
-        public ItineraryView()
+        int j;
+        public ItineraryView(int j)
         {
             InitializeComponent();
-            BindingContext = new ItineraryViewModel(Navigation);
+            this.j = j;
+            BindingContext = new ItineraryViewModel(Navigation,j);
         }
 
         //Refreshes the Itinerary when an item is added
@@ -27,6 +29,7 @@ namespace NZTravel2
         async void Itinerary_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var i = (Itinerary)e.Item;
+            i.ItineraryId = j;
             await Navigation.PushModalAsync(new ItineraryDetailPage(i));  
         }
 

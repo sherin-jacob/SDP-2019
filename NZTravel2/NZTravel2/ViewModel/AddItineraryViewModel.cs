@@ -18,8 +18,6 @@ namespace NZTravel2
             placeName = PlaceName;
             SelectedTime = time;
             Date = date;
-
-            Console.WriteLine("Date is " + date);
             Save = new Command(HandleSave);
             Cancel = new Command(HandleCancel);
         }
