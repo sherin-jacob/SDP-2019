@@ -4,8 +4,8 @@ using System.Text;
 
 namespace NZTravel2.Model
 {
-    class RootObjectDetails
+    public class OpeningHours
     {
-        public PlaceDetails result { get; set; }
+        public Boolean open_now { get; set; }
     }
 }

@@ -28,6 +28,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextCell Text="{Binding Name}" Detail="{Binding vicinity}" TextColor="Azure"/>
+                        <!--<TextCell Text="{Binding Name}" Detail="{Binding opening_hours.open_now}" TextColor="Azure"/>-->
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

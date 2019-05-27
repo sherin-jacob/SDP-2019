@@ -4,8 +4,8 @@ using System.Text;
 
 namespace NZTravel2.Model
 {
-    class RootObjectDetails
+    public class Photo
     {
-        public PlaceDetails result { get; set; }
+        public string photo_reference { get; set; }
     }
 }
