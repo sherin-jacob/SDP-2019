@@ -13,5 +13,6 @@ namespace NZTravel2
         public bool IsCompleted { get; set; }
         public TimeSpan time { get; set; }
         public DateTime date { get; set; }
+        public int ItineraryId { get; set; } //foreign key to the ItineraryHome table
     }
 }

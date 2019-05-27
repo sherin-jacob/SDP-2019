@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NZTravel2.View.ItineraryHomeView">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical"
+                    BackgroundColor ="Black" >
+
+            <Label Text="No itineraries created yet!" IsVisible="False">
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference TodoDisplayList}, Path=ItemsSource.Count}" 
+                             Value="0">
+                        <Setter Property="IsVisible" Value="True" />
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
+
+            <ListView ItemsSource="{Binding GroupedItinerary}"
+            IsGroupingEnabled="True"
+            GroupDisplayBinding="{Binding Key}"
+                                 x:Name="TodoDisplayList"
+                 BackgroundColor="Black"
+                      ItemTapped="Itinerary_ItemTapped">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Name}"
+                                  TextColor="White">
+                        </TextCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+            <Button Command="{Binding AddItem}" 
+                    Text="Create New Itinerary" 
+                    TextColor="White"
+                    />
+
+            <Button x:Name="HomeButton" 
+                    Clicked="HomeButtonClicked" 
+                    Text="Home" 
+                    BorderColor="DarkSlateGray"
+                    TextColor="White"
+                    BorderRadius="6"
+                    BackgroundColor="Black"
+                    BorderWidth="6"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="200" 
+                    HeightRequest="75"
+                    Image="home.png"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -39,7 +39,7 @@ namespace NZTravel2.View
         //button links to the itinerary page
         private void ItineraryButton_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new ItineraryView());
+            Navigation.PushModalAsync(new ItineraryHomeView());
         }
     }
 }
