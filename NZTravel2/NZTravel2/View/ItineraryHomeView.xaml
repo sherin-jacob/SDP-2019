@@ -16,16 +16,20 @@
             </Label>
 
             <ListView ItemsSource="{Binding GroupedItinerary}"
-            IsGroupingEnabled="True"
-            GroupDisplayBinding="{Binding Key}"
-                                 x:Name="TodoDisplayList"
-                 BackgroundColor="Black"
-                      ItemTapped="Itinerary_ItemTapped">
+                IsGroupingEnabled="True"
+                GroupDisplayBinding="{Binding Key}"
+                x:Name="TodoDisplayList"
+                BackgroundColor="White"
+                ItemTapped="Itinerary_ItemTapped">
 
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextCell Text="{Binding Name}"
-                                  TextColor="White">
+                                  TextColor="Black">
+                            <TextCell.ContextActions>
+                                <ToolbarItem Command="{Binding Source={x:Reference TodoDisplayList}, Path=BindingContext.Delete }" 
+                                CommandParameter="{Binding .}" Text="Delete" IsDestructive="True" />
+                            </TextCell.ContextActions>
                         </TextCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
