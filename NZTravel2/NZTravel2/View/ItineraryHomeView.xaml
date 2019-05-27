@@ -4,7 +4,7 @@
              x:Class="NZTravel2.View.ItineraryHomeView">
     <ContentPage.Content>
         <StackLayout Orientation="Vertical"
-                    BackgroundColor ="White" >
+                    BackgroundColor ="Black" >
 
             <Label Text="No itineraries created yet!" IsVisible="False">
                 <Label.Triggers>
@@ -16,11 +16,11 @@
             </Label>
 
             <ListView ItemsSource="{Binding GroupedItinerary}"
-            IsGroupingEnabled="True"
-            GroupDisplayBinding="{Binding Key}"
-                                 x:Name="TodoDisplayList"
-                 BackgroundColor="White"
-                      ItemTapped="Itinerary_ItemTapped">
+                IsGroupingEnabled="True"
+                GroupDisplayBinding="{Binding Key}"
+                x:Name="TodoDisplayList"
+                BackgroundColor="White"
+                ItemTapped="Itinerary_ItemTapped">
 
                 <ListView.ItemTemplate>
                     <DataTemplate>

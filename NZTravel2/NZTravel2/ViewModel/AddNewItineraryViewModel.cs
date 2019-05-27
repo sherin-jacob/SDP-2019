@@ -22,7 +22,16 @@ namespace NZTravel2.ViewModel
         public Command Save { get; set; }
         public async void HandleSave()
         {
-            await App.ItineraryRepository.AddItinerary(new ItineraryHome { Name = Itinerary.Text }); //this adds item to the database
+            if (Itinerary.Text == null)
+            {
+                await App.ItineraryRepository.AddItinerary(new ItineraryHome { Name = "New Itinerary" }); //this adds item to the database
+                
+            }
+            else if (Itinerary.Text.Length > 0)
+            {
+                await App.ItineraryRepository.AddItinerary(new ItineraryHome { Name = Itinerary.Text}); //this adds item to the database
+
+            }
             await _navigation.PopModalAsync(); // this pops the most recent page created
         }
 
