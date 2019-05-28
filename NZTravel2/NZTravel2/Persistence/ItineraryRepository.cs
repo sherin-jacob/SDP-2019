@@ -9,6 +9,7 @@ namespace NZTravel2.Persistence
     public class ItineraryRepository
     {
         private readonly SQLiteAsyncConnection _database; //used to make a connection to the database
+        private readonly SQLiteConnection _db;
         public ItineraryRepository()
         {
             _database = new SQLiteAsyncConnection(DependencyService.Get<IFileHelper>().GetLocalFilePath("TodoSQLite.db3"));
@@ -16,13 +17,12 @@ namespace NZTravel2.Persistence
             _database.CreateTableAsync<ItineraryHome>().Wait();
         }
         private List<Itinerary> _seedTodoList = new List<Itinerary>{}; // sets the default list
-        private List<ItineraryHome> _seedToDoList2 = new List<ItineraryHome> { };
+        private List<ItineraryHome> _seedToDoList2 = new List<ItineraryHome> {};
         //gets items in database
         public async Task<List<Itinerary>> GetList()
         {
             return await _database.Table<Itinerary>().ToListAsync(); //gets list of items from database
         }
-
         public async Task<List<ItineraryHome>> GetItineraries()
         {
             return await _database.Table<ItineraryHome>().ToListAsync();

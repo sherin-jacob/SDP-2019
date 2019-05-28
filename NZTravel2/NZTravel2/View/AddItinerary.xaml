@@ -16,6 +16,11 @@
                         TextColor="White"
                     Format="D"
                     Date="{Binding Date}" />
+            <Picker Title="Select an Itinerary"
+                    TitleColor="White"
+                    ItemsSource="{Binding ll}"
+                    ItemDisplayBinding="{Binding ll}" 
+             />
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
                 <Button Text="Cancel" 
                     TextColor="White"

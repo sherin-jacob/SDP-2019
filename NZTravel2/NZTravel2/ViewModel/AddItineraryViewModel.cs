@@ -1,6 +1,9 @@
 ﻿using Xamarin.Forms;
 using NZTravel2.Persistence;
 using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 namespace NZTravel2
 
@@ -11,7 +14,7 @@ namespace NZTravel2
         private INavigation _navigation;
         public TimeSpan SelectedTime { get; set; }
         public DateTime Date { get; set; }
-
+        public List<ItineraryHome> ll { get; set; }
         public AddItineraryViewModel(INavigation navigation, string PlaceName, TimeSpan time, DateTime date)
         {
             _navigation = navigation;
@@ -21,7 +24,6 @@ namespace NZTravel2
             Save = new Command(HandleSave);
             Cancel = new Command(HandleCancel);
         }
-
         //Saves the new item in the database
         public Command Save { get; set; }
         public async void HandleSave()

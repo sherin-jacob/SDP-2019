@@ -12,6 +12,7 @@ namespace NZTravel2
 {
     public class ItineraryViewModel : BaseFodyObservable
     {
+        int j=-1;
         public ItineraryViewModel(INavigation navigation,int j)
         {
             _navigation = navigation;
@@ -19,6 +20,7 @@ namespace NZTravel2
             {
                 GroupedItinerary = t.Result;
             });
+            this.j = j;
             l = new ObservableCollection<Itinerary>();
             Delete = new Command<Itinerary>(HandleDelete);
             AddItem = new Command(HandleAddItem);
@@ -31,7 +33,10 @@ namespace NZTravel2
             List<Itinerary> k =await  App.ItineraryRepository.GetList();
             for(int i=0;i<k.Count;i++)
             {
-                l.Add(k[i]);
+                if (k[i].ItineraryId == j)
+                {
+                    l.Add(k[i]);
+                }
             }
 
             return (await App.ItineraryRepository.GetList())
