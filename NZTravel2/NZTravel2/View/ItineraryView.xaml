@@ -20,9 +20,8 @@
                 </Label.Triggers>
             </Label>
             
-            <ListView ItemsSource="{Binding GroupedItinerary}"
+            <ListView ItemsSource="{Binding l}"
             IsGroupingEnabled="False"
-            GroupDisplayBinding="{Binding Key}"
                                  x:Name="TodoDisplayList"
                  BackgroundColor="Black"
                       ItemTapped="Itinerary_ItemTapped">

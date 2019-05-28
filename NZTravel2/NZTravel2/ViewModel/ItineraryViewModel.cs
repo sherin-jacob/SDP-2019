@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using NZTravel2.View;
@@ -18,6 +19,7 @@ namespace NZTravel2
             {
                 GroupedItinerary = t.Result;
             });
+            l = new ObservableCollection<Itinerary>();
             Delete = new Command<Itinerary>(HandleDelete);
             AddItem = new Command(HandleAddItem);
             EditItem = new Command<Itinerary>(HandleEditItem);
@@ -26,7 +28,12 @@ namespace NZTravel2
         private INavigation _navigation;
         private async Task<ILookup<string, Itinerary>> GetGroupedItinerary()
         {
-            l =await  App.ItineraryRepository.GetList();
+            List<Itinerary> k =await  App.ItineraryRepository.GetList();
+            for(int i=0;i<k.Count;i++)
+            {
+                l.Add(k[i]);
+            }
+
             return (await App.ItineraryRepository.GetList())
                                 .ToLookup(t => t.IsCompleted ? "Completed" : "Your Itinerary");
                               
@@ -82,7 +89,7 @@ namespace NZTravel2
             //GroupedItinerary = await GetGroupedItinerary();
         for(int i=0;i<l.Count;i++)
             {
-                Console.WriteLine(l[i]);
+                Console.WriteLine(l[i].Title);
             }
         
     }
@@ -95,6 +102,6 @@ namespace NZTravel2
 
         public ILookup<string, Itinerary> GroupedItinerary { get; set; }
         public string Title => "Itinerary";
-        private List<Itinerary> l = new List<Itinerary> { };
+        public ObservableCollection<Itinerary> l { get; set; }
     }
 }
