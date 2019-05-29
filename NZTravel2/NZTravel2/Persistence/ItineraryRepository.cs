@@ -49,11 +49,6 @@ namespace NZTravel2.Persistence
         {
             return _database.InsertAsync(itemToAdd);
         }
-    
-        public void Abcd()
-        {
-              
-        }
 
         public async Task<int> countAsync()
         {

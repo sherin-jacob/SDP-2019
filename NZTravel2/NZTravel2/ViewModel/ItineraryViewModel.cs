@@ -30,6 +30,7 @@ namespace NZTravel2
         private INavigation _navigation;
         private async Task<ILookup<string, Itinerary>> GetGroupedItinerary()
         {
+            l.Clear();
             List<Itinerary> k =await  App.ItineraryRepository.GetList();
             for(int i=0;i<k.Count;i++)
             {
@@ -38,7 +39,6 @@ namespace NZTravel2
                     l.Add(k[i]);
                 }
             }
-
             return (await App.ItineraryRepository.GetList())
                                 .ToLookup(t => t.IsCompleted ? "Completed" : "Your Itinerary");
                               
