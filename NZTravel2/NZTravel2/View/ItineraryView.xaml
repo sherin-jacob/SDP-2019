@@ -47,7 +47,12 @@
                     Text="Add Attraction Item"
                     TextColor="White"
                     />
-            
+
+            <Button Command="{Binding ShareItinerary}" 
+                    Text="Share Itinerary"
+                    TextColor="White"
+                    />
+
             <Button x:Name="HomeButton" 
                     Clicked="HomeButtonClicked" 
                     Text="Home" 

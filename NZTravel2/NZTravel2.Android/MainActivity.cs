@@ -9,6 +9,7 @@ using Android.OS;
 using Plugin.CurrentActivity;
 using System.Threading.Tasks;
 using Android;
+using Xamarin.Essentials;
 
 namespace NZTravel2.Droid
 {
@@ -24,6 +25,7 @@ namespace NZTravel2.Droid
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             Xamarin.FormsMaps.Init(this, savedInstanceState);
+            ExperimentalFeatures.Enable(ExperimentalFeatures.ShareFileRequest);
             LoadApplication(new App());
 
         }

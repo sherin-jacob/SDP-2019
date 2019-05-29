@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using NZTravel2.View;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -19,6 +22,7 @@ namespace NZTravel2
             Delete = new Command<Itinerary>(HandleDelete);
             AddItem = new Command(HandleAddItem);
             EditItem = new Command<Itinerary>(HandleEditItem);
+            ShareItinerary = new Command(HandleShare);
             //StartItem = new Command(HandleStartItem);
         }
         private INavigation _navigation;
@@ -78,6 +82,34 @@ namespace NZTravel2
         public async Task RefreshTaskList()
         {
             GroupedItinerary = await GetGroupedItinerary(); // Refreshes the itinerary
+        }
+
+        public Command ShareItinerary { get; set; }
+        public async void HandleShare()
+        {
+            var Itinerary = await GetGroupedItinerary();
+            string ItineraryString = "Itinerary\r\n";
+            foreach (var item in Itinerary)
+            {
+                if (Itinerary.Count() == 0)
+                {
+                    ItineraryString = "Nothing in the itinerary";
+                    break;
+                }
+                foreach (Itinerary values in item)
+                {
+                    string newString = "\r\nName: " + values.Title + "\r\nTime: " + values.time + "\r\nDate: " + values.date.ToShortDateString() + "\r\n";
+                    ItineraryString += newString;
+                }
+            }
+            //ItineraryString = ItineraryString.Replace("@", Environment.NewLine);
+            var Fn = "Itinerary.txt";
+            var file = Path.Combine(FileSystem.CacheDirectory, Fn);
+            File.WriteAllText(file, ItineraryString);
+            await Share.RequestAsync(new ShareFileRequest
+            {
+                File = new ShareFile(file)
+            });
         }
 
         public ILookup<string, Itinerary> GroupedItinerary { get; set; }
