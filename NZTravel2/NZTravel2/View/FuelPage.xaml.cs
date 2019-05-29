@@ -49,15 +49,18 @@ namespace NZTravel2.View
         //opens up the seleceted fuel station in the device's default Google Maps application
         async void FuelStations_ItemTapped(object sender, ItemTappedEventArgs e)
         {
+            //var FuelStation = (Place)e.Item;
+            //var address = FuelStation.vicinity;
+            //var locations = await Geocoding.GetLocationsAsync(address);
+            //var location = locations?.FirstOrDefault();
+            //var options = new MapLaunchOptions
+            //{
+            //    Name = FuelStation.Name
+            //};
+            //await Map.OpenAsync(location, options);
             var FuelStation = (Place)e.Item;
-            var address = FuelStation.vicinity;
-            var locations = await Geocoding.GetLocationsAsync(address);
-            var location = locations?.FirstOrDefault();
-            var options = new MapLaunchOptions
-            {
-                Name = FuelStation.Name
-            };
-            await Map.OpenAsync(location, options);
+            await Navigation.PushModalAsync(new AttractionDetailPage(FuelStation, "fuel"));
+            FuelStations.SelectedItem = null;
         }
 
         //button links to the Home page

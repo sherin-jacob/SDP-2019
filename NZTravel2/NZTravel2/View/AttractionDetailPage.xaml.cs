@@ -45,6 +45,28 @@ namespace NZTravel2.View
             this.place = place;
         }
 
+        public AttractionDetailPage(Place place, String fuel)
+        {
+            InitializeComponent();
+            Display(place);
+            Name.Text = place.Name;
+            Address.Text = "Address: \n" + place.vicinity;
+
+            if (place.opening_hours == null || place.opening_hours.open_now == true)
+            {
+                OpenNow.Text = "Currently open!";
+            }
+            else
+            {
+                OpenNow.Text = "Currently closed.";
+            }
+            Rating.Text = "";
+
+            this.longitude = place.lng;
+            this.latitude = place.lat;
+            this.place = place;
+        }
+
         public AttractionDetailPage()
         {
             return;

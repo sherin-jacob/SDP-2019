@@ -73,5 +73,6 @@ namespace NZTravel2.ViewModel
             lat = position.Latitude;
         }
 
+
     }
 }
