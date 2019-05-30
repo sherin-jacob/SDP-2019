@@ -23,7 +23,6 @@ namespace NZTravel2
             AddItem = new Command(HandleAddItem);
             EditItem = new Command<Itinerary>(HandleEditItem);
             ShareItinerary = new Command(HandleShare);
-            //StartItem = new Command(HandleStartItem);
         }
         private INavigation _navigation;
         private async Task<ILookup<string, Itinerary>> GetGroupedItinerary()
@@ -31,18 +30,6 @@ namespace NZTravel2
             return (await App.ItineraryRepository.GetList())
                                 .OrderBy(t => t.IsCompleted)
                                 .ToLookup(t => t.IsCompleted ? "" : "Your Itinerary");
-        }
-
-        //TODO in sprint 2
-        public Command StartItem { get; set; }
-        public async void HandleStartItem(Itinerary item)
-        {
-        //    var location = new Location(this.lat, this.longi);
-        //    var options = new MapLaunchOptions
-        //    {
-        //        Name = item.Title
-        //    };
-        //    await Map.OpenAsync(location, options);
         }
 
         // This function handles what happens when an item is deleted from the database
@@ -102,7 +89,6 @@ namespace NZTravel2
                     ItineraryString += newString;
                 }
             }
-            //ItineraryString = ItineraryString.Replace("@", Environment.NewLine);
             var Fn = "Itinerary.txt";
             var file = Path.Combine(FileSystem.CacheDirectory, Fn);
             File.WriteAllText(file, ItineraryString);
