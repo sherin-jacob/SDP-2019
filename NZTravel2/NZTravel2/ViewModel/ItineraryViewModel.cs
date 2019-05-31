@@ -81,7 +81,7 @@ namespace NZTravel2
         public Command<Itinerary> DetailsItem { get; set; }
         public async void HandleDetailItem(Itinerary itemToView)
         {
-           await _navigation.PushModalAsync(new ItineraryDetailPage(itemToView));
+           await _navigation.PushModalAsync(new Edit(itemToView));
         }
 
 

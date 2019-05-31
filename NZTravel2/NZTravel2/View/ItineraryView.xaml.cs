@@ -36,7 +36,7 @@ namespace NZTravel2
         {
             var i = (Itinerary)e.Item;
             i.ItineraryId = j;
-            await Navigation.PushModalAsync(new Edit(i));
+            await Navigation.PushModalAsync(new ItineraryDetailPage(i));
         }
         // Send user back to home page
 
