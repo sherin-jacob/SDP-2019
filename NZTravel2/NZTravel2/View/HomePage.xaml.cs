@@ -41,5 +41,11 @@ namespace NZTravel2.View
         {
             Navigation.PushModalAsync(new ItineraryView());
         }
+
+        //button links to the fuel page
+        private void RestaurantButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new RestaurantPage());
+        }
     }
 }

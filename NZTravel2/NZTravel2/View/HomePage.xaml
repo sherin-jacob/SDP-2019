@@ -8,6 +8,8 @@
             <Button x:Name="ItineraryButton" Text="ITINERARY" Clicked="ItineraryButton_Clicked"/>
             <Button x:Name="AttractionButton" Text="ATTRACTIONS" Clicked="AttractionButton_Clicked"/>
             <Button x:Name="FuelButton" Text="FUEL" Clicked="FuelButton_Clicked"/>
+            <Button x:Name="RestaurantButton" Text="RESTAURANT" Clicked="RestaurantButton_Clicked"/>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

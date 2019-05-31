@@ -14,9 +14,9 @@ namespace NZTravelTest
         // When fuel button is clicked the fuel tab should display 
         public void RetreiveFuelTabLocationTest()
         {
-            var fuelButtonClicked = new FuelPage();
-            _fuelButtonClicked = FuelPage.Location;
-            Assert.IsNull(_fuelButtonClicked, null);
+          //  var fuelButtonClicked = new FuelPage();
+         //   _fuelButtonClicked = FuelPage.Location;
+          //  Assert.IsNull(_fuelButtonClicked, null);
         }
 
         /* [TestMethod]
