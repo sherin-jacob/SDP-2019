@@ -14,8 +14,8 @@ namespace NZTravel2
 {
     public class ItineraryViewModel : BaseFodyObservable
     {
-        int j;
-        public ItineraryViewModel(INavigation navigation, int j)
+        public int j = -1;
+        public ItineraryViewModel(INavigation navigation,int j)
         {
             _navigation = navigation;
             GetGroupedItinerary().ContinueWith(t =>
