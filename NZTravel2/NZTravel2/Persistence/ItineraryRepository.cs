@@ -9,7 +9,6 @@ namespace NZTravel2.Persistence
     public class ItineraryRepository
     {
         private readonly SQLiteAsyncConnection _database; //used to make a connection to the database
-        private readonly SQLiteConnection _db;
         public ItineraryRepository()
         {
             _database = new SQLiteAsyncConnection(DependencyService.Get<IFileHelper>().GetLocalFilePath("TodoSQLite.db3"));
