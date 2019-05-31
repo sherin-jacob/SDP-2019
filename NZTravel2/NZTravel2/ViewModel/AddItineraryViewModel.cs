@@ -49,14 +49,11 @@ namespace NZTravel2
         public Command Save { get; set; }
         public async void HandleSave()
         {
-            int id;
-            Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" + si.ToString());
             for(int i=0;i<ll.Count;i++)
             {
 
                 if(ll[i].Equals(si.ToString()))
                 {
-                    Console.WriteLine("------------------------------------------------------------------" + k[i].ItineraryId);
                     await App.ItineraryRepository.AddItem(new Itinerary { Title = placeName, time = SelectedTime, date = Date, ItineraryId=k[i].ItineraryId }); //this adds item to the database
                 }
             }

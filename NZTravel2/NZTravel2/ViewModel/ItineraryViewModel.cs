@@ -12,7 +12,7 @@ namespace NZTravel2
 {
     public class ItineraryViewModel : BaseFodyObservable
     {
-        int j=-1;
+        int j;
         public ItineraryViewModel(INavigation navigation,int j)
         {
             _navigation = navigation;
@@ -24,7 +24,7 @@ namespace NZTravel2
             l = new ObservableCollection<Itinerary>();
             Delete = new Command<Itinerary>(HandleDelete);
             AddItem = new Command(HandleAddItem);
-            EditItem = new Command<Itinerary>(HandleEditItem);
+            DetailsItem = new Command<Itinerary>(HandleDetailItem);
             //StartItem = new Command(HandleStartItem);
         }
         private INavigation _navigation;
@@ -32,11 +32,14 @@ namespace NZTravel2
         {
             l.Clear();
             List<Itinerary> k =await  App.ItineraryRepository.GetList();
-            for(int i=0;i<k.Count;i++)
+            if (k.Count != 0)
             {
-                if (k[i].ItineraryId == j)
+                for (int i = 0; i < k.Count; i++)
                 {
-                    l.Add(k[i]);
+                    if (k[i].ItineraryId == j)
+                    {
+                        l.Add(k[i]);
+                    }
                 }
             }
             return (await App.ItineraryRepository.GetList())
@@ -75,29 +78,11 @@ namespace NZTravel2
 
         //This function handles what happens when the edit button is clicked
         //TODO there's a bug in this function where it adds an extra item. This is because we weren't sure how to make the command a Task.
-        public Command<Itinerary> EditItem { get; set; }
-        public async void HandleEditItem(Itinerary itemToEdit)
+        public Command<Itinerary> DetailsItem { get; set; }
+        public async void HandleDetailItem(Itinerary itemToView)
         {
-            //Itinerary bedit = itemToEdit;
-            //int count = await App.ItineraryRepository.countAsync();
-            //int acount;
-            //HandleDelete(itemToEdit);
-            //    await _navigation.PushModalAsync(new AddItinerary(itemToEdit.Title));
-            //    acount = await App.ItineraryRepository.countAsync();
-            //Console.WriteLine(count+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+acount);
-            //if (count != acount)
-            //{
-            //await App.ItineraryRepository.AddItem(itemToEdit);
-            //HandleDelete(itemToEdit);
-            //count = await App.ItineraryRepository.countAsync();
-            //}
-            //GroupedItinerary = await GetGroupedItinerary();
-        for(int i=0;i<l.Count;i++)
-            {
-                Console.WriteLine(l[i].Title);
-            }
-        
-    }
+           await _navigation.PushModalAsync(new ItineraryDetailPage(itemToView));
+        }
 
 
         public async Task RefreshTaskList()

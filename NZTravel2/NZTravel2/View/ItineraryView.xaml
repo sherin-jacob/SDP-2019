@@ -32,9 +32,8 @@
                                   TextColor="White">
                             <TextCell.ContextActions>
                                 <ToolbarItem x:Name="Journey" Text="Start Journey" Command="{Binding Source={x:Reference TodoDisplayList}, Path=BindingContext.StartItem}"/>
-                                <ToolbarItem Text="Edit" Order="Secondary" Command="{Binding Source={x:Reference TodoDisplayList}, Path=BindingContext.EditItem}" 
+                                <ToolbarItem Text="Details" Order="Secondary" Command="{Binding Source={x:Reference TodoDisplayList}, Path=BindingContext.DetailsItem}" 
                                              CommandParameter="{Binding .}"/>
-                                <ToolbarItem x:Name="ViewDetails" Text="View Details"/>
                                 <ToolbarItem Order="Secondary" Command="{Binding Source={x:Reference TodoDisplayList}, Path=BindingContext.Delete }" 
                                 CommandParameter="{Binding .}" Text="Delete" IsDestructive="True" />
                             </TextCell.ContextActions>
