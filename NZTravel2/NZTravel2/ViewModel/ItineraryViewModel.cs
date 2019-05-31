@@ -27,7 +27,6 @@ namespace NZTravel2
             Delete = new Command<Itinerary>(HandleDelete);
             AddItem = new Command(HandleAddItem);
             DetailsItem = new Command<Itinerary>(HandleDetailItem);
-            //StartItem = new Command(HandleStartItem);
             ShareItinerary = new Command(HandleShare);
         }
         private INavigation _navigation;
