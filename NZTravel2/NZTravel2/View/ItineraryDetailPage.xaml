@@ -8,6 +8,8 @@
             <Label x:Name="Name" FontSize="Medium" TextColor="White" />
             <Label x:Name="Time" FontSize="Medium" TextColor="White" />
             <Label x:Name="Date" FontSize="Medium" TextColor="White" />
+            <Label x:Name="ID" FontSize="Medium" TextColor="White" />
+            <!--<Label x:Name="OpeningHours"/>-->
             <Button Text="Start Journey" Clicked="Button_Clicked" />
         </StackLayout>
     </ContentPage.Content>

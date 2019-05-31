@@ -1,28 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="NZTravel2.AddItinerary"
-             BackgroundColor="Black">
-    <ContentPage.Content>
+             x:Class="NZTravel2.View.Edit">
+<ContentPage.Content>
         <StackLayout Orientation="Vertical" VerticalOptions="Center">
             <Entry x:Name="Entry" Text="{Binding TodoTitle}" />
-            <Label Text="Please select the time" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White" FontSize="Medium"/>
+            <Label Text="Please select the time" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" FontSize="Medium"/>
             <TimePicker x:Name="_timePicker"
                     Time="{Binding SelectedTime}"
-                        TextColor="White"
+                        TextColor="Black"
                     Format="T"/>
-            <Label Text="Start Date:" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White" FontSize="Medium"/>
+            <Label Text="Start Date:" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" FontSize="Medium"/>
             <DatePicker x:Name="datePicker"
-                        TextColor="White"
+                        TextColor="Black"
                     Format="D"
                     Date="{Binding Date}" />
-            <Picker x:Name="Place"
-                    Title="Select an Itinerary"
-                    TitleColor="White"
-                    ItemsSource="{Binding ll}"
-                    TextColor="White"
-                    SelectedItem="{Binding si}"
-             />
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
                 <Button Text="Cancel" 
                     TextColor="White"

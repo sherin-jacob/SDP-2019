@@ -20,9 +20,8 @@
                 </Label.Triggers>
             </Label>
             
-            <ListView ItemsSource="{Binding GroupedItinerary}"
-            IsGroupingEnabled="True"
-            GroupDisplayBinding="{Binding Key}"
+            <ListView ItemsSource="{Binding l}"
+            IsGroupingEnabled="False"
                                  x:Name="TodoDisplayList"
                  BackgroundColor="Black"
                       ItemTapped="Itinerary_ItemTapped">
@@ -32,7 +31,8 @@
                         <TextCell Text="{Binding Title}"
                                   TextColor="White">
                             <TextCell.ContextActions>
-                                <ToolbarItem Text="Edit" Order="Secondary" Command="{Binding Source={x:Reference TodoDisplayList}, Path=BindingContext.EditItem}" 
+                                <ToolbarItem x:Name="Journey" Text="Start Journey" Command="{Binding Source={x:Reference TodoDisplayList}, Path=BindingContext.StartItem}"/>
+                                <ToolbarItem Text="Details" Order="Secondary" Command="{Binding Source={x:Reference TodoDisplayList}, Path=BindingContext.DetailsItem}" 
                                              CommandParameter="{Binding .}"/>
                                 <ToolbarItem Order="Secondary" Command="{Binding Source={x:Reference TodoDisplayList}, Path=BindingContext.Delete }" 
                                 CommandParameter="{Binding .}" Text="Delete" IsDestructive="True" />

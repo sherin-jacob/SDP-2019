@@ -14,6 +14,7 @@ namespace NZTravel2.View
 	{
         public Itinerary ItineraryToDetail { get; set; }
 
+        //displays the name,time and date; TODO in Sprint 2: display in itinerary tab
 		public ItineraryDetailPage (Itinerary itinerary)
 		{
 			InitializeComponent ();

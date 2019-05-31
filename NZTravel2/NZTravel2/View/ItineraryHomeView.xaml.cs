@@ -26,8 +26,8 @@ namespace NZTravel2.View
 
         async void Itinerary_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            //var i = (Itinerary)e.Item;
-            await Navigation.PushModalAsync(new ItineraryView());  //need to change itinerary view class file so that it displays what you clicked
+            var i = (ItineraryHome)e.Item;
+            await Navigation.PushModalAsync(new ItineraryView(i.ItineraryId));  //need to change itinerary view class file so that it displays what you clicked
         }
 
         private void HomeButtonClicked(object sender, EventArgs e)
