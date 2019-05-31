@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NZTravel2.View.RestaurantsPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="RestaurantTitle" Text="Restaurants Near You:">
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Restaurants}, Path=ItemsSource.Count}" 
+                             Value="0">
+                        <Setter Property="Text" Value="No Restaurants near your current location" />
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
+
+            <ListView x:Name="Restaurants" ItemsSource="{Binding placeList}" ItemTapped="Restaurants_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Name}" Detail="{Binding vicinity}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button x:Name="HomeButton" Clicked="HomeButtonClicked" Text="Home" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

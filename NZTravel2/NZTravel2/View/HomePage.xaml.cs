@@ -41,5 +41,9 @@ namespace NZTravel2.View
         {
             Navigation.PushModalAsync(new ItineraryHomeView());
         }
+        private void RestaurantButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new RestaurantsPage());
+        }
     }
 }

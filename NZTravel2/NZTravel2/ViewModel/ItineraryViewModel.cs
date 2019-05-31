@@ -14,7 +14,7 @@ namespace NZTravel2
 {
     public class ItineraryViewModel : BaseFodyObservable
     {
-        int j;
+        int j=-1;
         public ItineraryViewModel(INavigation navigation,int j)
         {
             _navigation = navigation;
