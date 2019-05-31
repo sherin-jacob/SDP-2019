@@ -28,7 +28,6 @@ namespace NZTravel2
             AddItem = new Command(HandleAddItem);
             DetailsItem = new Command<Itinerary>(HandleDetailItem);
             //StartItem = new Command(HandleStartItem);
-            EditItem = new Command<Itinerary>(HandleEditItem);
             ShareItinerary = new Command(HandleShare);
         }
         private INavigation _navigation;
@@ -85,7 +84,7 @@ namespace NZTravel2
         public Command ShareItinerary { get; set; }
         public async void HandleShare()
         {
-            var Itinerary = await GetGroupedItinerary();
+            var Itinerary = l;
             string ItineraryString = "Itinerary\r\n";
             foreach (var item in Itinerary)
             {
@@ -94,11 +93,8 @@ namespace NZTravel2
                     ItineraryString = "Nothing in the itinerary";
                     break;
                 }
-                foreach (Itinerary values in item)
-                {
-                    string newString = "\r\nName: " + values.Title + "\r\nTime: " + values.time + "\r\nDate: " + values.date.ToShortDateString() + "\r\n";
-                    ItineraryString += newString;
-                }
+                string newString = "\r\nName: " + item.Title + "\r\nTime: " + item.time + "\r\nDate: " + item.date.ToShortDateString() + "\r\n";
+                ItineraryString += newString;
             }
             var Fn = "Itinerary.txt";
             var file = Path.Combine(FileSystem.CacheDirectory, Fn);
