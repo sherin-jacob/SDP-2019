@@ -1,15 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="NZTravel2.View.AttractionDetailPage">
+             x:Class="NZTravel2.View.AttractionDetailPage"
+             BackgroundColor="Black">
     <ContentPage.Content>
         <StackLayout>
-            <Label x:Name="Name"/>
-            <Label x:Name="Address"/>
-            <!--<Label x:Name="OpeningHours"/>-->
-            <Label x:Name="Rating"/>
-            <Button x:Name="MapViewButton" Text="View in Maps" Clicked="MapViewButton_Clicked"/>
-            <Button x:Name="AddtoItineraryButton" Text="Add to Itinerary" Clicked="AddtoItineraryButton_Clicked"/>
+            <Label x:Name="Name" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="White"/>
+            <Image x:Name="AttractionImage"/>
+            <Label x:Name="Address" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="White"/>
+            <Label x:Name="OpenNow" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="White"/>
+            <Label x:Name="Website" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="White"/>
+            <Label x:Name="Phone" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="White"/>
+            <Label x:Name="Rating" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="White" />
+           
+            <Button x:Name="MapViewButton" 
+                    Text="View in Maps" 
+                    TextColor="White"
+                    Clicked="MapViewButton_Clicked"
+                    Image="MapIcon.png"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="200"
+                    HeightRequest="75"
+                    BorderRadius="6"
+                    BackgroundColor="Black"
+                    BorderWidth="6"
+                    BorderColor="DarkSlateGray"
+                    />
+
+            <Button x:Name="AddtoItineraryButton" 
+                    Text="Add to Itinerary" 
+                    TextColor="White"
+                    Clicked="AddtoItineraryButton_Clicked"
+                    Image="ItineraryIcon.png"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="200"
+                    HeightRequest="75"
+                    BorderRadius="6"
+                    BackgroundColor="Black"
+                    BorderColor="DarkSlateGray"
+                    BorderWidth="6"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

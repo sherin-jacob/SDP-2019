@@ -1,21 +1,55 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="NZTravel2.AddItinerary">
+             x:Class="NZTravel2.AddItinerary"
+             BackgroundColor="Black">
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" VerticalOptions="Center">
             <Entry x:Name="Entry" Text="{Binding TodoTitle}" />
-            <Label Text="Select the time yo" />
+            <Label Text="Please select the time" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White" FontSize="Medium"/>
             <TimePicker x:Name="_timePicker"
                     Time="{Binding SelectedTime}"
+                        TextColor="White"
                     Format="T"/>
-            <Label Text="Start Date:" />
+            <Label Text="Start Date:" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White" FontSize="Medium"/>
             <DatePicker x:Name="datePicker"
+                        TextColor="White"
                     Format="D"
                     Date="{Binding Date}" />
+            <Picker x:Name="Place"
+                    Title="Select an Itinerary"
+                    TitleColor="White"
+                    ItemsSource="{Binding ll}"
+                    TextColor="White"
+                    SelectedItem="{Binding si}"
+             />
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
-                <Button Text="Cancel" Command="{Binding Cancel}" />
-                <Button Text="Save" Command="{Binding Save}" />
+                <Button Text="Cancel" 
+                    TextColor="White"
+                    Command="{Binding Cancel}" 
+                    Image="cancel.png"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="200"
+                    HeightRequest="75"
+                    BorderRadius="6"
+                    BackgroundColor="Black"
+                    BorderColor="DarkSlateGray"
+                    BorderWidth="6"
+                        />
+                <Button Text="Save" 
+                    Command="{Binding Save}" 
+                    Image="save.png"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="200"
+                    HeightRequest="75"
+                    BorderRadius="6"
+                    BackgroundColor="Black"
+                    BorderColor="DarkSlateGray"
+                    BorderWidth="6"
+                    TextColor="White"
+                        />
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NZTravel2.View.Edit">
+<ContentPage.Content>
+        <StackLayout Orientation="Vertical" VerticalOptions="Center">
+            <Entry x:Name="Entry" Text="{Binding TodoTitle}" />
+            <Label Text="Please select the time" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" FontSize="Medium"/>
+            <TimePicker x:Name="_timePicker"
+                    Time="{Binding SelectedTime}"
+                        TextColor="Black"
+                    Format="T"/>
+            <Label Text="Start Date:" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" FontSize="Medium"/>
+            <DatePicker x:Name="datePicker"
+                        TextColor="Black"
+                    Format="D"
+                    Date="{Binding Date}" />
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
+                <Button Text="Cancel" 
+                    TextColor="White"
+                    Command="{Binding Cancel}" 
+                    Image="cancel.png"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="200"
+                    HeightRequest="75"
+                    BorderRadius="6"
+                    BackgroundColor="Black"
+                    BorderColor="DarkSlateGray"
+                    BorderWidth="6"
+                        />
+                <Button Text="Save" 
+                    Command="{Binding Save}" 
+                    Image="save.png"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="200"
+                    HeightRequest="75"
+                    BorderRadius="6"
+                    BackgroundColor="Black"
+                    BorderColor="DarkSlateGray"
+                    BorderWidth="6"
+                    TextColor="White"
+                        />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,8 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="NZTravel2.View.FuelPage">
-    <ContentPage.Content>
+             x:Class="NZTravel2.View.FuelPage"
+             BackgroundColor="Black"
+             >
+    
+        <ContentPage.Content>
         <StackLayout>
             <Label x:Name="FuelTitle" Text="Your Nearest Fuel Stations:">
                 <Label.Triggers>
@@ -13,14 +16,34 @@
                 </Label.Triggers>
             </Label>
             
-            <ListView x:Name="FuelStations" ItemsSource="{Binding placeList}" ItemTapped="FuelStations_ItemTapped">
+            <Label 
+                Text="Your Nearest Fuel Stations:"
+                TextColor="White"
+                HorizontalTextAlignment="Center"
+                
+                
+                
+                ></Label>
+            <ListView x:Name="FuelStations" ItemsSource="{Binding placeList}" ItemTapped="FuelStations_ItemTapped" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding Name}" Detail="{Binding vicinity}" />
+                        <TextCell Text="{Binding Name}" TextColor="Azure"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button x:Name="HomeButton" Clicked="HomeButtonClicked" Text="Home" />
+            <Button x:Name="HomeButton" 
+                    Clicked="HomeButtonClicked" 
+                    Text="Home"
+                    Image="home.png"
+                    TextColor="White"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="200"
+                    HeightRequest="75"
+                    BorderRadius="6"
+                    BackgroundColor="Black"
+                    BorderColor="DarkSlateGray"
+                    BorderWidth="6"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

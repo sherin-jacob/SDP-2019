@@ -1,10 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="NZTravel2.View.AttractionsPage">
-    <ContentPage.Content>
+             x:Class="NZTravel2.View.AttractionsPage"
+             BackgroundColor="Black">
+    <ContentPage.Content >
         <StackLayout>
-            <Label x:Name="CurrentRegion">
+            <Label x:Name="CurrentRegion" 
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" 
+                   TextColor="White" 
+                   FontSize="Medium">
                 <Label.Triggers>
                     <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Attractions}, Path=ItemsSource.Count}" 
                              Value="0">
@@ -12,10 +17,11 @@
                     </DataTrigger>
                 </Label.Triggers>
             </Label>
+            
             <ListView x:Name="Attractions" ItemsSource="{Binding placeList}" ItemTapped="Attractions_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell x:Name="CellText" Text="{Binding Name}" Detail="{Binding formatted_address}">
+                        <TextCell x:Name="CellText" Text="{Binding Name}" Detail="{Binding formatted_address}" TextColor="White">
                         </TextCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

@@ -1,13 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="NZTravel2.View.ItineraryDetailPage">
+             x:Class="NZTravel2.View.ItineraryDetailPage"
+             BackgroundColor="Black">
     <ContentPage.Content>
-        <StackLayout>
-            <Label x:Name="Name"/>
-            <Label x:Name="Time"/>
-            <Label x:Name="Date"/>
+        <StackLayout Spacing="10">
+            <Label x:Name="Name" FontSize="Medium" TextColor="White" />
+            <Label x:Name="Time" FontSize="Medium" TextColor="White" />
+            <Label x:Name="Date" FontSize="Medium" TextColor="White" />
+            <Label x:Name="ID" FontSize="Medium" TextColor="White" />
             <!--<Label x:Name="OpeningHours"/>-->
+            <Button Text="Start Journey" Clicked="Button_Clicked" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
