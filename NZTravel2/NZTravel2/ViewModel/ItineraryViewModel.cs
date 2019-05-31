@@ -27,8 +27,6 @@ namespace NZTravel2
             Delete = new Command<Itinerary>(HandleDelete);
             AddItem = new Command(HandleAddItem);
             DetailsItem = new Command<Itinerary>(HandleDetailItem);
-            //StartItem = new Command(HandleStartItem);
-            EditItem = new Command<Itinerary>(HandleEditItem);
             ShareItinerary = new Command(HandleShare);
         }
         private INavigation _navigation;
@@ -73,7 +71,7 @@ namespace NZTravel2
         public Command<Itinerary> DetailsItem { get; set; }
         public async void HandleDetailItem(Itinerary itemToView)
         {
-           await _navigation.PushModalAsync(new ItineraryDetailPage(itemToView));
+           await _navigation.PushModalAsync(new Edit(itemToView));
         }
 
 
