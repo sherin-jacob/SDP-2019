@@ -50,14 +50,8 @@ namespace NZTravel2.View
         async void Restaurants_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var Restaurant = (Place)e.Item;
-            var address = Restaurant.vicinity;
-            var locations = await Geocoding.GetLocationsAsync(address);
-            var location = locations?.FirstOrDefault();
-            var options = new MapLaunchOptions
-            {
-                Name = Restaurant.Name
-            };
-            await Map.OpenAsync(location, options);
+            await Navigation.PushModalAsync(new AttractionDetailPage(Restaurant, "fuel"));
+            Restaurants.SelectedItem = null;
         }
 
         //button links to the Home page
