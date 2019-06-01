@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NZTravel2.View.EmergencyPage"
+             BackgroundColor="Black">
+    <ContentPage.Content BackgroundColor="Black">
+        <StackLayout>
+            <Label Text="Emergency Contacts"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" 
+                   TextColor="White"
+                   />
+
+
+            <Button x:Name="PoliceButton" 
+                    Clicked="PoliceButton_Clicked" 
+                    Text="Police" 
+                    BorderColor="DarkSlateGray"
+                    TextColor="White"
+                    BorderRadius="6"
+                    BackgroundColor="Black"
+                    BorderWidth="6"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="200" 
+                    HeightRequest="75"
+                    Image="ic_police.png"/>
+
+            <Button x:Name="TrafficButton" 
+                    Clicked="TrafficButton_Clicked" 
+                    Text="Minor Traffic Incident" 
+                    BorderColor="DarkSlateGray"
+                    TextColor="White"
+                    BorderRadius="6"
+                    BackgroundColor="Black"
+                    BorderWidth="6"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="200" 
+                    HeightRequest="75"
+                    Image="ic_traffic.png"/>
+
+            <Button x:Name="AmbulanceButton" 
+                    Clicked="Ambulance_Clicked" 
+                    Text="Ambulance" 
+                    BorderColor="DarkSlateGray"
+                    TextColor="White"
+                    BorderRadius="6"
+                    BackgroundColor="Black"
+                    BorderWidth="6"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="200" 
+                    HeightRequest="75"
+                    Image="ic_hospital.png"/>
+
+            <Button x:Name="AAButton" 
+                    Clicked="AAButton_Clicked" 
+                    Text="AA Roadside Assitance" 
+                    BorderColor="DarkSlateGray"
+                    TextColor="White"
+                    BorderRadius="6"
+                    BackgroundColor="Black"
+                    BorderWidth="6"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="200" 
+                    HeightRequest="75"
+                    Image="ic_aa.png"/>
+
+
+
+
+
+            <Button x:Name="HomeButton" 
+                    Clicked="HomeButtonClicked" 
+                    Text="Home" 
+                    BorderColor="DarkSlateGray"
+                    TextColor="White"
+                    BorderRadius="6"
+                    BackgroundColor="Black"
+                    BorderWidth="6"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="200" 
+                    HeightRequest="75"
+                    Image="home.png"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

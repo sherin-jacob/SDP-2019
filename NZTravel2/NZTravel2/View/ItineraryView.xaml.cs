@@ -1,9 +1,7 @@
 ﻿using NZTravel2.View;
 using System;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using static Android.Widget.AdapterView;
 
 namespace NZTravel2
 {

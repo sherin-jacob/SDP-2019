@@ -73,5 +73,50 @@ namespace NZTravel2.View
         {
             Navigation.PushModalAsync(new HomePage());
         }
+
+        private void TasmanRegionButton_Clicked(object sender, EventArgs e)
+        {
+            string region = "Tasman";
+            Navigation.PushModalAsync(new AttractionsPage(region));
+        }
+
+        private void NelsonRegionButton_Clicked(object sender, EventArgs e)
+        {
+            string region = "Nelson";
+            Navigation.PushModalAsync(new AttractionsPage(region));
+
+        }
+
+        private void MarlboroughRegionButton_Clicked(object sender, EventArgs e)
+        {
+            string region = "Marlborough";
+            Navigation.PushModalAsync(new AttractionsPage(region));
+
+        }
+
+        private void WestCoastRegionButton_Clicked(object sender, EventArgs e)
+        {
+            string region = "West Coast";
+            Navigation.PushModalAsync(new AttractionsPage(region));
+        }
+
+        private void CanterburyRegionButton_Clicked(object sender, EventArgs e)
+        {
+            string region = "Canterbury";
+            Navigation.PushModalAsync(new AttractionsPage(region));
+        }
+
+        private void OtagoRegionButton_Clicked(object sender, EventArgs e)
+        {
+            string region = "Otago";
+            Navigation.PushModalAsync(new AttractionsPage(region));
+
+        }
+
+        private void SouthlandRegionButton_Clicked(object sender, EventArgs e)
+        {
+            string region = "Southland";
+            Navigation.PushModalAsync(new AttractionsPage(region));
+        }
     }
 }

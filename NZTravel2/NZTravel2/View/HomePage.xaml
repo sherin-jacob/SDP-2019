@@ -73,6 +73,20 @@
                     WidthRequest="200" 
                     HeightRequest="75"/>
 
+            <Button x:Name="EmergencyButton" 
+                    Text="Emergency Contacts" 
+                    TextColor="White"
+                    BackgroundColor="Black"
+                    BorderColor="DarkSlateGray"
+                    BorderWidth="6"
+                    BorderRadius="6"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="Center"
+                    Image="ic_emergency.png"
+                    Clicked="EmergencyButton_Clicked"
+                    WidthRequest="200" 
+                    HeightRequest="75"/>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
