@@ -3,7 +3,7 @@ using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using static Android.Widget.AdapterView;
+
 
 namespace NZTravel2
 {
@@ -15,14 +15,14 @@ namespace NZTravel2
         {
             InitializeComponent();
             this.j = j;
-            BindingContext = new ItineraryViewModel(Navigation,j);
+            BindingContext = new ItineraryViewModel(Navigation, j);
         }
 
         //Refreshes the Itinerary when an item is added
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            await (BindingContext as ItineraryViewModel).RefreshTaskList(); 
+            await (BindingContext as ItineraryViewModel).RefreshTaskList();
         }
 
         // When an item is click, takes the user to another page which contains details of the itinerary
@@ -46,6 +46,6 @@ namespace NZTravel2
             Navigation.PushModalAsync(new HomePage()); // When home is clicked, takes user back to home page
         }
 
-     
+
     }
 }
