@@ -65,7 +65,7 @@
                     HeightRequest="75"/>
 
             <Button x:Name="RestaurantButton" 
-                    Text="Restaurant" 
+                    Text="Restaurants" 
                     TextColor="White"
                     BackgroundColor="Black"
                     BorderColor="DarkSlateGray"
