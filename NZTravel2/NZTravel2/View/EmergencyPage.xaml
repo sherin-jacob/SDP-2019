@@ -17,19 +17,7 @@
                    TextColor="White"/>
 
 
-            <Button x:Name="PoliceButton" 
-                    Clicked="PoliceButton_Clicked" 
-                    Text="Police" 
-                    BorderColor="DarkSlateGray"
-                    TextColor="White"
-                    BorderRadius="6"
-                    BackgroundColor="Black"
-                    BorderWidth="6"
-                    VerticalOptions="CenterAndExpand"
-                    HorizontalOptions="CenterAndExpand"
-                    WidthRequest="200" 
-                    HeightRequest="75"
-                    Image="ic_police.png"/>
+           
 
             <Button x:Name="TrafficButton" 
                     Clicked="TrafficButton_Clicked" 
