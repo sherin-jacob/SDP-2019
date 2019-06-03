@@ -10,7 +10,20 @@
             <Label x:Name="Date" FontSize="Medium" TextColor="White" />
             <Label x:Name="ID" FontSize="Medium" TextColor="White" />
             <!--<Label x:Name="OpeningHours"/>-->
-            <Button Text="Start Journey" Clicked="Button_Clicked" />
+            <Button Text="Start Journey"
+                    Clicked="Button_Clicked"
+                    TextColor="White"
+                    BorderRadius="6"
+                    BackgroundColor="Black"
+                    BorderColor="DarkSlateGray"
+                    BorderWidth="6"
+                    VerticalOptions="Center"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="200" 
+                    HeightRequest="75"
+                    Image="ic_journey.png"
+                    
+                     />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
