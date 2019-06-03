@@ -11,13 +11,10 @@
                    TextColor="White"
                    />
             <Label
-                Text="Current Location"
+                x:Name ="CurrentLocation"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" 
                    TextColor="White"/>
-
-
-           
 
             <Button x:Name="TrafficButton" 
                     Clicked="TrafficButton_Clicked" 
@@ -35,7 +32,7 @@
 
             <Button x:Name="AmbulanceButton" 
                     Clicked="Ambulance_Clicked" 
-                    Text="Ambulance" 
+                    Text="Police/Ambulance/Fire" 
                     BorderColor="DarkSlateGray"
                     TextColor="White"
                     BorderRadius="6"

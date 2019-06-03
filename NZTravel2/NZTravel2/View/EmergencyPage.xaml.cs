@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Plugin.Messaging;
+using Plugin.Geolocator;
+using Xamarin.Essentials;
 
 namespace NZTravel2.View
 {
@@ -18,30 +20,51 @@ namespace NZTravel2.View
         public EmergencyPage()
         {
             InitializeComponent();
+            RetrieveLocation();
         }
 
+        async Task RetrieveLocation()
+        {
+            var locator = CrossGeolocator.Current;
+            locator.DesiredAccuracy = 20;
+            var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(120));
 
+            //assigns values to global variables latitude and longitude
+            var longitude = position.Longitude;
+            var latitude = position.Latitude;
+
+            //reverse geocode
+            var placemarks = await Geocoding.GetPlacemarksAsync(latitude, longitude);
+
+            var placemark = placemarks?.FirstOrDefault();
+            if (placemark != null)
+            {
+                var geocodeAddress =
+                    $"Current Location: {placemark.SubThoroughfare} " +
+                    $"{placemark.Thoroughfare}\n" +
+                    $"{placemark.SubLocality}\n" +
+                    $"{placemark.Locality}\n" +
+                    $"{placemark.AdminArea} " +
+                    $"{placemark.PostalCode}\n" +
+                    $"Latitude: {latitude.ToString()}\n" +
+                    $"Longitude: {longitude.ToString()}\n";
+
+                CurrentLocation.Text = geocodeAddress;
+            }
+        }
 
         private void TrafficButton_Clicked(object sender, EventArgs e)
         {
             var phoneDialer = CrossMessaging.Current.PhoneDialer;
             if (phoneDialer.CanMakePhoneCall)
                 phoneDialer.MakePhoneCall("*555");
-
-        }
-
-        private void PoliceButton_Clicked(object sender, EventArgs e)
-        {
-            var phoneDialer = CrossMessaging.Current.PhoneDialer;
-            if (phoneDialer.CanMakePhoneCall)
-                phoneDialer.MakePhoneCall("111");
         }
 
         private void Ambulance_Clicked(object sender, EventArgs e)
         {
             var phoneDialer = CrossMessaging.Current.PhoneDialer;
             if (phoneDialer.CanMakePhoneCall)
-                phoneDialer.MakePhoneCall("0800426285");
+                phoneDialer.MakePhoneCall("111");
         }
 
         private void AAButton_Clicked(object sender, EventArgs e)
