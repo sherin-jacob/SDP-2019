@@ -14,13 +14,10 @@ namespace NZTravel2.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EmergencyPage : ContentPage
     {
-
         public EmergencyPage()
         {
             InitializeComponent();
         }
-
-
 
         private void TrafficButton_Clicked(object sender, EventArgs e)
         {

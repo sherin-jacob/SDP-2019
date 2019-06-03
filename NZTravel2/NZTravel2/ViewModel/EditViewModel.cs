@@ -13,6 +13,7 @@ namespace NZTravel2.ViewModel
         public TimeSpan SelectedTime { get; set; }
         public DateTime Date { get; set; }
         public INavigation _navigation;
+
         public ILookup<string, Itinerary> GroupedItinerary { get; set; }
         public EditViewModel(INavigation navigation, TimeSpan t, DateTime d,Itinerary i)
         {
@@ -28,6 +29,11 @@ namespace NZTravel2.ViewModel
             Cancel = new Command(HandleCancel);
 
         }
+
+        public EditViewModel()
+        {
+        }
+
         private async Task<ILookup<string, Itinerary>> GetGroupedItinerary()
         {
             return (await App.ItineraryRepository.GetList())

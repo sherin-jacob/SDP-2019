@@ -10,31 +10,39 @@ using NZTravel2.View;
 using Plugin.Geolocator;
 using Xamarin.Forms;
 
+
 namespace NZTravel2.ViewModel
 {
-    class RestaurantPageViewModel
+    class RestaurantsPageViewModel
     {
-        private double lat, longi;
+        private double lat;
+        private double longi;
+
         private ObservableCollection<Place> PlaceList;
         public ObservableCollection<Place> placeList
         {
-            get { return PlaceList; }
+            get
+            {
+                return PlaceList;
+            }
             set => PlaceList = value;
         }
 
-        public RestaurantPageViewModel(double latitude, double longitude)
+        public RestaurantsPageViewModel(double latitude, double longitude)
         {
-            lat = latitude;
+
+            lat = longitude;
             longi = longitude;
             GetNearbyPlacesAsync();
+
         }
 
-        public RestaurantPageViewModel()
+        public RestaurantsPageViewModel()
         {
             GetNearbyPlacesAsync();
         }
 
-        //this function uses the current location to find places of type restaurant nearby
+        //Finding restaurants in near the users current location
         async void GetNearbyPlacesAsync()
         {
             placeList = new ObservableCollection<Place>();
@@ -43,26 +51,33 @@ namespace NZTravel2.ViewModel
             await RetrieveLocation();
             string latitude = lat.ToString();
             string longitude = longi.ToString();
-            string restUrl = $"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + latitude + "," + longitude + "&type=restaurant&rankby=distance&key=AIzaSyDsihFkzPZuiJEVZd8tzrodeVe84ttZkRk";
+
+            // need key for restaurant location
+            // edit below to match restaurants
+            string restUrl = $"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + latitude + "," + longitude + "&type=laundry&rankby=distance&key=AIzaSyDsihFkzPZuiJEVZd8tzrodeVe84ttZkRk";
             var uri = new Uri(restUrl);
             var response = await client.GetAsync(uri);
+
             if (response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
                 rootObject = JsonConvert.DeserializeObject<RootObject>(content);
             }
+
             else
             {
+                // An error occurs then a message is displayed on the home screen
                 await Application.Current.MainPage.DisplayAlert("No web response", "Unable to retrieve information, please try again", "OK");
             }
-            //adds each result to the placeList for display purposes
+
+            // Each result is added to the placeList to display 
             foreach (var item in rootObject.results)
             {
                 placeList.Add(item);
             }
         }
 
-        //gets the current location of the device
+        // get the current location of the device 
         async Task RetrieveLocation()
         {
             var locator = CrossGeolocator.Current;
@@ -74,4 +89,7 @@ namespace NZTravel2.ViewModel
         }
 
     }
+
+
 }
+

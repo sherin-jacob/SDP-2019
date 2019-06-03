@@ -25,7 +25,6 @@ namespace NZTravel2.View
 
         public RestaurantPage()
         {
-            
             BindingContext = new RestaurantPageViewModel();
             InitializeComponent();
         }

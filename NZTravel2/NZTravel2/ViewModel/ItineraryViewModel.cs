@@ -27,8 +27,9 @@ namespace NZTravel2
             Delete = new Command<Itinerary>(HandleDelete);
             AddItem = new Command(HandleAddItem);
             DetailsItem = new Command<Itinerary>(HandleDetailItem);
-            ShareItinerary = new Command(HandleShare);
+            
         }
+
         private INavigation _navigation;
         private async Task<ILookup<string, Itinerary>> GetGroupedItinerary()
         {
@@ -80,7 +81,7 @@ namespace NZTravel2
             GroupedItinerary = await GetGroupedItinerary(); // Refreshes the itinerary
         }
 
-        public Command ShareItinerary { get; set; }
+        public Command ShareItinerary{ get; set; }
         public async void HandleShare()
         {
             var Itinerary = l;
@@ -107,5 +108,6 @@ namespace NZTravel2
         public ILookup<string, Itinerary> GroupedItinerary { get; set; }
         public string Title => "Itinerary";
         public ObservableCollection<Itinerary> l { get; set; }
+        public static object ItineraryTest { get; set; }
     }
 }
