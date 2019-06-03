@@ -36,16 +36,13 @@ namespace NZTravel2.View
             var locator = CrossGeolocator.Current;
             locator.DesiredAccuracy = 20;
             var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(120));
-
             //assigns values to global variables latitude and longitude
             longitude = position.Longitude;
             latitude = position.Latitude;
-
             //moves the map to the specified position
             map.MoveToRegion(
                 MapSpan.FromCenterAndRadius(new Position(position.Latitude, position.Longitude),
                 Distance.FromMiles(0.5)));
-
             //adds a pin to the map with the Label 'Current Position'
             map.Pins.Add(new Pin
             {
@@ -53,9 +50,9 @@ namespace NZTravel2.View
                 Label = "Current Position",
                 Position = new Position(position.Latitude, position.Longitude)
             });
-
         }
 
+        //functions for unit testing
         public double Longitude()
         {
             return longitude;
@@ -74,8 +71,10 @@ namespace NZTravel2.View
         //function that runs when the enter or search button is pressed
         public void OnSearchButtonPress(object sender, System.EventArgs e)
         {
-            var text = SearchBar.Text; //gets text in the search bar
-            GetPlace(text); //passes the text to the async function GetPlace
+            //gets text in the search bar
+            var text = SearchBar.Text;
+            //passes the text to the async function GetPlace
+            GetPlace(text); 
         }
 
         //async function used to call the ShowPlace function because can't be called directly from OnSearchButtonPress
@@ -83,6 +82,8 @@ namespace NZTravel2.View
         {
             await ShowPlace(text);
         }
+
+        //button links back to Home page
         private void HomeButtonClicked(object sender, EventArgs e)
         {
             Navigation.PushModalAsync(new HomePage());
@@ -91,9 +92,11 @@ namespace NZTravel2.View
         //shows results of what was searched in the map page
         public async Task ShowPlace(string text)
         {
-            map.Pins.Clear(); //clears all pins on the map
+            //clears all pins on the map
+            map.Pins.Clear(); 
             Geocoder gc = new Geocoder();
-            IEnumerable<Position> result = await gc.GetPositionsForAddressAsync(text); //get all possible results for that text
+            //get all possible results for that text
+            IEnumerable<Position> result = await gc.GetPositionsForAddressAsync(text); 
             //go through each result returned and put a pin on that position
             //the map will be moved to the last position in the list
             foreach (Position pos in result)

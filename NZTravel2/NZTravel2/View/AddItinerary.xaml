@@ -16,6 +16,13 @@
                         TextColor="White"
                     Format="D"
                     Date="{Binding Date}" />
+            <Picker x:Name="Place"
+                    Title="Select an Itinerary"
+                    TitleColor="White"
+                    ItemsSource="{Binding ll}"
+                    TextColor="White"
+                    SelectedItem="{Binding si}"
+             />
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
                 <Button Text="Cancel" 
                     TextColor="White"

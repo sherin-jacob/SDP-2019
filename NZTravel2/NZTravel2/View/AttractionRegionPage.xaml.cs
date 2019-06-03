@@ -17,8 +17,7 @@ namespace NZTravel2.View
             InitializeComponent();
         }
 
-        //for each region in the North Island there is a button which when clicked opens page showing attractions in the selected region
-
+        //for each region in NZ there is a button which when clicked opens page showing attractions in the selected region
         private void CurrentRegionButton_Clicked(object sender, EventArgs e)
         {
             string region = "current";
@@ -72,6 +71,42 @@ namespace NZTravel2.View
         private void HomeButtonClicked(object sender, EventArgs e)
         {
             Navigation.PushModalAsync(new HomePage());
+        }
+        private void TasmanRegionButton_Clicked(object sender, EventArgs e)
+        {
+            string region = "Tasman";
+            Navigation.PushModalAsync(new AttractionsPage(region));
+        }
+        private void NelsonRegionButton_Clicked(object sender, EventArgs e)
+        {
+            string region = "Nelson";
+            Navigation.PushModalAsync(new AttractionsPage(region));
+        }
+        private void MarlboroughRegionButton_Clicked(object sender, EventArgs e)
+        {
+            string region = "Marlborough";
+            Navigation.PushModalAsync(new AttractionsPage(region));
+
+        }
+        private void WestCoastRegionButton_Clicked(object sender, EventArgs e)
+        {
+            string region = "West Coast";
+            Navigation.PushModalAsync(new AttractionsPage(region));
+        }
+        private void CanterburyRegionButton_Clicked(object sender, EventArgs e)
+        {
+            string region = "Canterbury";
+            Navigation.PushModalAsync(new AttractionsPage(region));
+        }
+        private void OtagoRegionButton_Clicked(object sender, EventArgs e)
+        {
+            string region = "Otago";
+            Navigation.PushModalAsync(new AttractionsPage(region));
+        }
+        private void SouthlandRegionButton_Clicked(object sender, EventArgs e)
+        {
+            string region = "Southland";
+            Navigation.PushModalAsync(new AttractionsPage(region));
         }
     }
 }

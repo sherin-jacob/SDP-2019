@@ -24,10 +24,10 @@
                 
                 
                 ></Label>
-            <ListView x:Name="FuelStations" ItemsSource="{Binding placeList}" ItemTapped="FuelStations_ItemTapped">
+            <ListView x:Name="FuelStations" ItemsSource="{Binding placeList}" ItemTapped="FuelStations_ItemTapped"  >
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding Name}" Detail="{Binding vicinity}" TextColor="Azure"/>
+                    <TextCell Text="{Binding Name}" TextColor="Azure" />
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
