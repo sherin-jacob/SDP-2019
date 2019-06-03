@@ -19,13 +19,13 @@
                 IsGroupingEnabled="True"
                 GroupDisplayBinding="{Binding Key}"
                 x:Name="TodoDisplayList"
-                BackgroundColor="White"
+                BackgroundColor="Black"
                 ItemTapped="Itinerary_ItemTapped">
 
                 <ListView.ItemTemplate>
-                    <DataTemplate>
+                    <DataTemplate >
                         <TextCell Text="{Binding Name}"
-                                  TextColor="Black">
+                                  TextColor="White">
                             <TextCell.ContextActions>
                                 <ToolbarItem Command="{Binding Source={x:Reference TodoDisplayList}, Path=BindingContext.Delete }" 
                                 CommandParameter="{Binding .}" Text="Delete" IsDestructive="True" />
@@ -37,7 +37,16 @@
             
             <Button Command="{Binding AddItem}" 
                     Text="Create New Itinerary" 
+                    BorderColor="DarkSlateGray"
                     TextColor="White"
+                    BorderRadius="6"
+                    BackgroundColor="Black"
+                    BorderWidth="6"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="200" 
+                    HeightRequest="75"
+                    Image="ItineraryIcon.png"
                     />
 
             <Button x:Name="HomeButton" 

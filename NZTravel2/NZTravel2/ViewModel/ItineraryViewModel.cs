@@ -15,7 +15,7 @@ namespace NZTravel2
     public class ItineraryViewModel : BaseFodyObservable
     {
         public int j = -1;
-        public ItineraryViewModel(INavigation navigation,int j)
+        public ItineraryViewModel(INavigation navigation, int j)
         {
             _navigation = navigation;
             GetGroupedItinerary().ContinueWith(t =>
@@ -33,7 +33,7 @@ namespace NZTravel2
         private async Task<ILookup<string, Itinerary>> GetGroupedItinerary()
         {
             l.Clear();
-            List<Itinerary> k =await  App.ItineraryRepository.GetList();
+            List<Itinerary> k = await App.ItineraryRepository.GetList();
             if (k.Count != 0)
             {
                 for (int i = 0; i < k.Count; i++)
@@ -46,7 +46,7 @@ namespace NZTravel2
             }
             return (await App.ItineraryRepository.GetList())
                                 .ToLookup(t => t.IsCompleted ? "Completed" : "Your Itinerary");
-                              
+
         }
 
         // This function handles what happens when an item is deleted from the database
@@ -71,7 +71,7 @@ namespace NZTravel2
         public Command<Itinerary> DetailsItem { get; set; }
         public async void HandleDetailItem(Itinerary itemToView)
         {
-           await _navigation.PushModalAsync(new Edit(itemToView));
+            await _navigation.PushModalAsync(new Edit(itemToView));
         }
 
 

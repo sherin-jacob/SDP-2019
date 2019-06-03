@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NZTravel2.View.RestaurantsPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label x:Name="RestaurantTitle" Text="Restaurants Near You:">
+        <StackLayout BackgroundColor="Black">
+            <Label x:Name="RestaurantTitle" Text="Restaurants Near You:" TextColor="White" HorizontalTextAlignment="Center">
                 <Label.Triggers>
                     <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Restaurants}, Path=ItemsSource.Count}" 
                              Value="0">
@@ -16,11 +16,23 @@
             <ListView x:Name="Restaurants" ItemsSource="{Binding placeList}" ItemTapped="Restaurants_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding Name}" Detail="{Binding vicinity}" />
+                        <TextCell Text="{Binding Name}" Detail="{Binding vicinity}" TextColor="White" />
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button x:Name="HomeButton" Clicked="HomeButtonClicked" Text="Home" />
+            <Button x:Name="HomeButton" 
+                    Clicked="HomeButtonClicked" 
+                    Text="Home" 
+                    BorderColor="DarkSlateGray"
+                    TextColor="White"
+                    BorderRadius="6"
+                    BackgroundColor="Black"
+                    BorderWidth="6"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="200" 
+                    HeightRequest="75"
+                    Image="home.png"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

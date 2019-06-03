@@ -4,6 +4,7 @@
              x:Class="NZTravel2.View.HomePage"
              BackgroundColor="Black">
     <ContentPage.Content BackgroundColor="Black">
+        <ScrollView>
         <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="50" >
             <Button x:Name="MapButton" 
                     Text="MAP"
@@ -64,7 +65,7 @@
                     HeightRequest="75"/>
 
             <Button x:Name="RestaurantButton" 
-                    Text="RESTAURANT" 
+                    Text="Restaurants" 
                     TextColor="White"
                     BackgroundColor="Black"
                     BorderColor="DarkSlateGray"
@@ -72,11 +73,26 @@
                     BorderRadius="6"
                     HorizontalOptions="CenterAndExpand"
                     VerticalOptions="Center"
-                    Image="ItineraryIcon.png"
+                    Image="Restaurants_icon.png"
                     Clicked="RestaurantButton_Clicked"
                     WidthRequest="200" 
                     HeightRequest="75"/>
 
+            <Button x:Name="EmergencyButton" 
+                    Text="Emergency Contacts" 
+                    TextColor="White"
+                    BackgroundColor="Black"
+                    BorderColor="DarkSlateGray"
+                    BorderWidth="6"
+                    BorderRadius="6"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="Center"
+                    Image="ic_emergency.png"
+                    Clicked="EmergencyButton_Clicked"
+                    WidthRequest="200" 
+                    HeightRequest="75"/>
+
         </StackLayout>
+            </ScrollView>
     </ContentPage.Content>
 </ContentPage>
