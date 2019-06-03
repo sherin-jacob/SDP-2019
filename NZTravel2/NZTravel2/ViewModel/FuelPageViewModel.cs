@@ -29,6 +29,7 @@ namespace NZTravel2.ViewModel
             GetNearbyPlacesAsync();
         }
 
+        //default constructor
         public FuelPageViewModel()
         {
             GetNearbyPlacesAsync();
@@ -43,7 +44,8 @@ namespace NZTravel2.ViewModel
             await RetrieveLocation();
             string latitude = lat.ToString();
             string longitude = longi.ToString();
-            string restUrl = $"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + latitude + "," + longitude + "&type=gas_station&rankby=distance&key=AIzaSyDsihFkzPZuiJEVZd8tzrodeVe84ttZkRk";
+            string restUrl = $"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + latitude + "," 
+                + longitude + "&type=gas_station&rankby=distance&key=AIzaSyDsihFkzPZuiJEVZd8tzrodeVe84ttZkRk";
             var uri = new Uri(restUrl);
             var response = await client.GetAsync(uri);
             if (response.IsSuccessStatusCode)
@@ -53,7 +55,8 @@ namespace NZTravel2.ViewModel
             }
             else
             {
-                await Application.Current.MainPage.DisplayAlert("No web response", "Unable to retrieve information, please try again", "OK");
+                await Application.Current.MainPage.DisplayAlert("No web response", 
+                    "Unable to retrieve information, please try again", "OK");
             }
             //adds each result to the placeList for display purposes
             foreach (var item in rootObject.results)
@@ -68,7 +71,6 @@ namespace NZTravel2.ViewModel
             var locator = CrossGeolocator.Current;
             locator.DesiredAccuracy = 20;
             var position = await locator.GetPositionAsync();
-
             longi = position.Longitude;
             lat = position.Latitude;
         }

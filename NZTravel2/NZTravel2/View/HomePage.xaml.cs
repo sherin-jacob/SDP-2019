@@ -17,7 +17,8 @@ namespace NZTravel2.View
 			InitializeComponent ();
 		}
 
-        //button links to the map page and displays an alert letting the user know they need to have the location services on for it to work
+        /*button links to the map page and displays an alert letting the user know they need to have the 
+            location services on for it to work*/
         void MapButtonClicked(object sender, EventArgs e)
         {
             DisplayAlert("Location Services", "Location Services must be turned on to view your current location", "OK");
@@ -41,11 +42,14 @@ namespace NZTravel2.View
         {
             Navigation.PushModalAsync(new ItineraryHomeView());
         }
+
+        //button links to the restaurants page
         private void RestaurantButton_Clicked(object sender, EventArgs e)
         {
             Navigation.PushModalAsync(new RestaurantsPage());
         }
 
+        //button links to the emergency page
         private void EmergencyButton_Clicked(object sender, EventArgs e)
         {
             Navigation.PushModalAsync(new EmergencyPage());

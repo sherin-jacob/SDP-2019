@@ -8,16 +8,22 @@ namespace NZTravel2.Persistence
 {
     public class ItineraryRepository
     {
-        private readonly SQLiteAsyncConnection _database; //used to make a connection to the database
+        //used to make a connection to the database
+        private readonly SQLiteAsyncConnection _database;
+
         public ItineraryRepository()
         {
             _database = new SQLiteAsyncConnection(DependencyService.Get<IFileHelper>().GetLocalFilePath("TodoSQLite.db3"));
-            _database.CreateTableAsync<Itinerary>().Wait(); //Creates a table in the itinerarys
+            //Creates tables in the database
+            _database.CreateTableAsync<Itinerary>().Wait(); 
             _database.CreateTableAsync<ItineraryHome>().Wait();
         }
-        private List<Itinerary> _seedTodoList = new List<Itinerary>{}; // sets the default list
+
+        //sets the default lists
+        private List<Itinerary> _seedTodoList = new List<Itinerary>{}; 
         private List<ItineraryHome> _seedToDoList2 = new List<ItineraryHome> {};
-        //gets items in database
+
+        //gets items in a table
         public async Task<List<Itinerary>> GetList()
         {
             return await _database.Table<Itinerary>().ToListAsync(); //gets list of items from database
@@ -27,31 +33,30 @@ namespace NZTravel2.Persistence
             return await _database.Table<ItineraryHome>().ToListAsync();
         }
 
+        //deletes items in a table
         public Task DeleteItem(Itinerary itemToDelete)
         {
-            return _database.DeleteAsync(itemToDelete); //Deletes item from database
+            return _database.DeleteAsync(itemToDelete); 
         }
-
         public Task DeleteItinerary(ItineraryHome itemToDelete)
         {
-            return _database.DeleteAsync(itemToDelete); //Deletes item from database
+            return _database.DeleteAsync(itemToDelete); 
         }
 
-
-        //adds item to database
+        //adds item to a table
         public Task AddItem(Itinerary itemToAdd)
         {
-            return _database.InsertAsync(itemToAdd); //Adds item to database
+            return _database.InsertAsync(itemToAdd); 
         }
-
         public Task AddItinerary(ItineraryHome itemToAdd)
         {
             return _database.InsertAsync(itemToAdd);
         }
 
+        // Returns number of rows in a table
         public async Task<int> countAsync()
         {
-            return await _database.Table<Itinerary>().CountAsync();// Returns number of rows in the database
+            return await _database.Table<Itinerary>().CountAsync();
         }
     }
 }

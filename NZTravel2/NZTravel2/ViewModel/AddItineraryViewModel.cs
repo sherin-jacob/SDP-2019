@@ -19,6 +19,7 @@ namespace NZTravel2
         public ILookup<string, Itinerary> GroupedItinerary { get; set; }
         public List<ItineraryHome> k;
         public Object si { get; set; }
+
         public AddItineraryViewModel(INavigation navigation, string PlaceName, TimeSpan time, DateTime date)
         {
             _navigation = navigation;
@@ -34,6 +35,7 @@ namespace NZTravel2
             Cancel = new Command(HandleCancel);
         }
 
+        //gets items in the Itinerary table and adds them to a observable collection
         private async Task<ILookup<string, Itinerary>> GetGroupedItinerary()
         {
              k = await App.ItineraryRepository.GetItineraries();
@@ -43,9 +45,9 @@ namespace NZTravel2
             }
             return (await App.ItineraryRepository.GetList())
                                 .ToLookup(t => t.IsCompleted ? "Completed" : "Your Itinerary");
-
         }
-        //Saves the new item in the database
+
+        //Saves the new item in the Itinerary table
         public Command Save { get; set; }
         public async void HandleSave()
         {
@@ -54,11 +56,14 @@ namespace NZTravel2
 
                 if(ll[i].Equals(si.ToString()))
                 {
-                    await App.ItineraryRepository.AddItem(new Itinerary { Title = placeName, time = SelectedTime, date = Date, ItineraryId=k[i].ItineraryId }); //this adds item to the database
+                    //this adds item to the database
+                    await App.ItineraryRepository.AddItem(new Itinerary { Title = placeName, time = SelectedTime,
+                        date = Date, ItineraryId=k[i].ItineraryId }); 
                 }
             }
-            await App.ItineraryRepository.AddItem(new Itinerary { Title = placeName, time=SelectedTime, date = Date}); //this adds item to the database
-            await _navigation.PopModalAsync(); // this pops the most recent page created
+            await App.ItineraryRepository.AddItem(new Itinerary { Title = placeName, time=SelectedTime, date = Date});
+            // this pops the most recent page created
+            await _navigation.PopModalAsync(); 
         }
 
         //This function handles what happens when cancel is pressed when adding a new item

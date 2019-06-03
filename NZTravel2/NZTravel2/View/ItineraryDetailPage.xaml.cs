@@ -14,7 +14,7 @@ namespace NZTravel2.View
 	{
         public Itinerary ItineraryToDetail { get; set; }
 
-        //displays the name,time and date; TODO in Sprint 2: display in itinerary tab
+        //displays the name,time and date
 		public ItineraryDetailPage (Itinerary itinerary)
 		{
 			InitializeComponent ();
@@ -24,9 +24,9 @@ namespace NZTravel2.View
             ItineraryToDetail = itinerary;
 		}
 
+        //opens location selected in Google Maps 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            //open google maps using xamarin.essentials
             var address = ItineraryToDetail.Title;
             var locations = await Geocoding.GetLocationsAsync(address);
             var location = locations?.FirstOrDefault();

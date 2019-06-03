@@ -18,21 +18,22 @@ namespace NZTravel2.ViewModel
             Cancel = new Command(HandleCancel);
         }
 
-        //Saves the new item in the database
+        //Saves the new item in the ItineraryHome table
         public Command Save { get; set; }
         public async void HandleSave()
         {
             if (Itinerary.Text == null)
             {
-                await App.ItineraryRepository.AddItinerary(new ItineraryHome { Name = "New Itinerary" }); //this adds item to the database
-                
+                //this adds item to the ItineraryHome table
+                await App.ItineraryRepository.AddItinerary(new ItineraryHome { Name = "New Itinerary" }); 
             }
             else if (Itinerary.Text.Length > 0)
             {
-                await App.ItineraryRepository.AddItinerary(new ItineraryHome { Name = Itinerary.Text}); //this adds item to the database
+                await App.ItineraryRepository.AddItinerary(new ItineraryHome { Name = Itinerary.Text}); 
 
             }
-            await _navigation.PopModalAsync(); // this pops the most recent page created
+            //this pops the most recent page created
+            await _navigation.PopModalAsync(); 
         }
 
         //This function handles what happens when cancel is pressed when adding a new item

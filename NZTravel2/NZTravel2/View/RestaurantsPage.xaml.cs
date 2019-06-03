@@ -25,11 +25,11 @@ namespace NZTravel2.View
 
         public RestaurantsPage()
         {
-
             BindingContext = new RestaurantPageViewModel();
             InitializeComponent();
         }
 
+        //async function to run the await statement
         async void Display()
         {
             await RetrieveLocation();
@@ -41,7 +41,6 @@ namespace NZTravel2.View
             var locator = CrossGeolocator.Current;
             locator.DesiredAccuracy = 20;
             var position = await locator.GetPositionAsync();
-
             longi = position.Longitude;
             lat = position.Latitude;
         }

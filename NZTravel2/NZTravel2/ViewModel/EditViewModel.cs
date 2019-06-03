@@ -14,6 +14,7 @@ namespace NZTravel2.ViewModel
         public DateTime Date { get; set; }
         public INavigation _navigation;
         public ILookup<string, Itinerary> GroupedItinerary { get; set; }
+
         public EditViewModel(INavigation navigation, TimeSpan t, DateTime d,Itinerary i)
         {
             oldi = i;
@@ -28,19 +29,27 @@ namespace NZTravel2.ViewModel
             Cancel = new Command(HandleCancel);
 
         }
+
+        //gets items in the Itinerary table as a list
         private async Task<ILookup<string, Itinerary>> GetGroupedItinerary()
         {
             return (await App.ItineraryRepository.GetList())
                                 .ToLookup(ti => ti.IsCompleted ? "Completed" : "Your Itinerary");
 
         }
+
+        //Saves the new item in the Itinerary table
         public Command Save { get; set; }
         public async void HandleSave()
         {
             await App.ItineraryRepository.DeleteItem(oldi);
-            await App.ItineraryRepository.AddItem(new Itinerary { time = SelectedTime, date = Date, ItineraryId = oldi.ItineraryId, Title = oldi.Title }); //this adds item to the database
+            //this adds item to the database
+            await App.ItineraryRepository.AddItem(new Itinerary { time = SelectedTime, date = Date,
+                ItineraryId = oldi.ItineraryId, Title = oldi.Title }); 
             await _navigation.PopModalAsync();
         }
+
+        //This function handles what happens when cancel is pressed when editing
         public Command Cancel{ get; set; }
         public async void HandleCancel()
         {

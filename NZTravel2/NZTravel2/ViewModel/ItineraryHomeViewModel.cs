@@ -21,7 +21,8 @@ namespace NZTravel2.ViewModel
             Delete = new Command<ItineraryHome>(HandleDelete);
         }
         private INavigation _navigation;
-          
+        
+        //gets all items in ItineraryHome table as a list
         private async Task<ILookup<string, ItineraryHome>> GetGroupedItinerary()
         {
             return (await App.ItineraryRepository.GetItineraries()) 
@@ -32,25 +33,27 @@ namespace NZTravel2.ViewModel
         public ILookup<string, ItineraryHome> GroupedItinerary { get; set; }
         public string Title => "Itinerary";
 
+        //opens AddItinerary Page so user can add new itinerary
         public Command AddItem { get; set; }
         public async void HandleAddItem()
         {
-           await _navigation.PushModalAsync(new AddNewItineraryPage()); //needs to make create itinerary popup/page
+           await _navigation.PushModalAsync(new AddNewItineraryPage()); 
         }
 
-        // This function handles what happens when an item is deleted from the database
+        //This function handles what happens when an item is deleted from the database
         public Command<ItineraryHome> Delete { get; set; }
         public async void HandleDelete(ItineraryHome itemToDelete)
         {
-            await App.ItineraryRepository.DeleteItinerary(itemToDelete);//calls the delete function in the repository class
-
+            //calls the delete function in the repository class
+            await App.ItineraryRepository.DeleteItinerary(itemToDelete);
             // Update displayed list
             GroupedItinerary = await GetGroupedItinerary();
         }
 
+        //Refreshes the itinerary
         public async Task RefreshTaskList()
         {
-            GroupedItinerary = await GetGroupedItinerary(); // Refreshes the itinerary
+            GroupedItinerary = await GetGroupedItinerary(); 
         }
     }
 }

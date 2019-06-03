@@ -12,7 +12,7 @@ namespace NZTravel2.View
         public AttractionsPage(string region)
         {
             InitializeComponent();
-            //used to display the text of the label depending on the region selected
+            //display the text of the label depending on the region selected
             if (region == "current")
             {
                 CurrentRegion.Text = "Attractions in your Current Region";

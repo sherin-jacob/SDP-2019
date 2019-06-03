@@ -30,6 +30,8 @@ namespace NZTravel2
             ShareItinerary = new Command(HandleShare);
         }
         private INavigation _navigation;
+
+        //gets itinerary from the Itinerary table
         private async Task<ILookup<string, Itinerary>> GetGroupedItinerary()
         {
             l.Clear();
@@ -46,15 +48,13 @@ namespace NZTravel2
             }
             return (await App.ItineraryRepository.GetList())
                                 .ToLookup(t => t.IsCompleted ? "Completed" : "Your Itinerary");
-
         }
 
-        // This function handles what happens when an item is deleted from the database
+        //This function handles what happens when an item is deleted from the database
         public Command Delete { get; set; }
         public async void HandleDelete(Itinerary itemToDelete)
         {
-            await App.ItineraryRepository.DeleteItem(itemToDelete);//calls the delete function in the repository class
-
+            await App.ItineraryRepository.DeleteItem(itemToDelete);
             // Update displayed list
             GroupedItinerary = await GetGroupedItinerary();
         }
@@ -63,27 +63,29 @@ namespace NZTravel2
         public Command AddItem { get; set; }
         public async void HandleAddItem()
         {
-            await _navigation.PushModalAsync(new AttractionRegionPage()); // Takes the user to the attractionregion page to choose a new item to add
+            //Takes the user to the attractionregion page to choose a new item to add
+            await _navigation.PushModalAsync(new AttractionRegionPage()); 
         }
 
         //This function handles what happens when the edit button is clicked
-        //TODO there's a bug in this function where it adds an extra item. This is because we weren't sure how to make the command a Task.
         public Command<Itinerary> DetailsItem { get; set; }
         public async void HandleDetailItem(Itinerary itemToView)
         {
             await _navigation.PushModalAsync(new Edit(itemToView));
         }
 
-
+        //Refreshes the itinerary
         public async Task RefreshTaskList()
         {
-            GroupedItinerary = await GetGroupedItinerary(); // Refreshes the itinerary
+            GroupedItinerary = await GetGroupedItinerary(); 
         }
 
+        //This function handles what happens when the Share button is clicked. 
         public Command ShareItinerary { get; set; }
         public async void HandleShare()
         {
             var Itinerary = l;
+            //title of the document
             string ItineraryString = "Itinerary\r\n";
             foreach (var item in Itinerary)
             {
@@ -92,12 +94,15 @@ namespace NZTravel2
                     ItineraryString = "Nothing in the itinerary";
                     break;
                 }
-                string newString = "\r\nName: " + item.Title + "\r\nTime: " + item.time + "\r\nDate: " + item.date.ToShortDateString() + "\r\n";
+                string newString = "\r\nName: " + item.Title + "\r\nTime: " + item.time + "\r\nDate: " 
+                    + item.date.ToShortDateString() + "\r\n";
                 ItineraryString += newString;
             }
+            //create new text file
             var Fn = "Itinerary.txt";
             var file = Path.Combine(FileSystem.CacheDirectory, Fn);
             File.WriteAllText(file, ItineraryString);
+            //share the text file
             await Share.RequestAsync(new ShareFileRequest
             {
                 File = new ShareFile(file)

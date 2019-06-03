@@ -23,14 +23,13 @@ namespace NZTravel2.ViewModel
             set => PlaceList = value;
         }
 
-
         public AttractionsPageViewModel(string region)
         {
             this.region = region;
             Display();    
         }
 
-
+        //async method to run the await statement
         async void Display()
         {
             await GetNearbyPlacesAsync();
@@ -42,7 +41,8 @@ namespace NZTravel2.ViewModel
             RootObjectCity rootObject = null;
             var client = new HttpClient();
             await RetrieveLocation();
-            string restUrl = $"https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + longi +"&key=AIzaSyDsihFkzPZuiJEVZd8tzrodeVe84ttZkRk";
+            string restUrl = $"https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + longi 
+                +"&key=AIzaSyDsihFkzPZuiJEVZd8tzrodeVe84ttZkRk";
             var uri = new Uri(restUrl);
             var response = await client.GetAsync(uri);
             if (response.IsSuccessStatusCode)
@@ -52,7 +52,8 @@ namespace NZTravel2.ViewModel
             }
             else
             {
-                await Application.Current.MainPage.DisplayAlert("No web response", "Unable to retrieve information, please try again", "OK");
+                await Application.Current.MainPage.DisplayAlert("No web response",
+                    "Unable to retrieve information, please try again", "OK");
             }
             var regioninfo = rootObject.results.ToArray()[0];
             int index = 0;
@@ -78,7 +79,8 @@ namespace NZTravel2.ViewModel
             {
                 await GetRegion();
             }
-            string restUrl = $"https://maps.googleapis.com/maps/api/place/textsearch/json?query=attractions+in+" + region + "&key=AIzaSyDsihFkzPZuiJEVZd8tzrodeVe84ttZkRk";
+            string restUrl = $"https://maps.googleapis.com/maps/api/place/textsearch/json?query=attractions+in+" 
+                + region + "&key=AIzaSyDsihFkzPZuiJEVZd8tzrodeVe84ttZkRk";
             var uri = new Uri(restUrl);
             var response = await client.GetAsync(uri);
             if (response.IsSuccessStatusCode)
@@ -88,16 +90,13 @@ namespace NZTravel2.ViewModel
             }
             else
             {
-                await Application.Current.MainPage.DisplayAlert("No web response", "Unable to retrieve information, please try again", "OK");
+                await Application.Current.MainPage.DisplayAlert("No web response", 
+                    "Unable to retrieve information, please try again", "OK");
             }
             //adds each result to the placelist variable - used for display purposes
             foreach (var item in rootObject.results)
             {
                 placeList.Add(item);
-                if (item.opening_hours != null)
-                {
-                    //somehow have to get the nested open now value here - sprint 2
-                }
             }
         }
 
@@ -107,7 +106,6 @@ namespace NZTravel2.ViewModel
             var locator = CrossGeolocator.Current;
             locator.DesiredAccuracy = 20;
             var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(120));
-
             longi = position.Longitude;
             lat = position.Latitude;
         }

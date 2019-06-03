@@ -25,22 +25,15 @@ namespace NZTravel2
             await (BindingContext as ItineraryViewModel).RefreshTaskList();
         }
 
-        // When an item is click, takes the user to another page which contains details of the itinerary
-        //async void Itinerary_ItemTapped(object sender, ItemTappedEventArgs e)
-        //{
-        //    var i = (Itinerary)e.Item;
-        //    i.ItineraryId = j;
-        //    await Navigation.PushModalAsync(new ItineraryDetailPage(i));  
-        //}
+        // When an item is click, takes the user to another page which contains details of the itinerary 
         async void Itinerary_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var i = (Itinerary)e.Item;
             i.ItineraryId = j;
             await Navigation.PushModalAsync(new ItineraryDetailPage(i));
         }
+
         // Send user back to home page
-
-
         private void HomeButtonClicked(object sender, EventArgs e)
         {
             Navigation.PushModalAsync(new HomePage()); // When home is clicked, takes user back to home page

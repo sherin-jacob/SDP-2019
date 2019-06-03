@@ -18,18 +18,22 @@ namespace NZTravel2.View
             BindingContext = new ItineraryHomeViewModel(Navigation);
         }
 
+        //updated itinerary is displayed when page is opened
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            await (BindingContext as ItineraryHomeViewModel).RefreshTaskList(); //Refreshes the Itinerary when an item is added
+            //Refreshes the Itinerary when an item is added
+            await (BindingContext as ItineraryHomeViewModel).RefreshTaskList(); 
         }
 
+        //opens page to show items in the selected itinerary
         async void Itinerary_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var i = (ItineraryHome)e.Item;
-            await Navigation.PushModalAsync(new ItineraryView(i.ItineraryId));  //need to change itinerary view class file so that it displays what you clicked
+            await Navigation.PushModalAsync(new ItineraryView(i.ItineraryId)); 
         }
 
+        //button links to the home page
         private void HomeButtonClicked(object sender, EventArgs e)
         {
             Navigation.PushModalAsync(new HomePage()); // When home is clicked, takes user back to home page
