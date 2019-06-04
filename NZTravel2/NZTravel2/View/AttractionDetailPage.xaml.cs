@@ -125,7 +125,16 @@ namespace NZTravel2.View
         async void MapViewButton_Clicked(object sender, EventArgs e)
         {
             //open google maps using xamarin.essentials
-            var address = this.place.formatted_address;
+            string address;
+            if (this.place.formatted_address != null)
+            {
+                address = this.place.formatted_address;
+            }
+            else
+            {
+                address = this.place.vicinity;
+            }
+            
             var locations = await Geocoding.GetLocationsAsync(address);
             var location = locations?.FirstOrDefault();
             var options = new MapLaunchOptions
